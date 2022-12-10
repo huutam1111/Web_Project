@@ -40,7 +40,7 @@
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="email" id="loginName" class="form-control"/>
+                        <input type="text" id="loginName" class="form-control"/>
                         <label class="form-label" for="loginName">Email or username</label>
                     </div>
 
@@ -67,7 +67,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4 login">Login</button>
                     <!-- Register buttons -->
                     <div class="text-center">
                         <a class="back-home" href="/index.jsp">
@@ -154,6 +154,7 @@
 
 </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript"
         src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/mdb5/standard/core.min.js"></script>
 <script>
@@ -167,5 +168,29 @@
         console.log(123123)
         document.querySelector(".fileupload").click()
     })
+</script>
+<script>
+    $('#login')
+    $('.login').bind('click', function(e) {
+        e.preventDefault()
+        $.ajax({
+            url: "/login",
+            type: "POST",
+            data: {
+                "username":$("#loginName").val(),
+                "password":$("#loginPassword").val(),
+            },
+            contentType: "application/x-www-form-urlencoded",
+            success:(data)=>{
+                console.log(data)
+                window.location.pathname="/index.jsp"
+            }
+
+        })
+
+
+
+    });
+
 </script>
 </html>
