@@ -38,10 +38,16 @@
                                 id="countproduct" class=""></span>
                         <div id="box-show-noti" class="scroll-list box-show-noti hide"></div>
                     </div>
+<%--                    hậu--%>
                     <div class="box-login-acc" id="login">
-                        <span>
-        <a href="/Page/Login_Register.jsp" rel="nofollow" id="dangky">Đăng ký/ Đăng nhập</a>
+                        <span style="margin-right: 15px">
+        <a href="/Page/Login_Register.jsp" rel="nofollow" id="dangky">Đăng ký/ Đăng nhập
+        </a>
     </span>
+                        <div id="account">
+                            <img width="20px" height="20px" src="" alt="">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,6 +72,28 @@
 </div>
 </body>
 <script src="../EventJs/HeaderActive.js">
+</script>
+<script>
+    var Login_Res= document.querySelector("#login>span")
+    var account=document.querySelector("#account")
+    const findCookieByname=(name)=>{
+        const cookies=document.cookie.split("; ")
+        for(const i in cookies){
+            if((cookies[i].split("=")[0])==name){
+                return cookies[i].split("=")[1]
+            }
+        }
+
+    }
+    const checkAccountExist=()=>{
+        if(findCookieByname("user")){
+            console.log(123)
+            account.classList.add("show")
+            account.querySelector("img").src=findCookieByname("imgUser")
+            account.querySelector("span").textContent=findCookieByname("user")
+        }
+    }
+    checkAccountExist()
 </script>
 </html>
 
