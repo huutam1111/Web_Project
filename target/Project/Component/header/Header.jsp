@@ -32,7 +32,7 @@
                             <ul class="sub-search" id="sub-search"></ul>
                         </div>
                     </div>
-                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="/Page/Cart.jsp"
+                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="cart"
                                                         title="Xe đã lưu"><i class="fa-solid fa-cart-shopping"></i></a>
                         <span
                                 id="countproduct" class=""></span>
@@ -40,7 +40,7 @@
                     </div>
 <%--                    hậu--%>
                     <div class="box-login-acc" id="login">
-                        <span>
+                        <span style="margin-right: 15px">
         <a href="/Page/Login_Register.jsp" rel="nofollow" id="dangky">Đăng ký/ Đăng nhập
         </a>
     </span>
