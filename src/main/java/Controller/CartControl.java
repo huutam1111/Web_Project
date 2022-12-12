@@ -4,9 +4,11 @@ package Controller;
 import Model.Cart;
 import Service.CartService;
 import Service.UserService;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +24,9 @@ public class CartControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = null;
+        System.out.println("cx");
+
         for (int i = 0; i < request.getCookies().length; i++) {
-            System.out.println();
             if(request.getCookies()[i].getName().equals("user")){
                 user = request.getCookies()[i].getValue();
                 break;
@@ -38,8 +41,7 @@ public class CartControl extends HttpServlet {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(carts.size());
-            request.setAttribute("carts", carts);
+            request.getSession().setAttribute("carts", carts);
 
             request.getRequestDispatcher("Page/Cart.jsp").forward(request, response);
         }else{
@@ -47,10 +49,70 @@ public class CartControl extends HttpServlet {
 
         }
     }
+    protected void minusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("idpost");
+        Cookie[] arrCookie = request.getCookies();
+        String user = null;
+        for(Cookie tmp: arrCookie){
+            if(tmp.getName().equals("user")){
+                user = tmp.getValue();
+                break;
+            }
+        }
+        ArrayList<Cart> carts= (ArrayList<Cart>) request.getSession().getAttribute("carts");
+        for(Cart tmp: carts){
+            if(tmp.getUsername().equals(user) && tmp.getPost().getIdPost() == Integer.valueOf(id)){
+                try {
+                   Cart cart = CartService.updateQuantityCart(tmp.getUsername(), tmp.getPost().getIdPost(), tmp.getAmount() - 1);
+                   Gson gson = new Gson();
+                    tmp.setAmount(cart.getAmount());
+                    request.getSession().setAttribute("carts", carts);
+                   response.getWriter().write( gson.toJson(cart));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 
-
+    }
+    protected void plusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("idpost");
+        Cookie[] arrCookie = request.getCookies();
+        String user = null;
+        for(Cookie tmp: arrCookie){
+            if(tmp.getName().equals("user")){
+                user = tmp.getValue();
+                break;
+            }
+        }
+        ArrayList<Cart> carts= (ArrayList<Cart>) request.getSession().getAttribute("carts");
+        for(Cart tmp: carts){
+            if(tmp.getUsername().equals(user) && tmp.getPost().getIdPost() == Integer.valueOf(id)){
+                try {
+                    Cart cart = CartService.updateQuantityCart(tmp.getUsername(), tmp.getPost().getIdPost(), tmp.getAmount() + 1);
+                    Gson gson = new Gson();
+                    tmp.setAmount(cart.getAmount());
+                    request.getSession().setAttribute("carts", carts);
+                    response.getWriter().write( gson.toJson(cart));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action == null){
+
+        }else{
+            if(action.equalsIgnoreCase("minus")){
+                minusQuantity(request,response);
+            }
+            if(action.equalsIgnoreCase("plus")){
+                plusQuantity(request,response);
+            }
+        }
 
     }
 }

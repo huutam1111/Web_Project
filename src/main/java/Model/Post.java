@@ -141,20 +141,10 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Post{" +
-                "idPost=" + idPost +
-                ", username='" + username + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", supportTest=" + supportTest +
-                ", images='" + images + '\'' +
-                ", coverNumber=" + coverNumber +
-                ", idCompany='" + idCompany + '\'' +
-                ", yearOfManuFacture=" + yearOfManuFacture +
-                ", status=" + status +
-                ", gear=" + gear +
-                ", fuel='" + fuel + '\'' +
-                ", price=" + price +
-                '}';
+        return  idPost + "-" + username + "-" + title + "-" + content + "-" + supportTest +"-" + images +"-" + coverNumber +"-" + idCompany + "-" + yearOfManuFacture +
+                "-" + status +
+                "-" + gear +
+                "-" + fuel  +
+                "-" + price ;
     }
 }

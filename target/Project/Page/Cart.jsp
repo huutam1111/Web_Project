@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 84348
-  Date: 11/6/2022
-  Time: 9:38 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -38,28 +33,44 @@
                     </tr>
                     </thead>
                     <tbody id="table-item">
-                    <tr class="rem0">
-                        <td class="invert">1</td>
-                        <td class="invert-image"><a href="#" ><img src="https://img1.oto.com.vn/crop/575x430/2022/10/21/20221021114014-e7ea_wm.jpeg" alt=" " class="img-responsive"></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus" >&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active" >&nbsp;</div>
+                    <% int count = 0; %>
+                    <c:forEach items="${carts}" var="o">
+
+                        <% count++; %>
+                        <tr class="rem0" id="item-cart-${o.getPost().getIdPost()}">
+                            <td class="invert"> <%=count%></td>
+                            <td class="invert-image"><a href="#" ><img src="https://img1.oto.com.vn/crop/575x430/2022/10/21/20221021114014-e7ea_wm.jpeg" alt=" " class="img-responsive"></a></td>
+                            <td class="invert">
+                                <div class="quantity">
+                                    <div class="quantity-select">
+                                        <c:if test="${o.getAmount() == 1}">
+
+                                            <div class="entry value-minus events-none" id="minus "  onclick="minus(${o.getPost().getIdPost()})">&nbsp;</div>
+                                        </c:if>
+                                        <c:if test="${o.getAmount() != 1}">
+
+                                            <div class="entry value-minus" id="minus" onclick="minus(${o.getPost().getIdPost()})">&nbsp;</div>
+                                        </c:if>
+                                        <div class="entry value"><span class="amount">${o.getAmount()}</span></div>
+                                            <div class="entry value-plus active" onclick="plus(${o.getPost().getIdPost()})">&nbsp;</div>
+
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td class="invert">Oto 1 </td>
+                            </td>
+                            <td class="invert">${o.getPost().getTitle()} </td>
 
-                        <td class="invert">675.000 </td>
-                        <td class="invert">
-                            <div class="rem0">
-                                <div class="closeItem closeItem0"> <i class="fas fa-times"></i> </div>
-                            </div>
+                            <td class="invert price">${o.total()}</td>
+                            <td class="invert">
+                                <div class="rem0">
+                                    <div class="closeItem closeItem0"> <i class="fas fa-times"></i> </div>
+                                </div>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+
+                    </c:forEach>
+
+
 
                     </tbody>
                 </table>
@@ -126,4 +137,59 @@
 </div>
 <jsp:include page="../Component/footer/footer.jsp" />
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+    plus = (idpost) =>{
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "cart?action=plus&idpost="+idpost);
+        request.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200) {
+                console.log(JSON.parse(this.responseText))
+                let tr = document.querySelector("#item-cart-"+idpost);
+                tr.querySelector(".amount").textContent = JSON.parse(this.responseText).amount;
+                tr.querySelector(".price").textContent = JSON.parse(this.responseText).amount * JSON.parse(this.responseText).post.price;
+                if(JSON.parse(this.responseText).amount > 1){
+                    tr.querySelector("#minus").classList.remove("events-none")
+                }
+            }
+        };
+        // var myForm = document.getElementById("myForm");
+        // var formData = new FormData(myForm);
+        request.send();
+    }
+     minus = (idpost) =>{
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "cart?action=minus&idpost="+idpost);
+        request.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200) {
+                console.log(JSON.parse(this.responseText))
+                let tr = document.querySelector("#item-cart-"+idpost);
+                tr.querySelector(".amount").textContent = JSON.parse(this.responseText).amount;
+                tr.querySelector(".price").textContent = JSON.parse(this.responseText).amount * JSON.parse(this.responseText).post.price;
+                if(JSON.parse(this.responseText).amount == 1){
+                    tr.querySelector("#minus").classList.add("events-none")
+                }
+            }
+        };
+        // var myForm = document.getElementById("myForm");
+        // var formData = new FormData(myForm);
+        request.send();
+    }
+    // $(document).ready(function(){
+    //     $("#minus").click(function(){
+    //         $.post("cart?update=10",
+    //             {
+    //                 name: "Donald Duck",
+    //                 city: "Duckburg"
+    //             },
+    //             function(data,status){
+    //                 alert("Data: " + data + "nStatus: " + status);
+    //             });
+    //     });
+    // });
+</script>
+
 </html>

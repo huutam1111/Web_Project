@@ -10,7 +10,10 @@
     text-transform: uppercase;
     margin: 0 0 3em;
 }
-
+.events-none{
+    pointer-events: none;
+    opacity: 0.3;
+}
 #cartPage .checkout h2 span {
     color: #3399cc;
 }

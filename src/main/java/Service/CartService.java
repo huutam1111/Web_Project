@@ -12,10 +12,10 @@ public class CartService {
     static Statement statement = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    public  ArrayList<Cart> getAllCartByUser(String username) throws SQLException {
+    public static  ArrayList<Cart> getAllCartByUser(String username) throws SQLException {
         ArrayList<Cart> carts = new ArrayList<>();
         Connection c = ConnectDB.getConnect();
-        PreparedStatement stmt = c.prepareStatement("SELECT cart.*, post.title FROM cart, post where cart.username = ? and cart.idpost = post.idpost");
+        PreparedStatement stmt = c.prepareStatement("SELECT cart.* FROM cart where cart.username = ? ");
         stmt.setString(1,username);
         ResultSet resultSet = stmt.executeQuery();
         ProductService ps = new ProductService();
@@ -28,6 +28,39 @@ public class CartService {
             carts.add(cart);
         }
         return carts;
+    }
+    public static Cart getCart(String username, int idPost) throws SQLException {
+
+        Connection c = ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("SELECT * FROM cart where cart.username = ? and cart.idpost = ? ");
+        stmt.setString(1,username);
+        stmt.setInt(2,idPost);
+
+        ResultSet resultSet = stmt.executeQuery();
+        ProductService ps = new ProductService();
+        Cart cart = null;
+        while (resultSet.next()) {
+            cart = new Cart();
+            cart.setUsername(resultSet.getString(1));
+            Post post = ps.getPostById(resultSet.getInt(2));
+            cart.setPost(post);
+            cart.setAmount( resultSet.getInt(3));
+
+        }
+        return cart;
+    }
+    public static Cart updateQuantityCart(String username , int idPost, int amount) throws SQLException{
+        String sqlUpdate = "UPDATE cart "
+                + "SET amount = ? "
+                + "WHERE username = ?"
+                + "AND idpost = ?";
+        Connection conn = ConnectDB.getConnect();
+        PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
+        pstmt.setInt(1, amount);
+        pstmt.setString(2, username);
+        pstmt.setInt(3, idPost);
+        int rowAffected = pstmt.executeUpdate();
+        return getCart(username, idPost);
     }
 
 }
