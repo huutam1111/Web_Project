@@ -424,13 +424,18 @@ a {
 .head-right #auto_save {
     margin-top: 0px !important;
 }
-.hidden{
-    display: none;
+#logout{
+    cursor: pointer;
+    padding:0 10px;
 }
 #account{
     align-items: center;
     width: 60px;
     justify-content: space-around;
+    display: none;
+    margin-left: 15px;
+}
+.hidden{
     display: none;
 }
 .show{

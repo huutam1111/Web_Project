@@ -1,8 +1,12 @@
 package Controller;
 
+import Model.RespJsonServlet;
 import Model.User;
 import Service.UserService;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,15 +31,16 @@ public class Login extends HttpServlet {
             if(UserService.checkLogin(name,pass)){
                 User user=UserService.getUserByName(name);
                 String userResp=gson.toJson(user);
-                Cookie cookie=new Cookie("user",name);
+                System.out.println(userResp);
+                Cookie cookie=new Cookie("user", name);
                 Cookie img=new Cookie("imgUser",user.getAvatar());
                 resp.addCookie(cookie);
                 resp.addCookie(img);
                 pw=resp.getWriter();
-                pw.println("ok");
+                pw.println(new RespJsonServlet("ok").json());
                 pw.close();
             }else {
-                resp.getWriter().println("not ok");
+                resp.getWriter().println(new RespJsonServlet("not ok").json());
                 resp.setStatus(200);
             }
         } catch (SQLException e) {

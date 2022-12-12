@@ -30,4 +30,24 @@ public class UserService {
         String avatar = rs.getString("avatar");
         return new User(userName, null, fullName, email, phone, avatar);
     }
+    public static boolean checkUser(String username, String email) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("select * from user where username=? or email=?");
+        stmt.setString(1,username);
+        stmt.setString(2,email);
+        ResultSet rs= stmt.executeQuery();
+        return rs.next();
+    }
+    public static int insertUser(String name, String pass, String fullname, String email, String phone, String avatar ) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?)");
+        stmt.setString(1,name);
+        stmt.setString(2,pass);
+        stmt.setString(3,fullname);
+        stmt.setString(4,email);
+        stmt.setString(5,phone);
+        stmt.setString(6,avatar);
+        int rs= stmt.executeUpdate();
+        return rs;
+    }
 }

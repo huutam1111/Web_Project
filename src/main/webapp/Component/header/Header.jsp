@@ -44,6 +44,9 @@
         <a href="/Page/Login_Register.jsp" rel="nofollow" id="dangky">Đăng ký/ Đăng nhập
         </a>
     </span>
+                        <div style="display: none" id="logout">
+                            Đăng xuất
+                        </div>
                         <div id="account">
                             <img width="20px" height="20px" src="" alt="">
                             <span></span>
@@ -76,6 +79,13 @@
 <script>
     var Login_Res= document.querySelector("#login>span")
     var account=document.querySelector("#account")
+    var logout=document.querySelector("#logout")
+
+    logout.addEventListener("click", ()=>{
+        del_cookie("user")
+        window.location.pathname="/index.jsp"
+    })
+
     const findCookieByname=(name)=>{
         const cookies=document.cookie.split("; ")
         for(const i in cookies){
@@ -85,9 +95,15 @@
         }
 
     }
+    function del_cookie(name) {
+        document.cookie = name +
+            '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    }
     const checkAccountExist=()=>{
         if(findCookieByname("user")){
             console.log(123)
+            Login_Res.classList.add("hidden")
+            logout.classList.add("show")
             account.classList.add("show")
             account.querySelector("img").src=findCookieByname("imgUser")
             account.querySelector("span").textContent=findCookieByname("user")

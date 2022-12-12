@@ -83,13 +83,12 @@
 
                     <!-- Name input -->
                     <div class="form-outline mb-4">
-                        <input type="text" id="registerName" class="form-control"/>
-                        <label class="form-label" for="registerName">Name</label>
-                    </div>
-
-                    <!-- Username input -->
-                    <div class="form-outline mb-4">
                         <input type="text" id="registerUsername" class="form-control"/>
+                        <label class="form-label" for="registerUsername">Username</label>
+                    </div>
+                    <!-- Full Name input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="registerFullname" class="form-control"/>
                         <label class="form-label" for="registerUsername">Username</label>
                     </div>
 
@@ -98,8 +97,9 @@
                         <input type="email" id="registerEmail" class="form-control"/>
                         <label class="form-label" for="registerEmail">Email</label>
                     </div>
+                    <%--                 Phone Number --%>
                     <div class="form-outline mb-4">
-                        <input type="email" id="registerSdt" class="form-control"/>
+                        <input type="number" id="registerSdt" class="form-control"/>
                         <label class="form-label" for="registerEmail">Phone Number</label>
                     </div>
 
@@ -122,7 +122,11 @@
                                                                                                   type="file">
                                 <li class="upload-item working-upload-item add"><a class="add-img"><i
                                         class="icon-plus"></i><span class="txt-add">Thêm ảnh</span></a></li>
+                                <div class="imgContainer">
+                                    <img class="uploadImg" src="" alt="Err">
+                                </div>
                             </ul>
+
                             <div class="swiper-scrollbar"></div>
                         </div>
                     </div>
@@ -137,7 +141,7 @@
 
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-3 register">Register</button>
                     <div style="text-align: center">
                         <a class="back-home" href="/index.jsp">
                             <i class="fa-solid fa-backward"></i>
@@ -158,39 +162,96 @@
 <script type="text/javascript"
         src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/mdb5/standard/core.min.js"></script>
 <script>
-    document.querySelector(".back-home button").addEventListener("click", (e) => {
-        console.log(123)
-        e.preventDefault()
-    })
-</script>
-<script>
     document.querySelector(".upload-item").addEventListener("click", (e) => {
-        console.log(123123)
         document.querySelector(".fileupload").click()
     })
 </script>
 <script>
     $('#login')
-    $('.login').bind('click', function(e) {
+    $('.login').bind('click', function (e) {
         e.preventDefault()
         $.ajax({
             url: "/login",
             type: "POST",
             data: {
-                "username":$("#loginName").val(),
-                "password":$("#loginPassword").val(),
+                "username": $("#loginName").val(),
+                "password": $("#loginPassword").val(),
             },
             contentType: "application/x-www-form-urlencoded",
-            success:(data)=>{
-                console.log(data)
-                window.location.pathname="/index.jsp"
+            success: (data) => {
+                alert("đăng nhập thành công")
+                window.location.pathname = "/index.jsp"
             }
-
         })
-
-
-
     });
 
+</script>
+<script>
+    const resetForm = () => {
+        $("#registerUsername").val("")
+        $("#registerFullname").val("")
+        $("#registerEmail ").val("")
+        $("#registerSdt ").val("")
+        $("#registerPassword ").val("")
+        $("#registerRepeatPassword").val("")
+    }
+    const handleForm = (name, fullName, email, sdt, passRepeat, pass, imgRequest) => {
+        if (pass == passRepeat && name && fullName && email && sdt && pass && imgRequest) {
+            console.log("cung ok")
+            console.log(name)
+            console.log(fullName)
+            console.log(imgRequest)
+            return true
+        }
+        return false
+    }
+    let imgRequest = ""
+    $(".fileupload").bind("change", (e) => {
+        var file = document.querySelector(".fileupload").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            imgRequest= reader.result
+            console.log(imgRequest)
+        }
+        reader.readAsDataURL(file);
+    })
+    $(".register").bind("click", function (e) {
+        e.preventDefault()
+        const name = $("#registerUsername").val()
+        const fullName = $("#registerFullname").val()
+        const email = $("#registerEmail ").val()
+        const sdt = $("#registerSdt ").val()
+        const pass = $("#registerPassword ").val()
+        const passRepeat = $("#registerRepeatPassword").val()
+        if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest)) {
+            dataBody = {
+                name: name,
+                fullName: fullName,
+                email: email,
+                phone: sdt,
+                pass: pass,
+                avatar: imgRequest
+            }
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: dataBody,
+                contentType: "application/x-www-form-urlencoded",
+                success: function (data) {
+                    if (data['message'] == "register success") {
+                        alert("đăng kí thành công")
+                        resetForm()
+                    } else {
+                        alert("đăng kí không thành công")
+                    }
+
+                }
+            });
+        } else {
+            alert("Form sai định dạng")
+        }
+
+
+    })
 </script>
 </html>
