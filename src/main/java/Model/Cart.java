@@ -39,4 +39,9 @@ public class Cart {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return username + "-" + post + "-" + amount;
+    }
 }
