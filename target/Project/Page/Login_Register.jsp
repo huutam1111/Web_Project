@@ -231,12 +231,12 @@
         if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest, address)) {
             dataBody = {
                 name: name,
-                fullName: fullName,
+                fullName: encodeURIComponent(fullName),
                 email: email,
                 phone: sdt,
                 pass: pass,
                 avatar: imgRequest,
-                address: address
+                address: encodeURIComponent(address)
             }
             $.ajax({
                 url: "/register",
