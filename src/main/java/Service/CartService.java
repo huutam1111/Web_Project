@@ -62,5 +62,17 @@ public class CartService {
         int rowAffected = pstmt.executeUpdate();
         return getCart(username, idPost);
     }
+    public static int removeCart(String username , int idPost) throws SQLException {
+        String sqlUpdate = "DELETE FROM cart "
+                + "WHERE username = ?"
+                + "AND idpost = ?";
+        Connection conn = ConnectDB.getConnect();
+        PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
+        pstmt.setString(1, username);
+        pstmt.setInt(2, idPost);
+        int rowAffected = pstmt.executeUpdate();
+        return rowAffected;
+    }
+
 
 }
