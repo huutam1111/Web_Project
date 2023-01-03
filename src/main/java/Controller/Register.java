@@ -3,6 +3,7 @@ import Model.RespJsonServlet;
 import Service.UserService;
 import Upload.UploadImage;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 @WebServlet("/register")
 public class Register extends HttpServlet {
+    ServletContext servletContext;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathRoot=(this.getServletContext().getRealPath("/"));

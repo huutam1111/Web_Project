@@ -1,8 +1,12 @@
 package Connect;
 
+    import com.zaxxer.hikari.HikariConfig;
+    import com.zaxxer.hikari.HikariDataSource;
+
     import java.sql.*;
 
     public class ConnectDB {
+        private static HikariDataSource dataSource = null;
         private String url = "jdbc:mysql://localhost:3306/qlyoto";
         private String user = "root";
         private String pass = "";
@@ -11,7 +15,14 @@ package Connect;
         private ConnectDB() {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(this.url, this.user, this.pass);
+                HikariConfig config = new HikariConfig();
+                config.setJdbcUrl(url);
+                config.setUsername(user);
+                config.setPassword(pass);
+                config.addDataSourceProperty("minimumIdle", "5");
+                config.addDataSourceProperty("maximumPoolSize", "25");
+                dataSource = new HikariDataSource(config);
+                connection = dataSource.getConnection();
             } catch (ClassNotFoundException | SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -20,10 +31,7 @@ package Connect;
         public static Connection getConnect() {
             if (connection == null){
                 new ConnectDB();
-
             }
-
-
             return connection;
         }
 
