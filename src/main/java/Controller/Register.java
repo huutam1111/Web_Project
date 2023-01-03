@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -28,13 +30,14 @@ public class Register extends HttpServlet {
         String email= req.getParameter("email");
         String phone= req.getParameter("phone");
         String avatar= req.getParameter("avatar");
+        String address= req.getParameter("address");
         String pathAvtUser="";
         ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot);
         for(String tmp:list){
             pathAvtUser+=tmp+"||";
         }
         try {
-            if((UserService.insertUser(name, pass, fullName, email, phone,pathAvtUser)!=0)){
+            if((UserService.insertUser(name, pass, fullName, email, phone, address,pathAvtUser)!=0)){
                 PrintWriter writer=resp.getWriter();
                 RespJsonServlet ex=new RespJsonServlet("register success");
                 writer.println(ex.json());

@@ -28,7 +28,8 @@ public class UserService {
         String email=rs.getString("email");
         String phone = rs.getString("phone");
         String avatar = rs.getString("avatar");
-        return new User(userName, null, fullName, email, phone, avatar);
+        String address = rs.getString("address");
+        return new User(userName, null, fullName, email, phone, avatar,address);
     }
     public static boolean checkUser(String username, String email) throws SQLException, ClassNotFoundException {
         Connection c=ConnectDB.getConnect();
@@ -38,15 +39,16 @@ public class UserService {
         ResultSet rs= stmt.executeQuery();
         return rs.next();
     }
-    public static int insertUser(String name, String pass, String fullname, String email, String phone, String avatar ) throws SQLException, ClassNotFoundException {
+    public static int insertUser(String name, String pass, String fullname, String email, String phone, String address, String avatar ) throws SQLException, ClassNotFoundException {
         Connection c=ConnectDB.getConnect();
-        PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?)");
+        PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?,?)");
         stmt.setString(1,name);
         stmt.setString(2,pass);
         stmt.setString(3,fullname);
         stmt.setString(4,email);
         stmt.setString(5,phone);
         stmt.setString(6,avatar);
+        stmt.setString(7,address);
         int rs= stmt.executeUpdate();
         return rs;
     }
