@@ -1,4 +1,4 @@
-package Service;
+package DAO;
 
 import Connect.ConnectDB;
 import Model.User;
@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserService {
+public class UserDAO {
     public static boolean checkLogin(String username, String pass) throws SQLException {
         Connection c= ConnectDB.getConnect();
         PreparedStatement stmt = c.prepareStatement("select * from user where username=? and password=?");

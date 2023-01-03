@@ -1,6 +1,6 @@
 package Controller;
 import Model.RespJsonServlet;
-import Service.UserService;
+import DAO.UserDAO;
 import Upload.UploadImage;
 
 import javax.servlet.ServletContext;
@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -50,7 +48,6 @@ public class Register extends HttpServlet {
         String pass=req.getParameter("pass");
         String fullName=req.getParameter("fullName");
         fullName = decodeURIComponent(fullName,"UTF-8");
-
         String email= req.getParameter("email");
         String phone= req.getParameter("phone");
         String avatar= req.getParameter("avatar");
@@ -62,7 +59,7 @@ public class Register extends HttpServlet {
             pathAvtUser+=tmp+"||";
         }
         try {
-            if((UserService.insertUser(name, pass, fullName, email, phone, address,pathAvtUser)!=0)){
+            if((UserDAO.insertUser(name, pass, fullName, email, phone, address,pathAvtUser)!=0)){
                 PrintWriter writer=resp.getWriter();
                 RespJsonServlet ex=new RespJsonServlet("register success");
                 writer.println(ex.json());

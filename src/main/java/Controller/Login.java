@@ -2,11 +2,8 @@ package Controller;
 
 import Model.RespJsonServlet;
 import Model.User;
-import Service.UserService;
+import DAO.UserDAO;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +25,8 @@ public class Login extends HttpServlet {
         String pass= req.getParameter("password");
         Gson gson=new Gson();
         try {
-            if(UserService.checkLogin(name,pass)){
-                User user=UserService.getUserByName(name);
+            if(UserDAO.checkLogin(name,pass)){
+                User user= UserDAO.getUserByName(name);
                 String userResp=gson.toJson(user);
                 System.out.println(userResp);
                 Cookie cookie=new Cookie("user", name);

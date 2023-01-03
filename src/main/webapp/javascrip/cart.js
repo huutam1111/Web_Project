@@ -126,3 +126,5 @@ const removeCart = (idpost)=>{
         }
     });
 }
+
+

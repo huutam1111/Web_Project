@@ -1,14 +1,13 @@
-package Service;
+package DAO;
 
 import Connect.ConnectDB;
 import Model.Cart;
 import Model.Post;
-import Model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CartService {
+public class CartDAO {
     static Statement statement = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -18,7 +17,7 @@ public class CartService {
         PreparedStatement stmt = c.prepareStatement("SELECT cart.* FROM cart where cart.username = ? ");
         stmt.setString(1,username);
         ResultSet resultSet = stmt.executeQuery();
-        ProductService ps = new ProductService();
+        ProductDAO ps = new ProductDAO();
         while (resultSet.next()) {
             Cart cart = new Cart();
             cart.setUsername(resultSet.getString(1));
@@ -37,7 +36,7 @@ public class CartService {
         stmt.setInt(2,idPost);
 
         ResultSet resultSet = stmt.executeQuery();
-        ProductService ps = new ProductService();
+        ProductDAO ps = new ProductDAO();
         Cart cart = null;
         while (resultSet.next()) {
             cart = new Cart();

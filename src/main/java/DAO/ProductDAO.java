@@ -1,4 +1,4 @@
-package Service;
+package DAO;
 
 import Connect.ConnectDB;
 import Model.Post;
@@ -8,9 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ProductService {
+public class ProductDAO {
     Statement statement = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;

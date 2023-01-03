@@ -2,8 +2,7 @@ package Controller;
 
 
 import Model.Cart;
-import Service.CartService;
-import Service.UserService;
+import DAO.CartDAO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -52,7 +51,7 @@ public class CartControl extends HttpServlet {
     private void getList(HttpServletRequest request, HttpServletResponse response, String user) throws IOException {
         ArrayList<Cart> carts = new ArrayList<>();
         try {
-            CartService cs = new CartService();
+            CartDAO cs = new CartDAO();
             carts = cs.getAllCartByUser(user);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,13 +69,13 @@ public class CartControl extends HttpServlet {
                 break;
             }
         }
-        Cart cart = CartService.getCart(user, Integer.parseInt(id));
+        Cart cart = CartDAO.getCart(user, Integer.parseInt(id));
 
         try {
             if(action.equals("decrease"))
-                cart = CartService.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() - 1);
+                cart = CartDAO.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() - 1);
             else
-                cart = CartService.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() + 1);
+                cart = CartDAO.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() + 1);
             Gson gson = new Gson();
             response.getWriter().write(gson.toJson(cart));
         } catch (SQLException e) {
@@ -96,7 +95,7 @@ public class CartControl extends HttpServlet {
         }
 
         try {
-            int rs = CartService.removeCart(user, Integer.parseInt(id));
+            int rs = CartDAO.removeCart(user, Integer.parseInt(id));
             System.out.println(id);
 
             Gson gson = new Gson();
