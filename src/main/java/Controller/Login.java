@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
+        resp.setContentType("application/json");
         PrintWriter pw;
         String name= req.getParameter("username");
         String pass= req.getParameter("password");

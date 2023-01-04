@@ -7,10 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<ul class="app-nav">
+  <!-- User Menu-->
+  <li><a class="app-nav__item" href="/index.jsp"><i class="bx bx-log-out bx-rotate-180"></i> </a>
+
+  </li>
+</ul>
+</body>
 </html>

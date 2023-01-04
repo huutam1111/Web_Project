@@ -22,6 +22,7 @@ public class UserService {
         PreparedStatement stmt = c.prepareStatement("select * from user where username=?");
         stmt.setString(1,name);
         ResultSet rs= stmt.executeQuery();
+        System.out.println(rs.getRow());
         rs.next();
         String userName=rs.getString("username");
         String fullName=rs.getString("fullname");
@@ -38,16 +39,33 @@ public class UserService {
         ResultSet rs= stmt.executeQuery();
         return rs.next();
     }
+
     public static int insertUser(String name, String pass, String fullname, String email, String phone, String avatar ) throws SQLException, ClassNotFoundException {
         Connection c=ConnectDB.getConnect();
-        PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?)");
+        PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?,?)");
         stmt.setString(1,name);
         stmt.setString(2,pass);
         stmt.setString(3,fullname);
         stmt.setString(4,email);
         stmt.setString(5,phone);
         stmt.setString(6,avatar);
+        stmt.setInt(7,0);
         int rs= stmt.executeUpdate();
         return rs;
+    }
+    public static boolean checkAdmin(String name) throws SQLException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("select * from user where username=?");
+        stmt.setString(1,name);
+        ResultSet rs= stmt.executeQuery();
+        if(rs.next()&&rs.getInt("iAdmin")!=0){
+            return true;
+        }
+        return false;
+
+    }
+
+    public static void main(String[] args) throws SQLException {
+        System.out.println(checkAdmin("hau"));
     }
 }

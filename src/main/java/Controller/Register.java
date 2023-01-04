@@ -30,6 +30,8 @@ public class Register extends HttpServlet {
         String phone= req.getParameter("phone");
         String avatar= req.getParameter("avatar");
         String pathAvtUser="";
+        System.out.println(name);
+        System.out.println(pass);
         ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot);
         for(String tmp:list){
             pathAvtUser+=tmp;

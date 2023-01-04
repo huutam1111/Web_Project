@@ -1,0 +1,116 @@
+[33mcommit 4c1e4161ef17a50e46018b039e15802268ed80be[m[33m ([m[1;36mHEAD -> [m[1;32mNguyen_Ha_Phuoc_Hau[m[33m)[m
+Author: phuochau132 <113565950+phuochau132@users.noreply.github.com>
+Date:   Wed Jan 4 23:23:57 2023 +0700
+
+    thêm page admin, update login,register, send mail
+
+[33mcommit 525bc2517140cc777a7611949f1b80563ca6fb48[m
+Author: phuochau132 <113565950+phuochau132@users.noreply.github.com>
+Date:   Mon Jan 2 17:54:11 2023 +0700
+
+    connection pool
+
+[33mcommit a219211380f622f1fe33109d0a9b1f1a8a51cf49[m
+Merge: 256d499 e614d22
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Mon Dec 12 23:12:23 2022 +0700
+
+    Merge pull request #7 from huutam1111/Nguyen_Ngoc_Huy
+    
+    Nguyen ngoc huy
+
+[33mcommit e614d22eb2b12f30a46f7e49ec82d93f03105b83[m
+Author: ngochuyk812 <88924028+ngochuyk812@users.noreply.github.com>
+Date:   Mon Dec 12 23:10:16 2022 +0700
+
+    cap nhap cart
+
+[33mcommit 256d49905608756ace3a7478c06213668eff6bb9[m
+Merge: 172f9e0 badaeba
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Mon Dec 12 22:59:18 2022 +0700
+
+    Merge pull request #6 from huutam1111/Nguyen_Ha_Phuoc_Hau
+    
+    Thêm chức năng đăng kí, Upload file
+
+[33mcommit badaeba763335f79d6714f256f4190a9571d6e83[m
+Author: phuochau132 <113565950+phuochau132@users.noreply.github.com>
+Date:   Mon Dec 12 22:58:39 2022 +0700
+
+    Thêm chức năng đăng kí, Upload file
+
+[33mcommit 0418099f0e00bd507b19916185133e7812a49061[m
+Author: ngochuyk812 <88924028+ngochuyk812@users.noreply.github.com>
+Date:   Mon Dec 12 22:43:31 2022 +0700
+
+    hoan thanh chuc nang tang giam so luong gio hang
+
+[33mcommit 172f9e0e9df727cd18f90527b4f1fb0609572678[m
+Merge: 57c93fe f68f8a0
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Mon Dec 12 12:37:34 2022 +0700
+
+    Merge pull request #5 from huutam1111/Nguyen_Ha_Phuoc_Hau
+    
+    Merge pull request #4 from huutam1111/Nguyen_Ngoc_Huy
+
+[33mcommit f68f8a04ac2db894ccbf3df32404c232369a7020[m
+Merge: fc5fa32 fdb2fe7
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Mon Dec 12 12:28:07 2022 +0700
+
+    Merge pull request #4 from huutam1111/Nguyen_Ngoc_Huy
+    
+    Nguyen ngoc huy
+
+[33mcommit 57c93fe66519962241f15cec5c809e1ee7116d8f[m
+Merge: 11d0c46 fdb2fe7
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Mon Dec 12 12:08:58 2022 +0700
+
+    Merge pull request #3 from huutam1111/Nguyen_Ngoc_Huy
+    
+    get cart
+
+[33mcommit fdb2fe7262c639ac1dc37956a988ce4e309e2693[m
+Author: ngochuyk812 <88924028+ngochuyk812@users.noreply.github.com>
+Date:   Sun Dec 11 11:17:37 2022 +0700
+
+    get cart
+
+[33mcommit 11d0c46b7cec2c4a777a7bcb233d4228c64a440e[m
+Merge: bd36eef fc5fa32
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Sat Dec 10 16:56:36 2022 +0700
+
+    Merge pull request #2 from huutam1111/Nguyen_Ha_Phuoc_Hau
+    
+    Thêm chức năng Login
+
+[33mcommit fc5fa32ee404f362a6fafc78d93343d9c357cf5f[m
+Author: phuochau132 <113565950+phuochau132@users.noreply.github.com>
+Date:   Sat Dec 10 16:55:40 2022 +0700
+
+    Thêm chức năng Login
+
+[33mcommit bd36eefed52528592fd19ddb2fc6fc9709d3679b[m[33m ([m[1;32mmain[m[33m)[m
+Merge: 5a8974c 8c90eb9
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Sat Dec 10 10:01:15 2022 +0700
+
+    Merge pull request #1 from huutam1111/nguyen_huu_tam
+    
+    connect database
+
+[33mcommit 8c90eb941821739f3f3d567964ee455f277ea9ec[m[33m ([m[1;31morigin/nguyen_huu_tam[m[33m)[m
+Author: Tama <117276637+huutam1111@users.noreply.github.com>
+Date:   Sat Dec 10 09:45:38 2022 +0700
+
+    connect database
+
+[33mcommit 5a8974cf20ae623fcd261d3899206dace62d8518[m
+Author: phuochau132 <113565950+phuochau132@users.noreply.github.com>
+Date:   Sat Dec 10 09:26:05 2022 +0700
+
+    First commit

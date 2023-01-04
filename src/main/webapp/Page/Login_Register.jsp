@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/post_news.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/postnew-quick.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/node_modules/@angular/material/prebuilt-themes/indigo-pink.css">
-    <link rel="stylesheet" href="Login_Register.css">
+    <link rel="stylesheet" type="text/css" href="/Page/Login_Register.css">
 </head>
 <body>
 <div class="container" style="margin-top: 50px">
@@ -78,7 +78,7 @@
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                <form>
+                <form class="form1">
                     <p class="text-center">Register</p>
 
                     <!-- Name input -->
@@ -89,7 +89,7 @@
                     <!-- Full Name input -->
                     <div class="form-outline mb-4">
                         <input type="text" id="registerFullname" class="form-control"/>
-                        <label class="form-label" for="registerUsername">Username</label>
+                        <label class="form-label" for="registerUsername">Fullname</label>
                     </div>
 
                     <!-- Email input -->
@@ -121,9 +121,10 @@
                                                                                                   class="fileupload input-hidden"
                                                                                                   type="file">
                                 <li class="upload-item working-upload-item add"><a class="add-img"><i
-                                        class="icon-plus"></i><span class="txt-add">Thêm ảnh</span></a></li>
+                                        class="icon-plus"></i><span class="txt-add">Nhấn vào đây để chọn ảnh</span></a>
+                                </li>
                                 <div class="imgContainer">
-                                    <img class="uploadImg" src="" alt="Err">
+                                    <img class="uploadImg" src="/Img/ImgNormal.jpg" alt="Vui lòng chọn ảnh">
                                 </div>
                             </ul>
 
@@ -141,7 +142,7 @@
 
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-3 register">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-3 btn-code">Next</button>
                     <div style="text-align: center">
                         <a class="back-home" href="/index.jsp">
                             <i class="fa-solid fa-backward"></i>
@@ -150,6 +151,13 @@
                     </div>
 
                 </form>
+                <form class="form2" style="display: none">
+                    <input class="code" style="margin-bottom: 10px; padding: 10px;height: 40px;outline: none;width: 100%;"
+                           type="text" placeholder="Nhập mã code">
+                    <button type="submit" class="btn btn-primary btn-block mb-3 register">Register</button>
+                </form>
+
+
             </div>
         </div>
         <!-- Pills content -->
@@ -179,14 +187,29 @@
             },
             contentType: "application/x-www-form-urlencoded",
             success: (data) => {
-                alert("đăng nhập thành công")
-                window.location.pathname = "/index.jsp"
+                console.log(data)
+                if (data['message'] == "ok") {
+                    alert("đăng nhập thành công")
+                    window.location.pathname = "/index.jsp"
+                } else {
+                    alert("đăng nhập thất bại")
+                }
+
+
             }
         })
     });
 
 </script>
 <script>
+    const handleRegisNext=()=>{
+        $(".form1").css("display", "none")
+        $(".form2").css("display", "block")
+    }
+    const handleRegisRevert=()=>{
+        $(".form1").css("display", "block")
+        $(".form2").css("display", "none")
+    }
     const resetForm = () => {
         $("#registerUsername").val("")
         $("#registerFullname").val("")
@@ -195,34 +218,34 @@
         $("#registerPassword ").val("")
         $("#registerRepeatPassword").val("")
     }
+
     const handleForm = (name, fullName, email, sdt, passRepeat, pass, imgRequest) => {
         if (pass == passRepeat && name && fullName && email && sdt && pass && imgRequest) {
-            console.log("cung ok")
-            console.log(name)
-            console.log(fullName)
-            console.log(imgRequest)
             return true
         }
         return false
     }
-    let imgRequest = ""
+    var imgRequest = '';
     $(".fileupload").bind("change", (e) => {
         var file = document.querySelector(".fileupload").files[0];
         var reader = new FileReader();
-        reader.onloadend = function() {
-            imgRequest= reader.result
-            console.log(imgRequest)
+        reader.onloadend = function () {
+            imgRequest = reader.result
+            $(".uploadImg").attr("src", imgRequest)
         }
         reader.readAsDataURL(file);
     })
+
+    var code;
+    var name;
+    var fullName;
+    var email;
+    var sdt;
+    var pass;
+    var passRepeat;
     $(".register").bind("click", function (e) {
         e.preventDefault()
-        const name = $("#registerUsername").val()
-        const fullName = $("#registerFullname").val()
-        const email = $("#registerEmail ").val()
-        const sdt = $("#registerSdt ").val()
-        const pass = $("#registerPassword ").val()
-        const passRepeat = $("#registerRepeatPassword").val()
+        var codeVl = $(".code").val()
         if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest)) {
             dataBody = {
                 name: name,
@@ -230,7 +253,8 @@
                 email: email,
                 phone: sdt,
                 pass: pass,
-                avatar: imgRequest
+                avatar: imgRequest,
+                code:codeVl
             }
             $.ajax({
                 url: "/register",
@@ -240,10 +264,19 @@
                 success: function (data) {
                     if (data['message'] == "register success") {
                         alert("đăng kí thành công")
+                        $(".uploadImg").attr("src", "/Img/ImgNormal.jpg")
                         resetForm()
-                    } else {
-                        alert("đăng kí không thành công")
+                        handleRegisRevert()
+                    }else {
+                        if (data['message'] == "code sai") {
+                            alert("Code không đúng")
+                            $(".uploadImg").attr("src", "/Img/ImgNormal.jpg")
+                            resetForm()
+                        }else {
+                            alert("đăng kí không thành công")
+                        }
                     }
+
 
                 }
             });
@@ -251,6 +284,26 @@
             alert("Form sai định dạng")
         }
 
+
+    })
+    $(".btn-code").click(function (e) {
+        e.preventDefault()
+        name = $("#registerUsername").val()
+        fullName = $("#registerFullname").val()
+        email = $("#registerEmail ").val()
+        sdt = $("#registerSdt ").val()
+        pass = $("#registerPassword ").val()
+        passRepeat = $("#registerRepeatPassword").val()
+        fetch("/sendMail?email=" + email)
+            .then((resp) => {
+                return resp.json()
+            })
+            .then((resp)=>{
+                handleRegisNext()
+            })
+            .catch(()=>{
+                alert("Email không tồn tại")
+            })
 
     })
 </script>

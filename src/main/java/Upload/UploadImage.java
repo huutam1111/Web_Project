@@ -30,8 +30,9 @@ public class UploadImage
         byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
         String imgpath=rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9);
         String pathServer =pathName+"Img/User/"+imgpath + extension;
-        String rs="/Img/"+imgpath+extension;
+        String rs="/Img/User/"+imgpath+extension;
         File fileServer = new File(pathServer);
+        System.out.println(fileServer);
         try (OutputStream outputStreamSystem = new BufferedOutputStream(new FileOutputStream(fileServer))) {
             outputStreamSystem.write(data);
             outputStreamSystem.close();

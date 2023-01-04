@@ -1,11 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <title>Danh sách nhân viên | Quản trị Admin</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Main CSS-->
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -26,14 +24,7 @@
   <header class="app-header">
     <!-- Sidebar toggle button-->
     <!-- Navbar Right Menu-->
-    <ul class="app-nav">
-
-
-      <!-- User Menu-->
-      <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
-
-      </li>
-    </ul>
+    <%@ include file="./header.jsp" %>
   </header>
   <!-- Sidebar menu-->
  
@@ -188,7 +179,7 @@
               <button class="btn btn-primary luu-san-pham" type="button"> Lưu đơn hàng (F9)</button>
               <button class="btn btn-primary luu-va-in" type="button">Lưu và in hóa đơn (F10)</button>
   
-              <a class="btn btn-secondary luu-va-in" href="index.html">Quay về</a>
+              <a class="btn btn-secondary luu-va-in" href="index.jsp">Quay về</a>
             </div>
           </div>
         </div>
