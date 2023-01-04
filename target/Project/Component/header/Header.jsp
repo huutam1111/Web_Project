@@ -64,8 +64,6 @@
                     </li>
                     <li><a href="/Page/News.jsp" data-key="/tin-tuc"><h2>Tin tức</h2></a>
                     </li>
-                    <li><a href="/checkAdmin"><h2>Admin</h2></a>
-                    </li>
                     <li><a href="/Page/PostStatus/Img" class="btn-post">Đăng tin</a></li>
                 </ul>
             </div>

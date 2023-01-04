@@ -2,8 +2,7 @@ package Controller;
 
 
 import Model.Cart;
-import Service.CartService;
-import Service.UserService;
+import DAO.CartDAO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -26,93 +25,109 @@ public class CartControl extends HttpServlet {
         response.setContentType("text/html");
         String user = null;
         System.out.println("cx");
+        String param = request.getParameter("action");
 
         for (int i = 0; i < request.getCookies().length; i++) {
-            if(request.getCookies()[i].getName().equals("user")){
+            if (request.getCookies()[i].getName().equals("user")) {
                 user = request.getCookies()[i].getValue();
                 break;
             }
         }
-        System.out.println(user);
-        if(user != null){
-            ArrayList<Cart> carts = new ArrayList<>();
-            try {
-                CartService cs = new CartService();
-                carts = cs.getAllCartByUser(user);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+
+        if (user != null) {
+            if (param != null) {
+                if (param.equals("listcart")) {
+                    getList(request, response, user);
+                    return;
+                }
             }
-            request.getSession().setAttribute("carts", carts);
 
             request.getRequestDispatcher("Page/Cart.jsp").forward(request, response);
-        }else{
+        } else {
             request.getRequestDispatcher("/Page/Login_Register.jsp").forward(request, response);
 
         }
     }
-    protected void minusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private void getList(HttpServletRequest request, HttpServletResponse response, String user) throws IOException {
+        ArrayList<Cart> carts = new ArrayList<>();
+        try {
+            CartDAO cs = new CartDAO();
+            carts = cs.getAllCartByUser(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        response.getWriter().write(new Gson().toJson(carts));
+    }
+
+    protected void setQuantity(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
         String id = request.getParameter("idpost");
         Cookie[] arrCookie = request.getCookies();
         String user = null;
-        for(Cookie tmp: arrCookie){
-            if(tmp.getName().equals("user")){
+        for (Cookie tmp : arrCookie) {
+            if (tmp.getName().equals("user")) {
                 user = tmp.getValue();
                 break;
             }
         }
-        ArrayList<Cart> carts= (ArrayList<Cart>) request.getSession().getAttribute("carts");
-        for(Cart tmp: carts){
-            if(tmp.getUsername().equals(user) && tmp.getPost().getIdPost() == Integer.valueOf(id)){
-                try {
-                   Cart cart = CartService.updateQuantityCart(tmp.getUsername(), tmp.getPost().getIdPost(), tmp.getAmount() - 1);
-                   Gson gson = new Gson();
-                    tmp.setAmount(cart.getAmount());
-                    request.getSession().setAttribute("carts", carts);
-                   response.getWriter().write( gson.toJson(cart));
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+        Cart cart = CartDAO.getCart(user, Integer.parseInt(id));
+
+        try {
+            if(action.equals("decrease"))
+                cart = CartDAO.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() - 1);
+            else
+                cart = CartDAO.updateQuantityCart(cart.getUsername(), cart.getPost().getIdPost(), cart.getAmount() + 1);
+            Gson gson = new Gson();
+            response.getWriter().write(gson.toJson(cart));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    protected void removeCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String id = request.getParameter("idpost");
+        System.out.println(id);
+        Cookie[] arrCookie = request.getCookies();
+        String user = null;
+        for (Cookie tmp : arrCookie) {
+            if (tmp.getName().equals("user")) {
+                user = tmp.getValue();
+                break;
             }
         }
 
-    }
-    protected void plusQuantity(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("idpost");
-        Cookie[] arrCookie = request.getCookies();
-        String user = null;
-        for(Cookie tmp: arrCookie){
-            if(tmp.getName().equals("user")){
-                user = tmp.getValue();
-                break;
-            }
-        }
-        ArrayList<Cart> carts= (ArrayList<Cart>) request.getSession().getAttribute("carts");
-        for(Cart tmp: carts){
-            if(tmp.getUsername().equals(user) && tmp.getPost().getIdPost() == Integer.valueOf(id)){
-                try {
-                    Cart cart = CartService.updateQuantityCart(tmp.getUsername(), tmp.getPost().getIdPost(), tmp.getAmount() + 1);
-                    Gson gson = new Gson();
-                    tmp.setAmount(cart.getAmount());
-                    request.getSession().setAttribute("carts", carts);
-                    response.getWriter().write( gson.toJson(cart));
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+        try {
+            int rs = CartDAO.removeCart(user, Integer.parseInt(id));
+            System.out.println(id);
+
+            Gson gson = new Gson();
+            response.getWriter().write(gson.toJson(rs));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if(action == null){
 
         }else{
-            if(action.equalsIgnoreCase("minus")){
-                minusQuantity(request,response);
+            if(action.equals("decrease") || action.equals("increase")){
+                try {
+                    setQuantity(request,response, action);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
-            if(action.equalsIgnoreCase("plus")){
-                plusQuantity(request,response);
+            if(action.equals("remove")){
+                try {
+                    removeCart(request,response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
+
         }
 
     }
