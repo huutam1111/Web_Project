@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class Register extends HttpServlet {
         String pathAvtUser="";
         ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot);
         for(String tmp:list){
-            pathAvtUser+=tmp+"||";
+            pathAvtUser+=tmp;
         }
         try {
             if((UserService.insertUser(name, pass, fullName, email, phone,pathAvtUser)!=0)){
