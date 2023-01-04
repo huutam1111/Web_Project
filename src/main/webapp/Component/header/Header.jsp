@@ -32,7 +32,7 @@
                             <ul class="sub-search" id="sub-search"></ul>
                         </div>
                     </div>
-                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="/Page/Cart.jsp"
+                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="cart"
                                                         title="Xe đã lưu"><i class="fa-solid fa-cart-shopping"></i></a>
                         <span
                                 id="countproduct" class=""></span>
@@ -66,6 +66,8 @@
 
                     </li>
                     <li><a href="/Page/News.jsp" data-key="/tin-tuc"><h2>Tin tức</h2></a>
+                    </li>
+                    <li><a href="/checkAdmin"><h2>Admin</h2></a>
                     </li>
                     <li><a href="/Page/PostStatus/Img" class="btn-post">Đăng tin</a></li>
                 </ul>

@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/post_news.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/postnew-quick.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/node_modules/@angular/material/prebuilt-themes/indigo-pink.css">
-    <link rel="stylesheet" href="Login_Register.css">
+    <link rel="stylesheet" type="text/css" href="/Page/Login_Register.css">
+
 </head>
 <body>
 <div class="container" style="margin-top: 50px">
@@ -121,9 +122,9 @@
                                                                                                   class="fileupload input-hidden"
                                                                                                   type="file">
                                 <li class="upload-item working-upload-item add"><a class="add-img"><i
-                                        class="icon-plus"></i><span class="txt-add">Thêm ảnh</span></a></li>
+                                        class="icon-plus"></i><span class="txt-add">Chọn ảnh làm avatar</span></a></li>
                                 <div class="imgContainer">
-                                    <img class="uploadImg" src="" alt="Err">
+                                    <img class="uploadImg" src="" alt="Vui lòng chọn ảnh">
                                 </div>
                             </ul>
 
@@ -179,8 +180,15 @@
             },
             contentType: "application/x-www-form-urlencoded",
             success: (data) => {
-                alert("đăng nhập thành công")
-                window.location.pathname = "/index.jsp"
+                console.log(data)
+                if(data['message']=="ok"){
+                    alert("đăng nhập thành công")
+                    window.location.pathname = "/index.jsp"
+                }else {
+                    alert("đăng nhập thất bại")
+                }
+
+
             }
         })
     });
@@ -205,13 +213,13 @@
         }
         return false
     }
-    let imgRequest = ""
+    var imgRequest='';
     $(".fileupload").bind("change", (e) => {
         var file = document.querySelector(".fileupload").files[0];
         var reader = new FileReader();
         reader.onloadend = function() {
             imgRequest= reader.result
-            console.log(imgRequest)
+            $(".uploadImg").attr("src",imgRequest)
         }
         reader.readAsDataURL(file);
     })
@@ -230,7 +238,7 @@
                 email: email,
                 phone: sdt,
                 pass: pass,
-                avatar: imgRequest
+                avatar: imgRequest,
             }
             $.ajax({
                 url: "/register",
@@ -240,6 +248,7 @@
                 success: function (data) {
                     if (data['message'] == "register success") {
                         alert("đăng kí thành công")
+                        $(".uploadImg").attr("src","")
                         resetForm()
                     } else {
                         alert("đăng kí không thành công")
