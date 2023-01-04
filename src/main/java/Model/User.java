@@ -21,6 +21,7 @@ public class User implements Serializable {
         this.address = address;
     }
 
+
     public String getUserName() {
         return userName;
     }

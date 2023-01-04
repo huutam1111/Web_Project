@@ -40,8 +40,8 @@
     <div class="container" id="box-home">
         <div class="menu-tab">
             <ul class="">
-                <li><a href="/Page/Filter.jsp" data-id="carnew"><h2>Mua xe mới</h2></a></li>
-                <li><a href="/Page/Filter.jsp" data-id="carold"><h2>Tìm xe cũ</h2></a></li>
+                <li><a href="/Page/Product.jsp" data-id="carnew"><h2>Mua xe mới</h2></a></li>
+                <li><a href="/Page/Product.jsp" data-id="carold"><h2>Tìm xe cũ</h2></a></li>
                 <li><a href="/Page/PostStatus/Img" data-id="buycar"><h2>Đăng tin ngay</h2></a></li>
             </ul>
         </div>

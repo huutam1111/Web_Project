@@ -15,7 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 @WebServlet(name = "Order", value = "/order")
@@ -24,7 +29,7 @@ public class Order extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        sendBill(request,response,false);
+        sendBill(request,response, null,false);
     }
 
 
@@ -32,6 +37,7 @@ public class Order extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = null;
         boolean checkRs = false;
+        ArrayList<Model.Order> orders = new ArrayList<>();
         for (int i = 0; i < request.getCookies().length; i++) {
             if (request.getCookies()[i].getName().equals("user")) {
                 username = request.getCookies()[i].getValue();
@@ -48,7 +54,7 @@ public class Order extends HttpServlet {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            ArrayList<Model.Order> orders = new ArrayList<>();
+
             for(Cart tmp : carts){
                 Model.Order order = new Model.Order(user.getFullName(), user.getPhone(), user.getAddress(), tmp.getPost().getTitle(), tmp.getAmount(), (double) (tmp.getAmount() * tmp.getPost().getPrice()), 0);
                 try {
@@ -66,17 +72,30 @@ public class Order extends HttpServlet {
                 }
             }
         }
-        sendBill(request,response,checkRs);
+        sendBill(request,response,orders, checkRs);
 
     }
 
-    private void sendBill(HttpServletRequest req, HttpServletResponse res, boolean check) throws IOException, ServletException {
+    private void sendBill(HttpServletRequest req, HttpServletResponse res, ArrayList<Model.Order> orders, boolean check) throws IOException, ServletException {
         res.setCharacterEncoding("UTF-8");
         PrintWriter out = res.getWriter();
         if(!check){
             req.getRequestDispatcher("Page/404.jsp").forward(req, res);
             return;
         }
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        String fullName = orders.get(0).getFullName();
+        String date = dtf.format(now).toString();
+        String phone = orders.get(0).getPhone();
+        String address = orders.get(0).getAddress();
+        double total = 0;
+        for(Model.Order tmp : orders){
+            total += tmp.getTotal();
+        }
+        Locale locale = new Locale("en", "UK");
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+        String sTotal = fmt.format(total).substring(1, fmt.format(total).length());
 
         out.println("\n" +
                 "\n" +
@@ -141,12 +160,12 @@ public class Order extends HttpServlet {
                 "              <div class=\"bg-white shadow-sm rounded p-4 p-lg-5 mb-4\">\n" +
                 "                <div class=\"row\">\n" +
                 "                  <div class=\"col-sm text-muted\">Họ và tên</div>\n" +
-                "                  <div class=\"col-sm text-sm-end fw-600\">Nguyễn Ngọc Huy</div>\n" +
+                "                  <div class=\"col-sm text-sm-end fw-600\">"+fullName+"</div>\n" +
                 "                </div>\n" +
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                  <div class=\"col-sm text-muted\">Ngày</div>\n" +
-                "                  <div class=\"col-sm text-sm-end fw-600\">06-Feb-2019</div>\n" +
+                "                  <div class=\"col-sm text-sm-end fw-600\">"+date+"</div>\n" +
                 "                </div>\n" +
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
@@ -157,22 +176,22 @@ public class Order extends HttpServlet {
                 "               \n" +
                 "                <div class=\"row\">\n" +
                 "                  <div class=\"col-sm text-muted\">Số điện thoại</div>\n" +
-                "                  <div class=\"col-sm text-sm-end fw-600\">09898989898</div>\n" +
+                "                  <div class=\"col-sm text-sm-end fw-600\">"+phone+"</div>\n" +
                 "                </div>\n" +
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                  <div class=\"col-sm text-muted\">Địa chỉ</div>\n" +
-                "                  <div class=\"col-sm text-sm-end fw-600\">Chánh Hòa</div>\n" +
+                "                  <div class=\"col-sm text-sm-end fw-600\">"+address+"</div>\n" +
                 "                </div>\n" +
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                  <div class=\"col-sm text-muted\">Tổng tiền</div>\n" +
-                "                  <div class=\"col-sm text-sm-end text-6 fw-500\">$120.000</div>\n" +
+                "                  <div class=\"col-sm text-sm-end text-6 fw-500\">$"+sTotal+"</div>\n" +
                 "                </div>\n" +
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                    <button style=\"background-color: rgb(43, 169, 43); border: none;  padding: 10px 15px; margin: 0 auto;\">\n" +
-                "                        <a href=\"home\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
+                "                        <a href=\"/\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
                 "                      </button>\n" +
                 "                </div>\n" +
                 "                \n" +
