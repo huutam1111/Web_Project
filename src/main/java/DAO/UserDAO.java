@@ -52,4 +52,33 @@ public class UserDAO {
         int rs= stmt.executeUpdate();
         return rs;
     }
+    public static int updateUser(String username, String fullname, String email, String phone, String address) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("UPDATE user\n" +
+                "SET  fullname = ?,email = ?, phone = ?, address = ?\n" +
+                "WHERE username = ?");
+
+        stmt.setString(1,fullname);
+        stmt.setString(2,email);
+        stmt.setString(3,phone);
+        stmt.setString(4,address);
+        stmt.setString(5,username);
+        int rs= stmt.executeUpdate();
+        return rs;
+    }
+
+    public static int updateUser(String username, String pass, String fullname, String email, String phone, String address) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("UPDATE user\n" +
+                "SET password = ?, fullname = ?,email = ?, phone = ?, address = ?\n" +
+                "WHERE username = ?");
+        stmt.setString(1,pass);
+        stmt.setString(2,fullname);
+        stmt.setString(3,email);
+        stmt.setString(4,phone);
+        stmt.setString(5,address);
+        stmt.setString(6,username);
+        int rs= stmt.executeUpdate();
+        return rs;
+    }
 }
