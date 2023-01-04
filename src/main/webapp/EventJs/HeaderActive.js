@@ -3,7 +3,7 @@ var ul = document.querySelectorAll(".menu-top>li")
 console.log(123123)
 for (let i = 0; i < ul.length; i++) {
     console.log(locationpath == "/Page/PriceCar.jsp")
-    if (locationpath == "/Page/Filter.jsp") {
+    if (locationpath == "/Page/Product.jsp") {
         ul[0].classList.add("active", "activemenu")
     } else {
         if (locationpath == "/Page/PriceCar.jsp") {

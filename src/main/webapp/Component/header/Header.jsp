@@ -23,7 +23,7 @@
                 <div class="left-head"> Hotline: 09793459242</div>
                 <div class="head-right">
                     <div class="box-search-head">
-                        <div class="box-search-head-element"><label for="txtKeyword"></label> <input id="txtKeyword"
+                        <div class="box-search-head-element"><label for="txtKeyword"></label> <input style="vertical-align: center" id="txtKeyword"
                                                                                                      class="input-text ui-autocomplete-input"
                                                                                                      maxlength="100"
                                                                                                      autocomplete="off"
@@ -32,7 +32,7 @@
                             <ul class="sub-search" id="sub-search"></ul>
                         </div>
                     </div>
-                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="/Page/Cart.jsp"
+                    <div class="noti" id="auto_save"><a rel="nofollow" id="showautosaved" href="cart"
                                                         title="Xe đã lưu"><i class="fa-solid fa-cart-shopping"></i></a>
                         <span
                                 id="countproduct" class=""></span>
@@ -44,13 +44,10 @@
         <a href="/Page/Login_Register.jsp" rel="nofollow" id="dangky">Đăng ký/ Đăng nhập
         </a>
     </span>
-                        <div style="display: none" id="logout">
-                            Đăng xuất
+                        <div style="display: none" id="profile">
+                            <a href="profile"><i class="fa-solid fa-user"></i></a>
                         </div>
-                        <div id="account">
-                            <img width="20px" height="20px" src="" alt="">
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -59,7 +56,7 @@
             <div class="container"><a class="logo" href="/">
             </a>
                 <ul class="menu-top">
-                    <li><a href="/Page/Filter.jsp" data-key="/mua-ban-xe"><h2>Mua bán ô tô</h2></a>
+                    <li><a href="product" data-key="/mua-ban-xe"><h2>Sản phẩm</h2></a>
                     <li><a href="/Page/PriceCar.jsp" data-key="/bang-gia-xe-o-to"><h2>Giá xe ô tô</h2></a>
 
                     </li>
@@ -79,12 +76,9 @@
 <script>
     var Login_Res= document.querySelector("#login>span")
     var account=document.querySelector("#account")
-    var logout=document.querySelector("#logout")
+    var profile=document.querySelector("#profile")
 
-    logout.addEventListener("click", ()=>{
-        del_cookie("user")
-        window.location.pathname="/index.jsp"
-    })
+
 
     const findCookieByname=(name)=>{
         const cookies=document.cookie.split("; ")
@@ -103,7 +97,7 @@
         if(findCookieByname("user")){
             console.log(123)
             Login_Res.classList.add("hidden")
-            logout.classList.add("show")
+            profile.classList.add("show")
             account.classList.add("show")
             account.querySelector("img").src=findCookieByname("imgUser")
             account.querySelector("span").textContent=findCookieByname("user")

@@ -49,6 +49,7 @@ ul {
     justify-content: space-between;
     height: auto;
     width: 100%;
+    gap: 50px;
 }
 
 .Container-left {

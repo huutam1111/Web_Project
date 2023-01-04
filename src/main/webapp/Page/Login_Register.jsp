@@ -102,7 +102,10 @@
                         <input type="number" id="registerSdt" class="form-control"/>
                         <label class="form-label" for="registerEmail">Phone Number</label>
                     </div>
-
+                    <div class="form-outline mb-4">
+                        <input type="text" id="registerAddress" class="form-control"/>
+                        <label class="form-label" for="registerEmail">Address</label>
+                    </div>
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <input type="password" id="registerPassword" class="form-control"/>
@@ -194,9 +197,10 @@
         $("#registerSdt ").val("")
         $("#registerPassword ").val("")
         $("#registerRepeatPassword").val("")
+        $("#registerAddress").val("")
     }
-    const handleForm = (name, fullName, email, sdt, passRepeat, pass, imgRequest) => {
-        if (pass == passRepeat && name && fullName && email && sdt && pass && imgRequest) {
+    const handleForm = (name, fullName, email, sdt, passRepeat, pass, imgRequest, address) => {
+        if (pass == passRepeat && name && fullName && email && sdt && pass && imgRequest && address) {
             console.log("cung ok")
             console.log(name)
             console.log(fullName)
@@ -221,22 +225,24 @@
         const fullName = $("#registerFullname").val()
         const email = $("#registerEmail ").val()
         const sdt = $("#registerSdt ").val()
+        const address = $("#registerAddress ").val()
         const pass = $("#registerPassword ").val()
         const passRepeat = $("#registerRepeatPassword").val()
-        if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest)) {
+        if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest, address)) {
             dataBody = {
                 name: name,
-                fullName: fullName,
+                fullName: encodeURIComponent(fullName),
                 email: email,
                 phone: sdt,
                 pass: pass,
-                avatar: imgRequest
+                avatar: imgRequest,
+                address: encodeURIComponent(address)
             }
             $.ajax({
                 url: "/register",
                 type: "POST",
                 data: dataBody,
-                contentType: "application/x-www-form-urlencoded",
+                contentType: 'application/x-www-form-urlencoded',
                 success: function (data) {
                     if (data['message'] == "register success") {
                         alert("đăng kí thành công")
