@@ -5,8 +5,13 @@ const handleAvatar =(e)=>{
     if(file){
         const src = URL.createObjectURL(file);
         image.src = src;
+        document.querySelector("#applyChange").classList.remove("hide")
 
     }
+
+}
+const cannel = ()=>{
+    document.querySelector("#applyChange").classList.add("hide")
 
 }
 const logout = ()=>{

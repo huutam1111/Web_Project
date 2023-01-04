@@ -38,7 +38,7 @@
                   <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="imgAvatar" alt="" width="140px" height="140px" srcset=""></span>
+                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
                       </div>
                     </div>
                   </div>
@@ -50,8 +50,25 @@
                         <button class="btn btn-primary" type="button" style="width: 100%; position: relative;">
                           <i class="fa fa-fw fa-camera"></i>
                           <div >
-                            <input type="file" id="uploadFile" oninput="handleAvatar(this)" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; opacity: 0;">
-                            <span>Change Photo</span>
+                            <form action="profile?action=changeAvatar" method="POST" enctype="multipart/form-data">
+                              <input type="file" id="uploadFile" name="file" oninput="handleAvatar(this)" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; opacity: 0;">
+                              <span>Change Photo</span>
+                              <div id="applyChange" class="hide" style="position: fixed; top: 0; left: 0;right: 0; bottom: 0; z-index: 9999; background-color: rgba(142,142,142,0.46); display: flex; justify-content: center; align-items: center">
+                                <div style="width: 400px; height: 300px; box-shadow: #8B8B8B 5px 5px 5px; border-radius: 10px; background-color: white; padding: 10px">
+                                  <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="" id="imgAvatar" alt="" width="200px" height="200px" srcset="">
+                                  </span>
+                                  <br>
+                                  <br>
+                                  <br>
+
+                                  <div style="display: flex; justify-content: center; gap: 20px; margin-top: 10px">
+                                    <input type="button" onclick="cannel()" class="btn btn-primary" value="Cannel">
+                                    <input type="submit" class="btn btn-primary" value="Apply">
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+
                           </div>
                         </button>
                       </div>
