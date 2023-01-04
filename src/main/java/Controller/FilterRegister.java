@@ -1,12 +1,10 @@
 package Controller;
 
 import Model.RespJsonServlet;
-import Service.UserService;
-import com.google.gson.Gson;
+import DAO.UserDAO;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,7 +21,7 @@ public class FilterRegister implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         response.setContentType("application/json");
         try {
-            if(!(UserService.checkUser(request.getParameter("name"), request.getParameter("email")))){
+            if(!(UserDAO.checkUser(request.getParameter("name"), request.getParameter("email")))){
                 chain.doFilter(request,response);
             }else {
                 RespJsonServlet ex=new RespJsonServlet("username or email is exist");
