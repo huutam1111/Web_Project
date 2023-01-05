@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%----%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -223,6 +224,8 @@
 
 </html>
 
+=======
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -234,14 +237,21 @@
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/post_news.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/postnew-quick.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/node_modules/@angular/material/prebuilt-themes/indigo-pink.css">
+<<<<<<< HEAD
     <%--    --%>
 
+=======
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
     <style>
         <%@include file="index.css"%>
     </style>
 
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<jsp:include page="/Component/header/Header.jsp"/>
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
 <form class="editForm ng-pristine ng-invalid ng-touched" novalidate="">
     <div class="container postnews make-form">
         <div class="gr-heading-post"><h2 class="heading "> Thông tin xe </h2><span class="status-per per2"></span></div>
@@ -319,10 +329,18 @@
         </div>
         <div class="group-bt two-bt" id="btn-postListing">
             <a href="/Page/PostStatus/Img" class="btn-back">Quay lại</a>
+<<<<<<< HEAD
             <a href="../titlencontent" class="btn-send">Tiếp tục</a>
         </div>
     </div>
 </form>
+=======
+            <a href="/Page/PostStatus/titlencontent" class="btn-send">Tiếp tục</a>
+        </div>
+    </div>
+</form>
+<jsp:include page="/Component/footer/footer.jsp"/>
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
 </body>
 <script src="index.js">
 </script>

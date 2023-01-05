@@ -16,7 +16,11 @@ public class ProductDAO {
 
     public ArrayList<Post> getProduct() {
         ArrayList<Post> posts = new ArrayList<>();
+<<<<<<< HEAD:src/main/java/Service/ProductService.java
+        String query = "SELECT * FROM post";
+=======
         String query = "SELECT * FROM product ";
+>>>>>>> 623fd91ad75cef09889378b07ed5a66796159242:src/main/java/DAO/ProductDAO.java
         try {
             statement = ConnectDB.getConnect().createStatement();
             preparedStatement = statement.getConnection().prepareStatement(query);

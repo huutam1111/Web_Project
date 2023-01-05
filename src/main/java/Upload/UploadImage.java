@@ -27,8 +27,14 @@ public class UploadImage
         }
         //convert base64 string to binary data
         byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
+<<<<<<< HEAD
         String pathServer =pathName+"Img/User/"+name + extension;
         String rs="/Img/User/"+name+extension;
+=======
+        String imgpath=rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9);
+        String pathServer =pathName+"Img/User/"+imgpath + extension;
+        String rs="/Img/User/"+imgpath+extension;
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
         File fileServer = new File(pathServer);
         System.out.println(fileServer);
         try (OutputStream outputStreamSystem = new BufferedOutputStream(new FileOutputStream(fileServer))) {

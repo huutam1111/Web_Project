@@ -68,6 +68,10 @@ public class User implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
 }
 
     @Override
@@ -80,6 +84,10 @@ public class User implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", avatar='" + avatar + '\'' +
                 '}';
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
     }
 
     public String getAddress() {
@@ -88,5 +96,6 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+>>>>>>> 623fd91ad75cef09889378b07ed5a66796159242
     }
 }

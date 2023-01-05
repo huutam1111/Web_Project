@@ -58,9 +58,7 @@ public class Register extends HttpServlet {
         String address= req.getParameter("address");
         address = decodeURIComponent(address,"UTF-8");
         String pathAvtUser="";
-        System.out.println(name);
-        System.out.println(pass);
-        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot, name);
+        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot);
         for(String tmp:list){
             pathAvtUser+=tmp;
         }

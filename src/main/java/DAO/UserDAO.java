@@ -40,8 +40,16 @@ public class UserDAO {
         ResultSet rs= stmt.executeQuery();
         return rs.next();
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD:src/main/java/Service/UserService.java
+
+    public static int insertUser(String name, String pass, String fullname, String email, String phone, String avatar ) throws SQLException, ClassNotFoundException {
+=======
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
     public static int insertUser(String name, String pass, String fullname, String email, String phone, String address, String avatar ) throws SQLException, ClassNotFoundException {
+>>>>>>> 623fd91ad75cef09889378b07ed5a66796159242:src/main/java/DAO/UserDAO.java
         Connection c=ConnectDB.getConnect();
         PreparedStatement stmt = c.prepareStatement("insert into user value(?,?,?,?,?,?,?,?)");
         stmt.setString(1,name);
@@ -50,8 +58,15 @@ public class UserDAO {
         stmt.setString(4,email);
         stmt.setString(5,phone);
         stmt.setString(6,avatar);
+<<<<<<< HEAD
         stmt.setInt(7,0);
         stmt.setString(8,address);
+=======
+<<<<<<< HEAD:src/main/java/Service/UserService.java
+        stmt.setInt(7,0);
+=======
+        stmt.setString(7,address);
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
         int rs= stmt.executeUpdate();
         return rs;
     }
@@ -81,6 +96,7 @@ public class UserDAO {
         stmt.setString(4,phone);
         stmt.setString(5,address);
         stmt.setString(6,username);
+>>>>>>> 623fd91ad75cef09889378b07ed5a66796159242:src/main/java/DAO/UserDAO.java
         int rs= stmt.executeUpdate();
         return rs;
     }

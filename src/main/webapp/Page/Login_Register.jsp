@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://oto.com.vn/member/Styles/web/postnew-quick.css?v=638035266443576953">
     <link rel="stylesheet" href="https://oto.com.vn/node_modules/@angular/material/prebuilt-themes/indigo-pink.css">
     <link rel="stylesheet" type="text/css" href="/Page/Login_Register.css">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
 </head>
 <body>
 <div class="container" style="margin-top: 50px">
@@ -124,10 +128,16 @@
                                                                                                   class="fileupload input-hidden"
                                                                                                   type="file">
                                 <li class="upload-item working-upload-item add"><a class="add-img"><i
+<<<<<<< HEAD
                                         class="icon-plus"></i><span class="txt-add">Nhấn vào đây để chọn ảnh</span></a>
                                 </li>
                                 <div class="imgContainer">
                                     <img class="uploadImg" src="/Img/ImgNormal.jpg" alt="Vui lòng chọn ảnh">
+=======
+                                        class="icon-plus"></i><span class="txt-add">Chọn ảnh làm avatar</span></a></li>
+                                <div class="imgContainer">
+                                    <img class="uploadImg" src="" alt="Vui lòng chọn ảnh">
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
                                 </div>
                             </ul>
 
@@ -191,10 +201,17 @@
             contentType: "application/x-www-form-urlencoded",
             success: (data) => {
                 console.log(data)
+<<<<<<< HEAD
                 if (data['message'] == "ok") {
                     alert("đăng nhập thành công")
                     window.location.pathname = "/index.jsp"
                 } else {
+=======
+                if(data['message']=="ok"){
+                    alert("đăng nhập thành công")
+                    window.location.pathname = "/index.jsp"
+                }else {
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
                     alert("đăng nhập thất bại")
                 }
 
@@ -232,6 +249,7 @@
         }
         return false
     }
+<<<<<<< HEAD
     var imgRequest = '';
     $(".fileupload").bind("change", (e) => {
         var file = document.querySelector(".fileupload").files[0];
@@ -239,6 +257,15 @@
         reader.onloadend = function () {
             imgRequest = reader.result
             $(".uploadImg").attr("src", imgRequest)
+=======
+    var imgRequest='';
+    $(".fileupload").bind("change", (e) => {
+        var file = document.querySelector(".fileupload").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            imgRequest= reader.result
+            $(".uploadImg").attr("src",imgRequest)
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
         }
         reader.readAsDataURL(file);
     })
@@ -253,6 +280,7 @@
     var address;
     $(".register").bind("click", async function (e) {
         e.preventDefault()
+<<<<<<< HEAD
         var codeVl = $(".code").val()
         console.log(name)
         console.log(fullName)
@@ -266,6 +294,42 @@
                     avatar: imgRequest,
                     code: codeVl,
                     address: encodeURIComponent(address)
+=======
+        const name = $("#registerUsername").val()
+        const fullName = $("#registerFullname").val()
+        const email = $("#registerEmail ").val()
+        const sdt = $("#registerSdt ").val()
+        const address = $("#registerAddress ").val()
+        const pass = $("#registerPassword ").val()
+        const passRepeat = $("#registerRepeatPassword").val()
+        if (handleForm(name, fullName, email, sdt, passRepeat, pass, imgRequest, address)) {
+            dataBody = {
+                name: name,
+                fullName: encodeURIComponent(fullName),
+                email: email,
+                phone: sdt,
+                pass: pass,
+                avatar: imgRequest,
+<<<<<<< HEAD
+=======
+                address: encodeURIComponent(address)
+>>>>>>> 623fd91ad75cef09889378b07ed5a66796159242
+            }
+            $.ajax({
+                url: "/register",
+                type: "POST",
+                data: dataBody,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (data) {
+                    if (data['message'] == "register success") {
+                        alert("đăng kí thành công")
+                        $(".uploadImg").attr("src","")
+                        resetForm()
+                    } else {
+                        alert("đăng kí không thành công")
+                    }
+
+>>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
                 }
                 $.ajax({
                     url: "/register",
