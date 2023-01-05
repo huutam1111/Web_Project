@@ -11,12 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-<<<<<<< HEAD
-import java.nio.file.Path;
-=======
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
->>>>>>> 623fd91ad75cef09889378b07ed5a66796159242
 import java.sql.SQLException;
 import java.util.ArrayList;
 
