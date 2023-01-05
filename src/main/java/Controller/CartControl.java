@@ -22,6 +22,7 @@ public class CartControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
         String user = null;
         System.out.println("cx");
         String param = request.getParameter("action");

@@ -33,6 +33,9 @@ public class Post {
         this.price = price;
     }
 
+    public Post(int anInt, String string, String string1, String string2, boolean aBoolean, String string3, boolean aBoolean1, String string4, int anInt1, boolean aBoolean2, boolean aBoolean3, String string5, double aDouble) {
+    }
+
     public int getIdPost() {
         return idPost;
     }

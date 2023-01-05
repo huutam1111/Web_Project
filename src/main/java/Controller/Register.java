@@ -54,9 +54,11 @@ public class Register extends HttpServlet {
         String address= req.getParameter("address");
         address = decodeURIComponent(address,"UTF-8");
         String pathAvtUser="";
-        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot);
+        System.out.println(name);
+        System.out.println(pass);
+        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot, name);
         for(String tmp:list){
-            pathAvtUser+=tmp+"||";
+            pathAvtUser+=tmp;
         }
         try {
             if((UserDAO.insertUser(name, pass, fullName, email, phone, address,pathAvtUser)!=0)){
