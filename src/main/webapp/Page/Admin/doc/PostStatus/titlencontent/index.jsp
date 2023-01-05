@@ -14,7 +14,6 @@
     </style>
 </head>
 <body>
-<jsp:include page="/Component/header/Header.jsp"/>
 <form class="editForm ng-untouched ng-pristine ng-invalid" novalidate="">
     <div class="container postnews">
         <div class="gr-heading-post"><h2 class="heading "> Tiêu đề - nội dung </h2><span class="status-per per3"></span>
@@ -40,6 +39,5 @@
             <a href="/Page/" class="btn-send">Hoàn tất</a><!----></div>
     </div>
 </form>
-<jsp:include page="/Component/footer/footer.jsp"/>
 </body>
 </html>

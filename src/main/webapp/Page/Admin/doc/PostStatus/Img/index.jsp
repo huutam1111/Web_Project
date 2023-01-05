@@ -14,12 +14,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-
-</body>
-<script>
-    document.querySelector(".btn-send").addEventListener("click", (e) => {
-=======
 <jsp:include page="/Component/header/Header.jsp"/>
 <div class="container">
     <form class="editForm ng-valid ng-dirty ng-touched" novalidate="">
@@ -86,7 +80,6 @@
 </body>
 <script>
     document.querySelector(".btn-send").addEventListener("clicl", (e) => {
->>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
         e.preventDefault();
     })
     document.querySelector(".upload-item").addEventListener("click", (e) => {
