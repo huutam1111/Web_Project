@@ -2,7 +2,6 @@ package Model;
 
 public class Post {
     private int idPost;
-    private String username;
     private String title;
     private String content;
     private boolean supportTest;
@@ -19,9 +18,8 @@ public class Post {
 
     }
 
-    public Post(int idPost, String username, String title, String content, boolean supportTest, String images, boolean coverNumber, String idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
+    public Post(int idPost, String title, String content, boolean supportTest, String images, boolean coverNumber, String idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
         this.idPost = idPost;
-        this.username = username;
         this.title = title;
         this.content = content;
         this.supportTest = supportTest;
@@ -35,6 +33,9 @@ public class Post {
         this.price = price;
     }
 
+    public Post(int anInt, String string, String string1, String string2, boolean aBoolean, String string3, boolean aBoolean1, String string4, int anInt1, boolean aBoolean2, boolean aBoolean3, String string5, double aDouble) {
+    }
+
     public int getIdPost() {
         return idPost;
     }
@@ -43,13 +44,7 @@ public class Post {
         this.idPost = idPost;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getTitle() {
         return title;
@@ -141,7 +136,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return  idPost + "-" + username + "-" + title + "-" + content + "-" + supportTest +"-" + images +"-" + coverNumber +"-" + idCompany + "-" + yearOfManuFacture +
+        return  idPost  + "-" + title + "-" + content + "-" + supportTest +"-" + images +"-" + coverNumber +"-" + idCompany + "-" + yearOfManuFacture +
                 "-" + status +
                 "-" + gear +
                 "-" + fuel  +

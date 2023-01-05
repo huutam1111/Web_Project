@@ -1,7 +1,7 @@
 package Controller;
 
+import DAO.UserDAO;
 import Model.RespJsonServlet;
-import Service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class FilterAdmin extends HttpServlet {
             if(tmp.getName().equals("user")){
                 name=tmp.getValue();
                 try {
-                    if(UserService.checkAdmin(name)){
+                    if(UserDAO.checkAdmin(name)){
                         resp.sendRedirect("/Page/Admin/doc/"+redirect+".jsp");
                         resp.setStatus(200);
                     }

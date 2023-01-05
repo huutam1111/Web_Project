@@ -9,9 +9,8 @@ import javax.xml.bind.DatatypeConverter;
 public class UploadImage
 
 {
-    public static String uploadFile(String base64, String pathName)
+    public static String uploadFile(String base64, String pathName, String name)
     {
-        Random rd=new Random();
         String base64String = base64;
         String[] strings = base64String.split(",");
         String extension;
@@ -28,9 +27,8 @@ public class UploadImage
         }
         //convert base64 string to binary data
         byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
-        String imgpath=rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9)+""+rd.nextInt(9);
-        String pathServer =pathName+"Img/User/"+imgpath + extension;
-        String rs="/Img/User/"+imgpath+extension;
+        String pathServer =pathName+"Img/User/"+name + extension;
+        String rs="/Img/User/"+name+extension;
         File fileServer = new File(pathServer);
         System.out.println(fileServer);
         try (OutputStream outputStreamSystem = new BufferedOutputStream(new FileOutputStream(fileServer))) {
@@ -44,11 +42,11 @@ public class UploadImage
 
         return null;
     }
-    public static ArrayList<String> uploadAllFile(String listImg, String pathName){
+    public static ArrayList<String> uploadAllFile(String listImg, String pathName,String name){
         ArrayList<String> list=new ArrayList<String>();
         StringTokenizer st = new StringTokenizer(listImg,"||");
         while (st.hasMoreTokens()){
-            String path=uploadFile(st.nextToken(), pathName);
+            String path=uploadFile(st.nextToken(), pathName, name);
             list.add(path);
         }
         return list;
