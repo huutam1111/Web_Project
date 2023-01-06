@@ -20,10 +20,11 @@
         </div>
         <div class="control mt-20"><label class="lbl-form" for="">Tiêu đề</label>
             <div class="prefix-title" style="margin: -10px 0 10px 195px"> Toyota Vios 1.5E MT 2017 -</div>
-            <input class="inp ng-untouched ng-pristine ng-invalid" formcontrolname="Title"
+            <input id="tilte123" class="inp ng-untouched ng-pristine ng-invalid" formcontrolname="Title"
                    placeholder="Ngắn gọn, đầy đủ, từ khóa quan trọng gây chú ý " style="margin-left: 190px;"
                    type="text"><!----><!----><!----><!----></div>
         <div class="control box-des"><label class="lbl-form" for="">Nội dung</label><textarea
+                id="content"
                 class="multi-row ng-untouched ng-pristine ng-invalid" formcontrolname="Description"
                 placeholder="Nhập nội dung. Tối thiểu 50 ký tự. Tối đa 3000 ký tự"></textarea><!---->
             <div class="txt-right"> 0/3000</div><!----><!----><!----></div><!---->
