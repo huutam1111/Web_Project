@@ -6,6 +6,7 @@ import Model.User;
 import DAO.CartDAO;
 import DAO.OrderDAO;
 import DAO.UserDAO;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,36 @@ public class Order extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action != null && action.equals("listorder")){
+            try {
+                getOrder(request,response);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
         sendBill(request,response, null,false);
+    }
+
+    protected void getOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String username = null;
+        boolean checkRs = false;
+        ArrayList<Model.Order> orders = new ArrayList<>();
+        for (int i = 0; i < request.getCookies().length; i++) {
+            if (request.getCookies()[i].getName().equals("user")) {
+                username = request.getCookies()[i].getValue();
+                break;
+            }
+        }
+        if(username == null){
+            sendBill(request,response,null, false);
+            return;
+        }
+        orders = OrderDAO.getOrderByUser(username);
+
+        response.getWriter().write(new Gson().toJson(orders));
+
     }
 
 
@@ -56,7 +86,7 @@ public class Order extends HttpServlet {
             }
 
             for(Cart tmp : carts){
-                Model.Order order = new Model.Order(user.getFullName(), user.getPhone(), user.getAddress(), tmp.getPost().getTitle(), tmp.getAmount(), (double) (tmp.getAmount() * tmp.getPost().getPrice()), 0);
+                Model.Order order = new Model.Order(username,user.getFullName(), user.getPhone(), user.getAddress(), tmp.getPost().getTitle(), tmp.getAmount(), (double) (tmp.getAmount() * tmp.getPost().getPrice()), 0);
                 try {
                     if(OrderDAO.addOrder(order) == 1){
                         orders.add(order);
@@ -191,7 +221,7 @@ public class Order extends HttpServlet {
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                    <button style=\"background-color: rgb(43, 169, 43); border: none;  padding: 10px 15px; margin: 0 auto;\">\n" +
-                "                        <a href=\"/\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
+                "                        <a href=\"/profile\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
                 "                      </button>\n" +
                 "                </div>\n" +
                 "                \n" +

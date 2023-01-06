@@ -97,6 +97,10 @@
                     <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> <%=product.getFuel()%></li>
                 </ul>
             </div>
+            <br>
+            <div>
+                <button  class="btn btn-primary" onclick="addToCart(<%=product.getIdPost()%>)" type="button">Thêm giỏ hàng</button>
+            </div>
             <div class="describe">
                 <br>
                 <h5>Mô tả</h5>
@@ -223,7 +227,8 @@
 <jsp:include page="../Component/footer/footer.jsp" />
 
 </body>
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script  >
     var slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) {
@@ -247,6 +252,17 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
+    const addToCart = (id)=>{
+        $.ajax({
+            url: "/cart?action=addtocart&idpost="+id,
+            type: 'POST',
+            success: function(res) {
 
+            }
+        });
+        console.log(id)
+
+
+    }
 </script>
 </html>

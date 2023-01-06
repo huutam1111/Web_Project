@@ -155,7 +155,28 @@
 
                   </div>
                   <div class="tab-pane active" id="order">
-                    Đơn hàng xử lý
+                    <div class="tile">
+                      <h3 class="tile-title">Đơn hàng của bạn</h3>
+                      <div>
+                        <table class="table table-bordered">
+                          <thead>
+                          <tr>
+                            <th>ID đơn hàng</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                          </tr>
+                          </thead>
+                          <tbody id="table-order">
+
+
+
+
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
@@ -167,7 +188,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="px-xl-3">
-                <button class="btn btn-block btn-secondary">
+                <button class="btn btn-block btn-secondary" onclick="logout()">
                   <i class="fa fa-sign-out"></i>
                   <span>Logout</span>
                 </button>
@@ -275,6 +296,66 @@
 
 
   }
+
+
+  const handleAvatar =(e)=>{
+
+    const file = e.files[0];
+    let image = document.querySelector("#imgAvatar")
+    if(file){
+      const src = URL.createObjectURL(file);
+      image.src = src;
+      document.querySelector("#applyChange").classList.remove("hide")
+
+    }
+
+  }
+  const cannel = ()=>{
+    document.querySelector("#applyChange").classList.add("hide")
+
+  }
+  const logout = ()=>{
+    console.log("Logout")
+    del_cookie("user")
+    window.location.pathname="/"
+  }
+  function del_cookie(name) {
+    document.cookie = name +
+            '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+  }
+
+  const getOrder = ()=>{
+    let rs = ``
+    $.ajax({
+      url: "/order?action=listorder",
+      type: 'GET',
+
+      contentType: 'application/x-www-form-urlencoded',
+      success: function(res) {
+        let arrOrder  = JSON.parse(res).reverse()
+        arrOrder.map((tmp)=>{
+          rs+= `
+    <tr>
+                            <td>${tmp.id}</td>
+                            <td style="overflow-wrap: break-word; max-width: 250px">${tmp.productName}</td>
+                            <td>
+                              ${tmp.total}
+                            </td>
+                           <td><span class="${tmp.status == 0 ? "badge bg-info" :  "badge badge bg-success"}">${tmp.status == 0? "Đang xử lý" :  "Đã hoàn thành"}</span></td>
+
+                          </tr>
+    `
+        })
+    document.querySelector("#table-order").innerHTML = rs
+      }
+    });
+
+
+  }
+  getOrder()
+
+
+
 
 
 </script>

@@ -26,8 +26,9 @@ const showData = (arr) =>{
         if(index <= indexNumber * quantityProductOnPage && index >= (indexNumber - 1) *  quantityProductOnPage){
             rs += `
         <div class="item-car vipprior dev-item-car" >
-        
+           <button class="button-item-car" onclick="addToCart(${tmp.idPost})">Thêm giỏ hàng</button>
   <div class="photo"><a href="details?id=${tmp.idPost}" class="rt pdt-per-74">
+    
     <img class="lozad" src="../Img/20220714140628-2732_wm.jpg" width="230" height="172" data-loaded="true"> </a> <span
           class="box-icon"> </span></div>
   <div class="info">
@@ -159,6 +160,17 @@ const init = ()=>{
         }
     });
 }
+const addToCart = (id)=>{
+    $.ajax({
+        url: "/cart?action=addtocart&idpost="+id,
+        type: 'POST',
+        success: function(res) {
 
+        }
+    });
+    console.log(id)
+
+
+}
 init()
 

@@ -86,16 +86,20 @@
             <div class="box-info-detail">
                 <ul class="list-info">
                     <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> <%=product.getYearOfManuFacture()%></li>
-                    <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label> SUV</li>
+                    <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label><%=product.getBody()%></li>
                     <li><label class="label"><i class="fa-solid fa-person-breastfeeding"></i>Tình trạng</label>
                         <%=!product.isStatus() ? "Chưa sử dụng": "Đã sử dụng"%>
                     </li>
-                    <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label> Trong nước</li>
+                    <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label><%=product.getMade()%>></li>
 
 
                     <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> <%=!product.isStatus() ? "Số tay": "Số tự dộng"%></li>
                     <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> <%=product.getFuel()%></li>
                 </ul>
+            </div>
+            <br>
+            <div>
+                <button  class="btn btn-primary" onclick="addToCart(<%=product.getIdPost()%>)" type="button">Thêm giỏ hàng</button>
             </div>
             <div class="describe">
                 <br>
@@ -223,7 +227,8 @@
 <jsp:include page="../Component/footer/footer.jsp" />
 
 </body>
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script  >
     var slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) {
@@ -247,6 +252,17 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
+    const addToCart = (id)=>{
+        $.ajax({
+            url: "/cart?action=addtocart&idpost="+id,
+            type: 'POST',
+            success: function(res) {
 
+            }
+        });
+        console.log(id)
+
+
+    }
 </script>
 </html>

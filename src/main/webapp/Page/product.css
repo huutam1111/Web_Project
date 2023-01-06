@@ -197,3 +197,18 @@ ul {
     background-color: #ddd;
     border-radius: 5px;
 }
+.item-car{
+    position: relative;
+}
+.button-item-car{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 8px 16px ;
+    cursor:pointer;
+    border: black 2px solid;
+    color: black;
+    font-weight: 800;
+    border-radius: 20px;
+    z-index: 999;
+}
