@@ -7,7 +7,7 @@ public class Post {
     private boolean supportTest;
     private String images;
     private boolean coverNumber;
-    private String idCompany;
+    private int idCompany;
     private int yearOfManuFacture;
     private boolean status;
     private boolean gear;
@@ -18,7 +18,7 @@ public class Post {
 
     }
 
-    public Post(int idPost, String title, String content, boolean supportTest, String images, boolean coverNumber, String idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
+    public Post(int idPost, String title, String content, boolean supportTest, String images, boolean coverNumber, int idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
@@ -86,11 +86,11 @@ public class Post {
         this.coverNumber = coverNumber;
     }
 
-    public String getIdCompany() {
+    public int getIdCompany() {
         return idCompany;
     }
 
-    public void setIdCompany(String idCompany) {
+    public void setIdCompany(int idCompany) {
         this.idCompany = idCompany;
     }
 
@@ -142,4 +142,6 @@ public class Post {
                 "-" + fuel  +
                 "-" + price ;
     }
+
+
 }

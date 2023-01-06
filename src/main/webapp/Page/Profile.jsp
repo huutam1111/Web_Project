@@ -38,7 +38,7 @@
                   <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="imgAvatar" alt="" width="140px" height="140px" srcset=""></span>
+                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
                       </div>
                     </div>
                   </div>
@@ -47,11 +47,30 @@
                       <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%=user.getFullName()%></h4>
                       <p class="mb-0">@<%=user.getUserName()%></p>
                       <div class="mt-2">
+
                         <button class="btn btn-primary" type="button" style="width: 100%; position: relative;">
                           <i class="fa fa-fw fa-camera"></i>
                           <div >
-                            <input type="file" id="uploadFile" oninput="handleAvatar(this)" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; opacity: 0;">
-                            <span>Change Photo</span>
+                            <form action="profile?action=changeAvatar" method="POST" enctype="multipart/form-data">
+                              <input type="file" id="uploadFile" name="file" oninput="handleAvatar(this)" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; opacity: 0;">
+
+                              <span>Change Photo</span>
+                              <div id="applyChange" class="hide" style="position: fixed; top: 0; left: 0;right: 0; bottom: 0; z-index: 9999; background-color: rgba(142,142,142,0.46); display: flex; justify-content: center; align-items: center">
+                                <div style="width: 400px; height: 300px; box-shadow: #8B8B8B 5px 5px 5px; border-radius: 10px; background-color: white; padding: 10px">
+                                  <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="" id="imgAvatar" alt="" width="200px" height="200px" srcset="">
+                                  </span>
+                                  <br>
+                                  <br>
+                                  <br>
+
+                                  <div style="display: flex; justify-content: center; gap: 20px; margin-top: 10px">
+                                    <input type="button" onclick="cannel()" class="btn btn-primary" value="Cannel">
+                                    <input type="submit" class="btn btn-primary" value="Apply">
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+
                           </div>
                         </button>
                       </div>
@@ -155,13 +174,7 @@
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title font-weight-bold">Support</h6>
-              <p class="card-text">Get fast, free help from our friendly assistants.</p>
-              <button type="button" class="btn btn-primary">Contact Us</button>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -169,12 +182,101 @@
   </div>
 </div>
 
-<style type="text/css">
+</body>
 
-</style>
+<script >
+  <%@include file="../javascrip/profileEdit.js" %>
 
-<script type="text/javascript">
+  var changePass = false
+  const openFormChanglePass = (ele)=>{
+    changePass = !changePass
+    let rs = `<div class="col">
+    <div class="mb-2"><b>Change Password</b></div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>Current Password</label>
+          <input class="form-control" type="password" name="oldpass" placeholder="••••••" value="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>New Password</label>
+          <input class="form-control" type="password" name="passnew" placeholder="••••••">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+          <input class="form-control" name="repassnew" type="password" placeholder="••••••"></div>
+      </div>
+    </div>
+  </div>`
+    if(changePass){
+      document.querySelector("#changlePass").innerHTML = rs
+      ele.textContent = "Hủy"
+
+    }else{
+
+      document.querySelector("#changlePass").innerHTML = ``
+      ele.textContent = "Thay đổi mật khẩu"
+
+    }
+
+  }
+  const formEdit = ()=>{
+    let checkNull= true;
+    const form = document.getElementById("editProfile")
+    const formData = new FormData(form);
+    const formDataObject = Object.fromEntries(formData.entries());
+    for (const property in formDataObject) {
+      if(formDataObject[property] === ""){
+        document.querySelector(`input[name ='${property}']`).style.border = 'solid 1px red'
+        checkNull = false
+      }
+    }
+
+    if(changePass){
+      if(formDataObject.passnew != formDataObject.repassnew){
+        document.querySelector(`input[name ='passnew']`).style.border = 'solid 1px red'
+        document.querySelector(`input[name ='repassnew']`).style.border = 'solid 1px red'
+        checkNull = false
+      }
+
+    }
+    if(checkNull){
+      formDataObject.fullName = encodeURIComponent(formDataObject.fullName)
+      formDataObject.address = encodeURIComponent(formDataObject.address)
+      console.log(formDataObject);
+      $.ajax({
+        url: "/profile?action=changeProfile",
+        type: 'POST',
+        data: formDataObject,
+        contentType: 'application/x-www-form-urlencoded',
+        success: function(res) {
+          let rs = JSON.parse(res)
+          if(rs === 1){
+            window.location.pathname = "/profile"
+
+          }else{
+            alert(rs)
+          }
+
+        }
+      });
+    }else{
+      console.log("Loi");
+    }
+
+
+
+  }
+
 
 </script>
-<script src="../javascrip/profileEdit.js"></script>
-</body></html>
+
+</html>

@@ -28,7 +28,8 @@ ul {
     width: 140px;
     margin-right: 10px;
     background: #FFF;
-    border: 1px solid #E1E1E1;
+    border-top: 1px solid #E1E1E1;
+    border-bottom: 1px solid #E1E1E1;
     border-radius: 4px;
     padding: 0 18px 0 6px;
     line-height: 34px;
@@ -54,11 +55,13 @@ ul {
 
 .Container-left {
     width: 65%;
+    background-color: white;
+
 }
 
 .Container-right {
-    height: auto;
     flex: 1;
+
 }
 
 .input-text {
@@ -157,4 +160,40 @@ ul {
         opacity: 1;
         transform: none;
     }
+}
+
+
+.item-filter{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.input-filter{
+    width: 60%;
+}
+
+.pagination {
+    justify-content: center;
+
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
 }
