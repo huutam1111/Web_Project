@@ -1,28 +1,28 @@
 package Model;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     private int idPost;
     private String title;
     private String content;
-    private boolean supportTest;
+    private String body ;
+    private String made;
     private String images;
-    private boolean coverNumber;
-    private String idCompany;
+    private int coverNumber;
+    private int idCompany;
     private int yearOfManuFacture;
-    private boolean status;
-    private boolean gear;
+    private int status;
+    private String gear;
     private String fuel;
-    private double price;
+    private float price;
 
-    public Post() {
-
-    }
-
-    public Post(int idPost, String title, String content, boolean supportTest, String images, boolean coverNumber, String idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
+    public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status,  String fuel, float price,String gear) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
-        this.supportTest = supportTest;
+        this.body = body;
+        this.made = made;
         this.images = images;
         this.coverNumber = coverNumber;
         this.idCompany = idCompany;
@@ -33,7 +33,26 @@ public class Post {
         this.price = price;
     }
 
-    public Post(int anInt, String string, String string1, String string2, boolean aBoolean, String string3, boolean aBoolean1, String string4, int anInt1, boolean aBoolean2, boolean aBoolean3, String string5, double aDouble) {
+    public Post(int anInt, String string, String string1, String string2, String string3, String string4, boolean aBoolean, int anInt1, int anInt2, boolean aBoolean1, String string5, double aDouble) {
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "idPost=" + idPost +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", body='" + body + '\'' +
+                ", made='" + made + '\'' +
+                ", images='" + images + '\'' +
+                ", coverNumber=" + coverNumber +
+                ", idCompany=" + idCompany +
+                ", yearOfManuFacture=" + yearOfManuFacture +
+                ", status=" + status +
+                ", gear='" + gear + '\'' +
+                ", fuel='" + fuel + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public int getIdPost() {
@@ -43,8 +62,6 @@ public class Post {
     public void setIdPost(int idPost) {
         this.idPost = idPost;
     }
-
-
 
     public String getTitle() {
         return title;
@@ -62,12 +79,20 @@ public class Post {
         this.content = content;
     }
 
-    public boolean isSupportTest() {
-        return supportTest;
+    public String getBody() {
+        return body;
     }
 
-    public void setSupportTest(boolean supportTest) {
-        this.supportTest = supportTest;
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getMade() {
+        return made;
+    }
+
+    public void setMade(String made) {
+        this.made = made;
     }
 
     public String getImages() {
@@ -78,19 +103,19 @@ public class Post {
         this.images = images;
     }
 
-    public boolean isCoverNumber() {
+    public int getCoverNumber() {
         return coverNumber;
     }
 
-    public void setCoverNumber(boolean coverNumber) {
+    public void setCoverNumber(int coverNumber) {
         this.coverNumber = coverNumber;
     }
 
-    public String getIdCompany() {
+    public int getIdCompany() {
         return idCompany;
     }
 
-    public void setIdCompany(String idCompany) {
+    public void setIdCompany(int idCompany) {
         this.idCompany = idCompany;
     }
 
@@ -102,19 +127,19 @@ public class Post {
         this.yearOfManuFacture = yearOfManuFacture;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public boolean isGear() {
+    public String getGear() {
         return gear;
     }
 
-    public void setGear(boolean gear) {
+    public void setGear(String gear) {
         this.gear = gear;
     }
 
@@ -126,20 +151,15 @@ public class Post {
         this.fuel = fuel;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
+    public String getSrcFirst(){
+        return images.split("||")[0];
 
-    @Override
-    public String toString() {
-        return  idPost  + "-" + title + "-" + content + "-" + supportTest +"-" + images +"-" + coverNumber +"-" + idCompany + "-" + yearOfManuFacture +
-                "-" + status +
-                "-" + gear +
-                "-" + fuel  +
-                "-" + price ;
     }
 }

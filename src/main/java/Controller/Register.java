@@ -56,7 +56,7 @@ public class Register extends HttpServlet {
         String pathAvtUser="";
         System.out.println(name);
         System.out.println(pass);
-        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot, name);
+        ArrayList<String> list= UploadImage.uploadAllFile(avatar, pathRoot, name,"User");
         for(String tmp:list){
             pathAvtUser+=tmp;
         }
