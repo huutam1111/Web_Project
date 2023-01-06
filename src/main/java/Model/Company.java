@@ -3,21 +3,21 @@ package Model;
 import java.io.Serializable;
 
 public class Company implements Serializable {
-    private String id;
+    private int id;
     private String name;
     private String logo;
 
-    public Company(String id, String name, String logo) {
+    public Company(int id, String name, String logo) {
         this.id = id;
         this.name = name;
         this.logo = logo;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

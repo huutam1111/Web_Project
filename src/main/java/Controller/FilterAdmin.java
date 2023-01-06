@@ -22,7 +22,6 @@ public class FilterAdmin extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter pw = resp.getWriter();
         String redirect = req.getParameter("redirect");
-        System.out.println(redirect);
         Cookie[] cookies = req.getCookies();
         String name = "";
         for (Cookie tmp : cookies) {
@@ -30,6 +29,7 @@ public class FilterAdmin extends HttpServlet {
                 name = tmp.getValue();
                 try {
                     if (UserDAO.checkAdmin(name)) {
+                        System.out.println(124);
                         ArrayList<Company> list = CompanyDAO.getAllCompany();
                         req.getSession().setAttribute("listCompany", list);
                         resp.sendRedirect("/Page/Admin/doc/index.jsp");

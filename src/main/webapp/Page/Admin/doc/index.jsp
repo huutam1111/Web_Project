@@ -102,6 +102,9 @@
         <%@include file="/Page/Admin/doc/PostStatus/make/index.jsp" %>
         <%--      tiltle--%>
         <%@include file="/Page/Admin/doc/PostStatus/titlencontent/index.jsp" %>
+        <div class="group-bt two-bt" id="btn-postListing">
+            <a href="/Page/" class="btn-send">Hoàn tất</a><!----></div>
+    </div>
 
 
     </div>
@@ -235,6 +238,7 @@
             $(this).each(function (index) {
                 if ($(this)[0].querySelector("input").checked) {
                     year = $(this)[0].querySelector("label").textContent
+
                 }
             })
 
@@ -254,34 +258,62 @@
         });
         return arr
     }
-    var getValueFormPost = () => {
-        const arr = getStatus()
-        const nameCompany = $('.form-select option:selected').text();
-        const title = $("#tilte123").val()
-        const content = $("#content").val()
-        const supporttest = $("#mat-slide-toggle-3-input:checked").val() == "on" ? 1 : 0
-        const images = listImg
-        const covernumber = $("#mat-slide-toggle-1-input:checked").val() == "on" ? 1 : 0
-        const yearofmanufacture = getYear() || "2023"
-        const gear = arr[0]
-        const fuel = arr[1]
-        const price = $("#Price").val()
-        console.log(nameCompany)
-        console.log(title)
-        console.log(content)
-        console.log(supporttest)
-        console.log(images)
-        console.log(covernumber)
-        console.log(yearofmanufacture)
-        console.log(gear)
-        console.log(fuel)
-        console.log(price)
+
+        $(".btn-send").click(function (e){
+            e.preventDefault()
+            const arr = getStatus()
+            const nameCompany = $('.form-select option:selected').text();
+            const title = $("#tilte123").val()
+            const content = $("#content").val()
+            const images = listImg
+            const xmas = new Date("December 25, 2000 23:15:00");
+            const year = xmas.getYear();
+            const covernumber = $("#mat-slide-toggle-1-input:checked").val() == "on" ? 1 : 0
+            const yearofmanufacture = getYear() ||year
+            const made = arr[0]
+            const gear = arr[1]
+            const fuel = arr[2]
+            const status = arr[3]
+            const price = $("#Price").val()
+            const body = $("#body").val()
+            if(nameCompany&&title&&content&&images&&covernumber&&yearofmanufacture&&made&&gear&&fuel&&status&&price&&body){
+                // if(typeof price==="number"){
+                    var dataBody={
+                        nameCompany,
+                        images,
+                        title,
+                        content,
+                        covernumber,
+                        yearofmanufacture,
+                        gear,
+                        fuel,
+                        price,
+                        status,
+                        body,
+                        made
+                    }
+
+                    $.ajax({
+                        url: "/postProduct",
+                        type: "POST",
+                        data: dataBody,
+                        contentType: 'application/x-www-form-urlencoded',
+                        success: function (data) {
+                        }
+                    });
+                // }else {
+                //     alert("Giá xe phải là giá trị số")
+                // }
+
+            }else {
+                alert("Form sai định dạng")
+            }
 
 
-    }
+        })
+
+
 </script>
+<%--post product--%>
 
-<script src="/Page/Admin/doc/PostStatus/make/index.js">
-
-</script>
 </html>

@@ -28,17 +28,10 @@
                 class="multi-row ng-untouched ng-pristine ng-invalid" formcontrolname="Description"
                 placeholder="Nhập nội dung. Tối thiểu 50 ký tự. Tối đa 3000 ký tự"></textarea><!---->
             <div class="txt-right"> 0/3000</div><!----><!----><!----></div><!---->
-        <div class="control control-last"><label class="lbl-form sm-lh" for="mat-slide-toggle-3-input">Hỗ trợ lái thử</label><span class="flag-toogle"><mat-slide-toggle
-                class="mat-slide-toggle mat-accent _mat-animation-noopable ng-untouched ng-pristine ng-valid"
-                formcontrolname="IsTestDrive" id="mat-slide-toggle-3"><label class="mat-slide-toggle-label"><div
-                class="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"><input
-                class="mat-slide-toggle-input cdk-visually-hidden" type="checkbox" id="mat-slide-toggle-3-input"
-                tabindex="0"><div class="mat-slide-toggle-thumb-container"><div class="mat-slide-toggle-thumb"></div><div
-                class="mat-slide-toggle-ripple mat-ripple" mat-ripple=""></div></div></div><span
-                class="mat-slide-toggle-content"></span></label></mat-slide-toggle></span></div>
-        <div class="group-bt two-bt" id="btn-postListing">
-            <a href="/Page/" class="btn-send">Hoàn tất</a><!----></div>
+
     </div>
 </form>
 </body>
+<script src="js/jquery-3.2.1.min.js"></script>
+
 </html>

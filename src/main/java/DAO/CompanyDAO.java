@@ -17,8 +17,18 @@ public class CompanyDAO {
         PreparedStatement stmt = c.prepareStatement("select  * from company");
         ResultSet rs=stmt.executeQuery();
         while (rs.next()){
-            companys.add(new Company(rs.getString(1),rs.getString(2),rs.getString(3)));
+            companys.add(new Company(rs.getInt(1),rs.getString(2),rs.getString(3)));
         }
         return companys;
+    }
+    public static int getIdByName(String name) throws SQLException {
+        String query="select * from company where name=?";
+        PreparedStatement stmt = ConnectDB.getConnect().prepareStatement(query);
+        stmt.setString(1,name);
+        ResultSet rs=stmt.executeQuery();
+        while (rs.next()){
+            return rs.getInt("idcompany");
+        }
+        return 0;
     }
 }

@@ -9,6 +9,7 @@ document.querySelector(".clear").addEventListener("click", (e) => {
 var renderListYear = (tempYear) => {
     html = "";
     for (let i = 0; i < temp; i++) {
+        console.log(date.getUTCFullYear())
         var jump = date.getUTCFullYear() - i;
         html += `<span
             class="year-item"><input class="hide" name="radio1" type="radio" id=y${jump}><label
