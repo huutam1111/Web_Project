@@ -4,13 +4,13 @@ public class Post {
     private int idPost;
     private String title;
     private String content;
-    private boolean supportTest;
+    private String body ;
+    private String made;
     private String images;
     private boolean coverNumber;
     private int idCompany;
     private int yearOfManuFacture;
     private boolean status;
-    private boolean gear;
     private String fuel;
     private double price;
 
@@ -18,22 +18,19 @@ public class Post {
 
     }
 
-    public Post(int idPost, String title, String content, boolean supportTest, String images, boolean coverNumber, int idCompany, int yearOfManuFacture, boolean status, boolean gear, String fuel, double price) {
+    public Post(int idPost, String title, String content, String body, String made, String images, boolean coverNumber, int idCompany, int yearOfManuFacture, boolean status, String fuel, double price) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
-        this.supportTest = supportTest;
+        this.body = body;
+        this.made = made;
         this.images = images;
         this.coverNumber = coverNumber;
         this.idCompany = idCompany;
         this.yearOfManuFacture = yearOfManuFacture;
         this.status = status;
-        this.gear = gear;
         this.fuel = fuel;
         this.price = price;
-    }
-
-    public Post(int anInt, String string, String string1, String string2, boolean aBoolean, String string3, boolean aBoolean1, String string4, int anInt1, boolean aBoolean2, boolean aBoolean3, String string5, double aDouble) {
     }
 
     public int getIdPost() {
@@ -43,8 +40,6 @@ public class Post {
     public void setIdPost(int idPost) {
         this.idPost = idPost;
     }
-
-
 
     public String getTitle() {
         return title;
@@ -62,12 +57,20 @@ public class Post {
         this.content = content;
     }
 
-    public boolean isSupportTest() {
-        return supportTest;
+    public String getBody() {
+        return body;
     }
 
-    public void setSupportTest(boolean supportTest) {
-        this.supportTest = supportTest;
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getMade() {
+        return made;
+    }
+
+    public void setMade(String made) {
+        this.made = made;
     }
 
     public String getImages() {
@@ -110,14 +113,6 @@ public class Post {
         this.status = status;
     }
 
-    public boolean isGear() {
-        return gear;
-    }
-
-    public void setGear(boolean gear) {
-        this.gear = gear;
-    }
-
     public String getFuel() {
         return fuel;
     }
@@ -136,12 +131,19 @@ public class Post {
 
     @Override
     public String toString() {
-        return  idPost  + "-" + title + "-" + content + "-" + supportTest +"-" + images +"-" + coverNumber +"-" + idCompany + "-" + yearOfManuFacture +
-                "-" + status +
-                "-" + gear +
-                "-" + fuel  +
-                "-" + price ;
+        return "Post{" +
+                "idPost=" + idPost +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", body='" + body + '\'' +
+                ", made='" + made + '\'' +
+                ", images='" + images + '\'' +
+                ", coverNumber=" + coverNumber +
+                ", idCompany=" + idCompany +
+                ", yearOfManuFacture=" + yearOfManuFacture +
+                ", status=" + status +
+                ", fuel='" + fuel + '\'' +
+                ", price=" + price +
+                '}';
     }
-
-
 }

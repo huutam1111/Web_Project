@@ -1,3 +1,4 @@
+<%@ page import="Model.Post" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -17,21 +18,22 @@
 <body>
 <jsp:include page="../Component/header/Header.jsp" />
 <div class="container " style="height: auto" id="detailPage">
+    <%Post product = (Post) request.getAttribute("product"); %>
     <img src="https://img1.oto.com.vn/Static/Images/otocare/web/477_290622_MuaXeTaiDay_AnTamKiemDinh_1140x140.webp" alt="OTOCheck" width="1140" height="140">
 
     <div class="content-detail" style="margin-top: 10px">
         <div class="left-detail">
             <div class="group-title-detail">
-                <h1 class="title-detail"> Mazda CX-5 2.0 Luxury 2022 - 879 triệu</h1>
+                <h1 class="title-detail"><%=product.getTitle()%></h1>
                 <div class="date-code">
-                    <span class="code">Mã tin: 22661475 </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
+                    <span class="code">Mã tin: <%=product.getIdPost()%> </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
                 </div>
             </div>
             <div class="price-detail">
                 <div class="box-price">
-                    <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C">879 triệu</span> </span>
+                    <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C"> <%=product.getPrice()%> triệu</span> </span>
                     <span>|</span>
-                    <span class="price-small" id="chiphilanbanh">Giá lăn bánh: <span style="color: #4DB848">989.2 triệu</span> </span>
+                    <span class="price-small" id="chiphilanbanh">Giá lăn bánh: <span style="color: #4DB848"> <%=product.getPrice() + product.getPrice()*0.1 %> triệu</span> </span>
 
                 </div>
                 <div class="share-fbgg">
@@ -83,21 +85,16 @@
             </section>
             <div class="box-info-detail">
                 <ul class="list-info">
-                    <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> 2021</li>
-                    <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label> SUV</li>
+                    <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> <%=product.getYearOfManuFacture()%></li>
+                    <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label><%=product.getBody()%></li>
                     <li><label class="label"><i class="fa-solid fa-person-breastfeeding"></i>Tình trạng</label>
-                        Đã qua sử dụng
+                        <%=!product.isStatus() ? "Chưa sử dụng": "Đã sử dụng"%>
                     </li>
-                    <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label> Trong nước</li>
-                    <li><label class="label"><i class="fa-sharp fa-solid fa-gauge-high"></i>Số km đã đi</label> 31.000 km</li>
-                    <li> <label class="label"><i class="fa-solid fa-location-dot"></i>Tỉnh thành</label>
-                        Hà Nội
-                    </li>
-                    <li> <label class="label"><i class="fa-solid fa-map"></i>Quận huyện</label>
-                        Nam Từ Liêm
-                    </li>
-                    <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> Số tự động</li>
-                    <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> Xăng</li>
+                    <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label><%=product.getMade()%>></li>
+
+
+                    <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> <%=!product.isStatus() ? "Số tay": "Số tự dộng"%></li>
+                    <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> <%=product.getFuel()%></li>
                 </ul>
             </div>
             <div class="describe">
@@ -105,10 +102,9 @@
                 <h5>Mô tả</h5>
                 <hr>
                 <div class="content-describe">
-                    <p>Kia Seltos 1.4 luxury 2021 biển thành phố</p>
-                    <p>- Odo: 3.1 vạn km.
-                    </p>
-                    <p>- Trang bị: Đề nổ Start/stop, 3 chế độ lái, đèn led, ghế da, màn dvd tích hợp camera lùi, điều hoà auto 2 vùng. Hệ thống an toàn ABS, EBD, kiểm soát lực kéo.</p>
+                    <p><%=product.getTitle()%>́</p>
+
+                    <p><%=product.getContent()%></p>
                 </div>
                 <hr>
             </div>

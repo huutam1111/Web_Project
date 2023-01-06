@@ -20,7 +20,6 @@
       <img src="https://cf.shopee.vn/file/41a063b18ce76bb21b9f725fe334a125"/>
     </div>
     <div class="info-store"> Liên hệ chúng tôi</div>
-    <a href="" style="font-size: 12px">Xem gian hàng >> </a>
   </div>
 
   <hr/>
@@ -50,17 +49,17 @@
                                                src="https://img1.oto.com.vn/2022/11/04/hoKjcr3B/360x300-5da3.png " alt="otocheck"
                                                height="240"> </div>
 <br/>
-<div class="hotkeyword">
-  <div style="background-color: #135EAC; padding: 5px 10px"> <h5 style="color: white;margin-bottom: 0; font-size: 17px">Từ khoá nổi bật</h5></div>
-  <div style="padding: 10px; display: flex; flex-direction: column">
-    <a href="">Mua xe Kia Frontier</a>
-    <a href="">Mua bán xe Kia Sedona</a>
-    <a href="">Bán xe Kia Morning Luxury</a>
-    <a href="">Mua xe Kia K250</a>
-    <a href="">Kia cũ Hải Dương</a>
-    <a href="">Giá bán Kia K3 cũ</a>
+<%--<div class="hotkeyword">--%>
+<%--  <div style="background-color: #135EAC; padding: 5px 10px"> <h5 style="color: white;margin-bottom: 0; font-size: 17px">Từ khoá nổi bật</h5></div>--%>
+<%--  <div style="padding: 10px; display: flex; flex-direction: column">--%>
+<%--    <a href="">Mua xe Kia Frontier</a>--%>
+<%--    <a href="">Mua bán xe Kia Sedona</a>--%>
+<%--    <a href="">Bán xe Kia Morning Luxury</a>--%>
+<%--    <a href="">Mua xe Kia K250</a>--%>
+<%--    <a href="">Kia cũ Hải Dương</a>--%>
+<%--    <a href="">Giá bán Kia K3 cũ</a>--%>
 
-  </div>
+<%--  </div>--%>
 
-</div>
+<%--</div>--%>
 
