@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.RespJsonServlet;
 import Model.User;
 import DAO.UserDAO;
 import com.google.gson.Gson;
@@ -11,40 +10,19 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
-    public static String decodeURIComponent(String s, String charset) {
-        if (s == null) {
-            return null;
-        }
 
-        String result = null;
-
-        try {
-            result = URLDecoder.decode(s, charset);
-        }
-
-        // This exception should never occur.
-        catch (UnsupportedEncodingException e) {
-            result = s;
-        }
-
-        return result;
-    }
     private void changleUser(HttpServletRequest req, HttpServletResponse res, String user) throws IOException, SQLException, ClassNotFoundException {
         res.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("utf-8");
@@ -61,7 +39,7 @@ public class Profile extends HttpServlet {
                 res.getWriter().write(new Gson().toJson("Wrong Password"));
                 return;
             }
-            if(UserDAO.updateUser(user,params.get("passnew")[0],decodeURIComponent(params.get("fullName")[0], "UTF-8"),params.get("email")[0],params.get("phone")[0],decodeURIComponent(params.get("address")[0], "UTF-8")) == 1){
+            if(UserDAO.updateUser(user,params.get("passnew")[0], URLDecoder.decode(params.get("fullName")[0], "UTF-8"),params.get("email")[0],params.get("phone")[0], URLDecoder.decode(params.get("address")[0], "UTF-8")) == 1){
                 res.getWriter().write(new Gson().toJson(1));
                 return;
             }
@@ -69,7 +47,7 @@ public class Profile extends HttpServlet {
 
         }else{
 
-            if(UserDAO.updateUser(user,decodeURIComponent(params.get("fullName")[0], "UTF-8"),params.get("email")[0],params.get("phone")[0],decodeURIComponent(params.get("address")[0], "UTF-8")) == 1){
+            if(UserDAO.updateUser(user,URLDecoder.decode(params.get("fullName")[0], "UTF-8"),params.get("email")[0],params.get("phone")[0],URLDecoder.decode(params.get("address")[0], "UTF-8")) == 1){
                 res.getWriter().write(new Gson().toJson(1));
                 return;
             }

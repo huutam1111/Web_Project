@@ -88,12 +88,12 @@
                     <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> <%=product.getYearOfManuFacture()%></li>
                     <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label><%=product.getBody()%></li>
                     <li><label class="label"><i class="fa-solid fa-person-breastfeeding"></i>Tình trạng</label>
-                        <%=!product.isStatus() ? "Chưa sử dụng": "Đã sử dụng"%>
+                        <%=(product.getStatus() == 0) ? "Chưa sử dụng": "Đã sử dụng"%>
                     </li>
                     <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label><%=product.getMade()%>></li>
 
 
-                    <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> <%=!product.isStatus() ? "Số tay": "Số tự dộng"%></li>
+                    <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> <%=(product.getGear() == 0) ? "Số tay": "Số tự dộng"%></li>
                     <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> <%=product.getFuel()%></li>
                 </ul>
             </div>

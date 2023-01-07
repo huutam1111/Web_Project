@@ -75,18 +75,7 @@
                         <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
-                <div class="control control-last"><label class="lbl-form sm-lh" for="mat-slide-toggle-1-input">Che biển
-                    số</label><span
-                        class="flag-toogle"><mat-slide-toggle
-                        class="mat-slide-toggle mat-accent _mat-animation-noopable ng-untouched ng-pristine ng-valid"
-                        formcontrolname="IsNumberPlateBlur" id="mat-slide-toggle-1"><label
-                        class="mat-slide-toggle-label"><div
-                        class="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"><input
-                        class="mat-slide-toggle-input cdk-visually-hidden" type="checkbox" id="mat-slide-toggle-1-input"
-                        tabindex="0"><div class="mat-slide-toggle-thumb-container"><div
-                        class="mat-slide-toggle-thumb"></div><div
-                        class="mat-slide-toggle-ripple mat-ripple" mat-ripple=""></div></div></div><span
-                        class="mat-slide-toggle-content"></span></label></mat-slide-toggle></span></div>
+
                 <%--                <div class="control"><label class="lbl-form" for="inputVideo">Video</label><input id="inputVideo"--%>
                 <%--                                                                                                  class="inp ng-untouched ng-pristine ng-valid"--%>
                 <%--                                                                                                  formcontrolname="VideoEmbed"--%>
@@ -251,7 +240,7 @@
         $(".status-group li").each(function () {
             $(this).each(function (index) {
                 if ($(this)[0].querySelector("input").checked) {
-                    arr.push($(this)[0].querySelector("label").textContent)
+                    arr.push($(this)[0].querySelector("input").value)
                 }
             })
 
@@ -263,27 +252,25 @@
             e.preventDefault()
             const arr = getStatus()
             const nameCompany = $('.form-select option:selected').text();
-            const title = $("#tilte123").val()
-            const content = $("#content").val()
+            const title = encodeURI($("#tilte123").val())
+            const content = encodeURI($("#content").val())
             const images = listImg
             const xmas = new Date("December 25, 2000 23:15:00");
             const year = xmas.getYear();
-            const covernumber = $("#mat-slide-toggle-1-input:checked").val() == "on" ? 1 : 0
             const yearofmanufacture = getYear() ||year
             const made = arr[0]
             const gear = arr[1]
-            const fuel = arr[2]
+            const fuel = encodeURI(arr[2])
             const status = arr[3]
             const price = $("#Price").val()
             const body = $("#body").val()
-            if(nameCompany&&title&&content&&images&&covernumber&&yearofmanufacture&&made&&gear&&fuel&&status&&price&&body){
+            if(nameCompany&&title&&content&&images&&yearofmanufacture&&made&&gear&&fuel&&status&&price&&body){
                 // if(typeof price==="number"){
                     var dataBody={
                         nameCompany,
                         images,
                         title,
                         content,
-                        covernumber,
                         yearofmanufacture,
                         gear,
                         fuel,

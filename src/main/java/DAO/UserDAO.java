@@ -1,8 +1,6 @@
 package DAO;
-
 import Connect.ConnectDB;
 import Model.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,7 +86,7 @@ public class UserDAO {
         PreparedStatement stmt = c.prepareStatement("select * from user where username=?");
         stmt.setString(1,name);
         ResultSet rs= stmt.executeQuery();
-        if(rs.next()&&rs.getInt("iAdmin")!=0){
+        if(rs.next()&&rs.getInt("iAdmin")!=1){
             return true;
         }
         return false;

@@ -9,32 +9,31 @@ public class Post implements Serializable {
     private String body ;
     private String made;
     private String images;
-    private int coverNumber;
+    private int gear;
     private int idCompany;
     private int yearOfManuFacture;
     private int status;
-    private String gear;
     private String fuel;
     private float price;
 
 
-    public Post(int idPost, String title, String content, String body, String made, String images, boolean coverNumber, int idCompany, int yearOfManuFacture, boolean status, String fuel, double price) {
-    }
 
-    public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status,  String fuel, float price,String gear) {
+
+    public Post(int idPost, String title, String content, String body, String made, String images, int gear, int idCompany, int yearOfManuFacture, int status,  String fuel, float price) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
         this.body = body;
         this.made = made;
         this.images = images;
-        this.coverNumber = coverNumber;
+        this.gear = gear;
         this.idCompany = idCompany;
         this.yearOfManuFacture = yearOfManuFacture;
         this.status = status;
         this.fuel = fuel;
         this.price = price;
     }
+
 
 
     public int getIdPost() {
@@ -85,12 +84,12 @@ public class Post implements Serializable {
         this.images = images;
     }
 
-    public int getCoverNumber() {
-        return coverNumber;
+    public int getGear() {
+        return gear;
     }
 
-    public void setCoverNumber(int coverNumber) {
-        this.coverNumber = coverNumber;
+    public void setGear(int gear) {
+        this.gear = gear;
     }
 
     public int getIdCompany() {
@@ -118,13 +117,6 @@ public class Post implements Serializable {
     }
 
 
-    public String getGear() {
-        return gear;
-    }
-
-    public void setGear(String gear) {
-        this.gear = gear;
-    }
 
     public String getFuel() {
         return fuel;
@@ -141,9 +133,10 @@ public class Post implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
-    public String getSrcFirst(){
+    public String getSrcFirst() {
         return images.split("||")[0];
 
+    }
 
     @Override
     public String toString() {
@@ -154,13 +147,12 @@ public class Post implements Serializable {
                 ", body='" + body + '\'' +
                 ", made='" + made + '\'' +
                 ", images='" + images + '\'' +
-                ", coverNumber=" + coverNumber +
+                ", gear=" + gear +
                 ", idCompany=" + idCompany +
                 ", yearOfManuFacture=" + yearOfManuFacture +
                 ", status=" + status +
                 ", fuel='" + fuel + '\'' +
                 ", price=" + price +
                 '}';
-
     }
 }

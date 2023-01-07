@@ -21,7 +21,7 @@ public class CompanyDAO {
 
         ResultSet resultSet = stmt.executeQuery();
         while (resultSet.next()){
-            rs.add(new Company(resultSet.getInt(1), resultSet.getString(2)));
+            rs.add(new Company(resultSet.getInt(1), resultSet.getString(2) , null));
         }
         return rs;
     }

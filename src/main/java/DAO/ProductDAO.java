@@ -27,12 +27,12 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getBoolean(7),
+                        resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
-                        resultSet.getBoolean(10),
+                        resultSet.getInt(10),
                         resultSet.getString(11),
-                        resultSet.getDouble(12)
+                        resultSet.getFloat(12)
                 ));
             }
         } catch (SQLException e) {
@@ -43,27 +43,6 @@ public class ProductDAO {
 
 
 
-    public static int insertProduct(Post product) throws SQLException {
-
-        Statement statement = ConnectDB.getConnect().createStatement();
-        PreparedStatement preparedStatement = statement.getConnection().prepareStatement("INSERT INTO product (title, content,supporttest, images, covernumber,idcompany,yearofmanufacture,status,gear,fuel,price) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-        preparedStatement.setString(1,product.getTitle());
-        preparedStatement.setString(2,product.getContent());
-        preparedStatement.setString(3,product.getBody());
-
-        preparedStatement.setString(4,product.getMade());
-        preparedStatement.setString(5,product.getImages());
-        preparedStatement.setBoolean(6,product.isCoverNumber());
-        preparedStatement.setInt(7,product.getIdCompany());
-        preparedStatement.setInt(8,product.getYearOfManuFacture());
-        preparedStatement.setBoolean(9,product.isStatus());
-        preparedStatement.setString(10,product.getFuel());
-        preparedStatement.setDouble(11,product.getPrice());
-
-        int rs = preparedStatement.executeUpdate();
-        return rs;
-
-    }
 
     public static Post getPostById(int id){
         Post post =null;
@@ -80,12 +59,12 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getBoolean(7),
+                        resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
-                        resultSet.getBoolean(10),
+                        resultSet.getInt(10),
                         resultSet.getString(11),
-                        resultSet.getDouble(12)
+                        resultSet.getFloat(12)
                 );
             }
         } catch (SQLException e) {
@@ -108,12 +87,12 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getBoolean(7),
+                        resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
-                        resultSet.getBoolean(10),
+                        resultSet.getInt(10),
                         resultSet.getString(11),
-                        resultSet.getDouble(12)
+                        resultSet.getFloat(12)
                 ));
             }
         } catch (SQLException e) {
@@ -121,9 +100,8 @@ public class ProductDAO {
         }
         return posts;
     }
-    public static int insertProduct(String title, String content,String body,String made, String images,int coverNumber,int idCompany, int year, int status,String fuel,float price,String gear) {
-        ArrayList<Post> posts = new ArrayList<>();
-        String query = "INSERT INTO product(title,content,body,made,images,coverNumber ,idCompany,yearofmanufacture,status,fuel,price,gear) VALUES (?,?,?,?,?,?,?,?,?,?,?,?); ";
+    public static int insertProduct(String title, String content,String body,String made, String images,int gear,int idCompany, int year, int status,String fuel,float price) {
+        String query = "INSERT INTO product(title,content,body,made,images,gear ,idCompany,yearofmanufacture,status,fuel,price) VALUES (?,?,?,?,?,?,?,?,?,?,?); ";
         try {
             PreparedStatement stmt = ConnectDB.getConnect().prepareStatement(query);
             stmt.setString(1,title);
@@ -131,13 +109,12 @@ public class ProductDAO {
             stmt.setString(3,body);
             stmt.setString(4,made);
             stmt.setString(5,images);
-            stmt.setInt(6,coverNumber);
+            stmt.setInt(6,gear);
             stmt.setInt(7,idCompany);
             stmt.setInt(8,year);
             stmt.setInt(9,status);
             stmt.setString(10,fuel);
             stmt.setFloat(11,price);
-            stmt.setString(12,gear);
             int resultSet = stmt.executeUpdate();
             return resultSet;
 
@@ -154,7 +131,7 @@ public class ProductDAO {
             ResultSet rs= stmt.executeQuery();
 
             while (rs.next()){
-                posts.add(new Post(rs.getInt("idPost"),rs.getString("title"),rs.getString("content"),rs.getString("body"),rs.getString("made"),rs.getString("images"),rs.getInt("covernumber"),rs.getInt("idcompany"),rs.getInt("yearofmanufacture"),rs.getInt("status"),rs.getString("fuel"),rs.getFloat("price"),rs.getString("gear")));
+                posts.add(new Post(rs.getInt("idPost"),rs.getString("title"),rs.getString("content"),rs.getString("body"),rs.getString("made"),rs.getString("images"),rs.getInt("gear"),rs.getInt("idcompany"),rs.getInt("yearofmanufacture"),rs.getInt("status"),rs.getString("fuel"),rs.getFloat("price")));
             }
 
             return posts;

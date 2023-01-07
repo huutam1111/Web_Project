@@ -12,6 +12,7 @@
 
 .header .header-top {
     padding: 15px 0 ;
+    height: 48px;
 }
 
 .header .header-top {
@@ -27,11 +28,7 @@
     -o-transition: all .3s ease 0s;
 }
 
-.header .container {
-    max-width: 1170px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+
 
 .head-right .box-login-acc .span-pd, .header .header-top .left-head, .link-chat-bds-content b {
     color: #fff;
@@ -156,13 +153,6 @@ a {
     justify-content: space-around;
 }
 
-.header .container:after {
-    content: ".";
-    display: block;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
-}
 
 .clearfix:after, .container:after, .pu-content .myForm2:after, .pu-otp .digit-g:after, .pu-top-content:after {
     clear: both;
@@ -398,11 +388,6 @@ a {
     padding: 0;
 }
 
-.menu-v2 .container::after {
-    content: '';
-    display: table;
-    clear: both;
-}
 
 .header .navi .btn-post {
     padding: 0;

@@ -49,30 +49,23 @@
                 </ul><!----></div>
             <div class="control"><label class="lbl-form sm-lh">Hộp số</label>
                 <ul class="status-group status-group-small">
-                    <li><input class="hide" id="transmission1" name="transmission" type="radio"><label
+                    <li><input class="hide" id="transmission1" name="transmission" value="0" type="radio"><label
                             class="free-label" for="transmission1">Số tay</label></li>
-                    <li><input class="hide" id="transmission2" name="transmission" type="radio"><label
+                    <li><input class="hide" id="transmission2" name="transmission" value="1" type="radio"><label
                             class="free-label" for="transmission2">Số tự động</label></li>
-                    <li><input class="hide" id="transmission3" name="transmission" type="radio"><label
-                            class="free-label" for="transmission3">Số hỗn hợp</label></li>
+
                 </ul><!----></div>
             <div class="control"><label class="lbl-form sm-lh">Nhiên liệu</label>
                 <ul class="status-group group-three">
-                    <li><input class="hide" id="fuelType1" name="fuelType" type="radio"><label class="free-label"
+                    <li><input class="hide" id="fuelType1" name="fuelType" value="Xăng" type="radio"><label class="free-label"
                                                                                                for="fuelType1">Xăng</label>
                     </li>
-                    <li><input class="hide" id="fuelType2" name="fuelType" type="radio"><label class="free-label"
-                                                                                               for="fuelType2">Diesel</label>
-                    </li>
-                    <li><input class="hide" id="fuelType3" name="fuelType" type="radio"><label class="free-label"
-                                                                                               for="fuelType3">
-                        Hybrid </label></li>
-                    <li><input class="hide" id="fuelType4" name="fuelType" type="radio"><label class="free-label"
+
+
+                    <li><input class="hide" id="fuelType4" name="fuelType" value="Dầu" type="radio"><label class="free-label"
                                                                                                for="fuelType4">
                         Điện </label></li>
-                    <li><input class="hide" id="fuelType99" name="fuelType" type="radio"><label class="free-label"
-                                                                                                for="fuelType99">
-                        Khác </label></li>
+
                 </ul><!----></div><!---->
             <div class="control"><label class="lbl-form sm-lh">Tình trạng</label>
                 <ul class="status-group">
