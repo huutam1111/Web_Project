@@ -202,13 +202,14 @@ ul {
 }
 .button-item-car{
     position: absolute;
-    top: 30px;
-    right: 30px;
+    bottom: 15px;
+    right: 15px;
     padding: 8px 16px ;
     cursor:pointer;
-    border: black 2px solid;
-    color: black;
+    border: #135EAC 2px solid;
+    color: white;
     font-weight: 800;
+    background-color: #135EAC;
     border-radius: 20px;
     z-index: 999;
 }

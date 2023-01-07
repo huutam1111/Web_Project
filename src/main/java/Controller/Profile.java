@@ -78,6 +78,7 @@ public class Profile extends HttpServlet {
                             fileItem.write(file);
                             System.out.println("UPLOAD THÀNH CÔNG...!");
                             System.out.println("ĐƯỜNG DẪN KIỂM TRA UPLOAD HÌNH ẢNH : \n"+dirUrl);
+                            UserDAO.uploadAvatar(user,user + ".jpg");
                         } catch (Exception e) {
                             System.out.println("CÓ LỖ TRONG QUÁ TRÌNH UPLOAD!");
                             e.printStackTrace();

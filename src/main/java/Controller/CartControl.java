@@ -147,6 +147,7 @@ public class CartControl extends HttpServlet {
                 break;
             }
         }
+
         String id = request.getParameter("idpost");
         if(id != null && user != null){
             Cart cart = CartDAO.getCart(user,Integer.valueOf(id));

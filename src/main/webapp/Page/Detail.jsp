@@ -1,4 +1,5 @@
 <%@ page import="Model.Post" %>
+<%@ page import="org.w3c.dom.ranges.Range" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -29,6 +30,7 @@
                     <span class="code">Mã tin: <%=product.getIdPost()%> </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
                 </div>
             </div>
+
             <div class="price-detail">
                 <div class="box-price">
                     <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C"> <%=product.getPrice()%> triệu</span> </span>
@@ -59,26 +61,25 @@
                 <div class="slideshow-container">
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 3</div>
-                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
+                        <img src="<%=product.arrayImg()[0]%>" style="width:100%">
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
-                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
+                        <img src="<%=product.arrayImg()[1]%>" style="width:100%">
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
-                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
+                        <img src="<%=product.arrayImg()[2]%>" style="width:100%">
                     </div>
                     <!-- Nút điều khiển mũi tên-->
                 </div>
                 <div style="text-align:center" class="listdot">
                     <a class="prev" onclick="plusSlides(-1)"><i class="fa-sharp fa-solid fa-angle-up"></i></a>
                     <a class="next" onclick="plusSlides(1)"><i class="fa-sharp fa-solid fa-angle-down"></i></a>
-
-                    <div class="dot" onclick="currentSlide(1)"><img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%"></div>
-                    <div class="dot" onclick="currentSlide(2)">           <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
+                    <div class="dot" onclick="currentSlide(1)"><img src="<%=product.arrayImg()[0]%>" style="width:100%"></div>
+                    <div class="dot" onclick="currentSlide(2)"><img src="<%=product.arrayImg()[1]%>" style="width:100%">
                     </div>
-                    <div class="dot" onclick="currentSlide(3)">           <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
+                    <div class="dot" onclick="currentSlide(3)"><img src="<%=product.arrayImg()[2]%>" style="width:100%">
 
                     </div>
                 </div>

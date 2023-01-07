@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 public class Post implements Serializable {
     private int idPost;
@@ -116,7 +117,11 @@ public class Post implements Serializable {
         this.status = status;
     }
 
-
+    public String[] arrayImg(){
+        System.out.println(this.getImages());
+        String[] rs = this.getImages().split(Pattern.quote("||"));
+        return rs;
+    }
 
     public String getFuel() {
         return fuel;

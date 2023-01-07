@@ -38,7 +38,7 @@
                   <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
+                        <span style="color: rgb(166, 168, 170); border: 1px solid black; font: bold 8pt Arial;"><img src="Img/User/<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
                       </div>
                     </div>
                   </div>
@@ -62,7 +62,6 @@
                                   <br>
                                   <br>
                                   <br>
-
                                   <div style="display: flex; justify-content: center; gap: 20px; margin-top: 10px">
                                     <input type="button" onclick="cannel()" class="btn btn-primary" value="Cannel">
                                     <input type="submit" class="btn btn-primary" value="Apply">

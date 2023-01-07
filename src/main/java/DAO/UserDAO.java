@@ -66,6 +66,16 @@ public class UserDAO {
         int rs= stmt.executeUpdate();
         return rs;
     }
+    public static int uploadAvatar(String user , String linkAvatar) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("UPDATE `user`" +
+                "SET avatar = ? WHERE username = ?");
+        stmt.setString(1,linkAvatar);
+        stmt.setString(2,user);
+
+        int rs= stmt.executeUpdate();
+        return rs;
+    }
 
     public static int updateUser(String username, String pass, String fullname, String email, String phone, String address) throws SQLException, ClassNotFoundException {
         Connection c=ConnectDB.getConnect();

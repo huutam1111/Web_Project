@@ -29,7 +29,7 @@ const showData = (arr) =>{
            <button class="button-item-car" onclick="addToCart(${tmp.idPost})">Thêm giỏ hàng</button>
   <div class="photo"><a href="details?id=${tmp.idPost}" class="rt pdt-per-74">
     
-    <img class="lozad" src="../Img/20220714140628-2732_wm.jpg" width="230" height="172" data-loaded="true"> </a> <span
+    <img class="lozad" src="${tmp.images.split("||")[0]}" width="230" height="172" data-loaded="true"> </a> <span
           class="box-icon"> </span></div>
   <div class="info">
     <h3 class="title ">
@@ -37,7 +37,7 @@ const showData = (arr) =>{
     ${tmp.title}
       </a>
     </h3>
-    <p class="price redprice">${tmp.price}<br>
+    <p class="price redprice">${tmp.price} triệu<br>
       <span class="old-price">140 triệu</span>
       <span class="b-promotion">Tiền mặt</span></p>
     <ul class="info-car">
@@ -165,7 +165,11 @@ const addToCart = (id)=>{
         url: "/cart?action=addtocart&idpost="+id,
         type: 'POST',
         success: function(res) {
+            if(JSON.parse(res) === 0){
 
+                console.log(JSON.parse(res))
+                window.location = "/Page/Login_Register.jsp"
+            }
         }
     });
     console.log(id)
