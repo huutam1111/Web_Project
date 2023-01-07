@@ -320,7 +320,6 @@
             .catch(()=>{
                 alert("Email không tồn tại")
             })
-
     })
 </script>
 </html>

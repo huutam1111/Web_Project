@@ -14,12 +14,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-
-</body>
-<script>
-    document.querySelector(".btn-send").addEventListener("click", (e) => {
-=======
 <jsp:include page="/Component/header/Header.jsp"/>
 <div class="container">
     <form class="editForm ng-valid ng-dirty ng-touched" novalidate="">
@@ -61,18 +55,18 @@
                                                                                               type="text"><!---->
                 <div class="txt-right"><!----></div>
             </div>
-            <div class="control control-last"><label class="lbl-form sm-lh" for="mat-slide-toggle-2-input">Nhận ưu đãi tin chính
-                chủ</label><span
-                    class="flag-toogle"><mat-slide-toggle
-                    class="mat-slide-toggle mat-accent _mat-animation-noopable ng-valid ng-dirty ng-touched"
-                    formcontrolname="RegisterForPreferential" id="mat-slide-toggle-2"><label
-                    class="mat-slide-toggle-label"><div
-                    class="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"><input
-                    class="mat-slide-toggle-input cdk-visually-hidden" type="checkbox" id="mat-slide-toggle-2-input"
-                    tabindex="0"><div class="mat-slide-toggle-thumb-container"><div
-                    class="mat-slide-toggle-thumb"></div><div
-                    class="mat-slide-toggle-ripple mat-ripple" mat-ripple=""></div></div></div><span
-                    class="mat-slide-toggle-content"></span></label></mat-slide-toggle></span></div>
+<%--            <div class="control control-last"><label class="lbl-form sm-lh" for="mat-slide-toggle-2-input">Nhận ưu đãi tin chính--%>
+<%--                chủ</label><span--%>
+<%--                    class="flag-toogle"><mat-slide-toggle--%>
+<%--                    class="mat-slide-toggle mat-accent _mat-animation-noopable ng-valid ng-dirty ng-touched"--%>
+<%--                    formcontrolname="RegisterForPreferential" id="mat-slide-toggle-2"><label--%>
+<%--                    class="mat-slide-toggle-label"><div--%>
+<%--                    class="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"><input--%>
+<%--                    class="mat-slide-toggle-input cdk-visually-hidden" type="checkbox" id="mat-slide-toggle-2-input"--%>
+<%--                    tabindex="0"><div class="mat-slide-toggle-thumb-container"><div--%>
+<%--                    class="mat-slide-toggle-thumb"></div><div--%>
+<%--                    class="mat-slide-toggle-ripple mat-ripple" mat-ripple=""></div></div></div><span--%>
+<%--                    class="mat-slide-toggle-content"></span></label></mat-slide-toggle></span></div>--%>
             <div class="control center"><a href="https://oto.com.vn/landingpage/xe-chinh-chu" target="_blank"><img
                     src="https://img1.oto.com.vn/Static/Images/Promotion/OwnerListing/750x130.jpg"></a></div>
             <div class="group-bt two-bt" id="btn-postListing">
@@ -86,7 +80,6 @@
 </body>
 <script>
     document.querySelector(".btn-send").addEventListener("clicl", (e) => {
->>>>>>> 48c24c3c4e8d12128567d42a2ca47ef9f1a79ce2
         e.preventDefault();
     })
     document.querySelector(".upload-item").addEventListener("click", (e) => {

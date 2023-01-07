@@ -16,6 +16,7 @@
           href="https://staticfile.oto.com.vn/dist/web/styles/logo-car.min.css.gz?v=638032818151165956">
     <link rel="stylesheet" as="style"
           href="https://staticfile.oto.com.vn/dist/web/styles/slide-brand.min.css.gz?v=638032818151165956">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 </head>
 <body>
@@ -152,11 +153,7 @@
                     <div class="list-item-car">
                         <div class="row">
                             <%--                        ForProduct--%>
-                            <c:forEach begin="0" end="7">
-                                <div class="col-3">
                                     <%@include file="/Component/Item/Home/Car.jsp" %>
-                                </div>
-                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -166,6 +163,13 @@
 </div>
 <jsp:include page="/Component/footer/footer.jsp"/>
 </body>
+
 <script src="/EventJs/Swipper.js">
+
+</script>
+<script>
+    setTimeout(()=>{
+        fetch("http://localhost:3000/getProduct")
+    },1)
 </script>
 </html>

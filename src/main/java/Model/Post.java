@@ -1,24 +1,27 @@
 package Model;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     private int idPost;
     private String title;
     private String content;
     private String body ;
     private String made;
     private String images;
-    private boolean coverNumber;
+    private int coverNumber;
     private int idCompany;
     private int yearOfManuFacture;
-    private boolean status;
+    private int status;
+    private String gear;
     private String fuel;
-    private double price;
+    private float price;
 
-    public Post() {
-
-    }
 
     public Post(int idPost, String title, String content, String body, String made, String images, boolean coverNumber, int idCompany, int yearOfManuFacture, boolean status, String fuel, double price) {
+    }
+
+    public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status,  String fuel, float price,String gear) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
@@ -32,6 +35,7 @@ public class Post {
         this.fuel = fuel;
         this.price = price;
     }
+
 
     public int getIdPost() {
         return idPost;
@@ -81,11 +85,11 @@ public class Post {
         this.images = images;
     }
 
-    public boolean isCoverNumber() {
+    public int getCoverNumber() {
         return coverNumber;
     }
 
-    public void setCoverNumber(boolean coverNumber) {
+    public void setCoverNumber(int coverNumber) {
         this.coverNumber = coverNumber;
     }
 
@@ -105,12 +109,21 @@ public class Post {
         this.yearOfManuFacture = yearOfManuFacture;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
+    }
+
+
+    public String getGear() {
+        return gear;
+    }
+
+    public void setGear(String gear) {
+        this.gear = gear;
     }
 
     public String getFuel() {
@@ -121,13 +134,16 @@ public class Post {
         this.fuel = fuel;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
+    public String getSrcFirst(){
+        return images.split("||")[0];
+
 
     @Override
     public String toString() {
@@ -145,5 +161,6 @@ public class Post {
                 ", fuel='" + fuel + '\'' +
                 ", price=" + price +
                 '}';
+
     }
 }

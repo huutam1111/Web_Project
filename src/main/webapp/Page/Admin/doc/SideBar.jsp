@@ -14,9 +14,8 @@
   </div>
   <hr>
   <ul class="app-menu">
-    <li><a class="app-menu__item haha" href="./PostStatus/Img"><i class='app-menu__icon bx bx-cart-alt'></i></li>
 
-    <li><a class="app-menu__item haha" href="phan-mem-ban-hang.jsp"><i class='app-menu__icon bx bx-cart-alt'></i>
+    <li><a class="app-menu__item haha" href="/Page/Admin/doc/index.jsp"><i class='app-menu__icon bx bx-cart-alt'></i>
       <span class="app-menu__label">POS Bán Hàng</span></a></li>
     <li><a class="app-menu__item " href="index.jsp"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
