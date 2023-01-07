@@ -6,7 +6,11 @@ public class Post implements Serializable {
     private int idPost;
     private String title;
     private String content;
+<<<<<<< HEAD
     private String body;
+=======
+    private String body ;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     private String made;
     private String images;
     private int coverNumber;
@@ -17,8 +21,12 @@ public class Post implements Serializable {
     private String fuel;
     private float price;
 
+<<<<<<< HEAD
 
     public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status, String fuel, float price) {
+=======
+    public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status,  String fuel, float price,String gear) {
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         this.idPost = idPost;
         this.title = title;
         this.content = content;
@@ -29,10 +37,15 @@ public class Post implements Serializable {
         this.idCompany = idCompany;
         this.yearOfManuFacture = yearOfManuFacture;
         this.status = status;
+<<<<<<< HEAD
+=======
+        this.gear = gear;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         this.fuel = fuel;
         this.price = price;
     }
 
+<<<<<<< HEAD
     public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status, String fuel, float price, String gear) {
         this.idPost = idPost;
         this.title = title;
@@ -48,6 +61,29 @@ public class Post implements Serializable {
         this.price = price;
     }
 
+=======
+    public Post(int anInt, String string, String string1, String string2, String string3, String string4, boolean aBoolean, int anInt1, int anInt2, boolean aBoolean1, String string5, double aDouble) {
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "idPost=" + idPost +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", body='" + body + '\'' +
+                ", made='" + made + '\'' +
+                ", images='" + images + '\'' +
+                ", coverNumber=" + coverNumber +
+                ", idCompany=" + idCompany +
+                ", yearOfManuFacture=" + yearOfManuFacture +
+                ", status=" + status +
+                ", gear='" + gear + '\'' +
+                ", fuel='" + fuel + '\'' +
+                ", price=" + price +
+                '}';
+    }
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
     public int getIdPost() {
         return idPost;
@@ -129,7 +165,10 @@ public class Post implements Serializable {
         this.status = status;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     public String getGear() {
         return gear;
     }
@@ -153,6 +192,7 @@ public class Post implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
+<<<<<<< HEAD
     public String getImg(){
         String rs=this.images.split("\\|\\|")[0];
         return rs;
@@ -173,6 +213,10 @@ public class Post implements Serializable {
                 ", fuel='" + fuel + '\'' +
                 ", price=" + price +
                 '}';
+=======
+    public String getSrcFirst(){
+        return images.split("||")[0];
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
     }
 }

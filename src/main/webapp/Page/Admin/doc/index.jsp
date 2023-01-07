@@ -266,9 +266,16 @@
             const title = $("#tilte123").val()
             const content = $("#content").val()
             const images = listImg
+<<<<<<< HEAD
             const year = getYear();
             const covernumber = $("#mat-slide-toggle-1-input:checked").val() == "on" ? 1 : 0
             const yearofmanufacture = year ||2023
+=======
+            const xmas = new Date("December 25, 2000 23:15:00");
+            const year = xmas.getYear();
+            const covernumber = $("#mat-slide-toggle-1-input:checked").val() == "on" ? 1 : 0
+            const yearofmanufacture = getYear() ||year
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
             const made = arr[0]
             const gear = arr[1]
             const fuel = arr[2]

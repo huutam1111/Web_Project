@@ -3,6 +3,7 @@ package DAO;
 import Connect.ConnectDB;
 import Model.Cart;
 import Model.Company;
+<<<<<<< HEAD
 import Model.Order;
 import Model.Post;
 
@@ -26,6 +27,16 @@ public class CompanyDAO {
         return rs;
     }
 
+=======
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class CompanyDAO {
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     public static ArrayList<Company> getAllCompany() throws SQLException {
         ArrayList<Company> companys = new ArrayList<>();
         Connection c = ConnectDB.getConnect();
@@ -45,7 +56,11 @@ public class CompanyDAO {
             return rs.getInt("idcompany");
         }
         return 0;
+<<<<<<< HEAD
 
     }
 
+=======
+    }
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 }

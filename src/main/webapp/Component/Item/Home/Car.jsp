@@ -21,7 +21,11 @@
 
 
 <%--                src="${item.getSrcFirst()}"&ndash;%&gt;--%>
+<<<<<<< HEAD
                 src="${item.getImg()}"
+=======
+                src="../Img/20221102175254-53b3_wm.jpg"
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 alt="Giảm nhiều tiền mặt, tặng thẻ chăm xe 1 năm, trả góp lãi suất thấp"
                 style="position: absolute; inset: 0px; margin: auto;"> </a>
         </div>

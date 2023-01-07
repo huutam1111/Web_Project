@@ -18,8 +18,11 @@ public class PostProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathRoot=(this.getServletContext().getRealPath("/"));
+<<<<<<< HEAD
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("utf-8");
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         try {
             String status=req.getParameter("status");
             int statusMain=1;

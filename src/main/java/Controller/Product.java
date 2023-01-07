@@ -1,7 +1,10 @@
 package Controller;
 
+<<<<<<< HEAD
 import DAO.ProductDAO;
 import Model.Post;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 import Model.RespJsonServlet;
 import Model.User;
 import DAO.UserDAO;
@@ -15,15 +18,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+<<<<<<< HEAD
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
+=======
+import java.sql.SQLException;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 @WebServlet("/product")
 public class Product extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+<<<<<<< HEAD
         String action = req.getParameter("action");
         if(action != null && action.equals("getlistproduct")){
             try {
@@ -45,4 +53,8 @@ public class Product extends HttpServlet {
         }
         res.getWriter().write(new Gson().toJson(products));
     }
+=======
+        req.getRequestDispatcher("Page/Product.jsp").forward(req, res);
+    }
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 }

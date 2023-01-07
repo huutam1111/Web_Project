@@ -3,7 +3,10 @@ package DAO;
 import Connect.ConnectDB;
 import Model.Cart;
 import Model.Order;
+<<<<<<< HEAD
 import Model.User;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +18,11 @@ public class OrderDAO {
     public static int addOrder(Order order) throws SQLException {
         ArrayList<Cart> carts = new ArrayList<>();
         Connection c = ConnectDB.getConnect();
+<<<<<<< HEAD
         PreparedStatement stmt = c.prepareStatement("INSERT INTO `order` (`id`, `fullName`, `phone`, `address`, `productName`, `quantity`, `total`, `status`, `username`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?,?)");
+=======
+        PreparedStatement stmt = c.prepareStatement("INSERT INTO `order` (`id`, `fullName`, `phone`, `address`, `productName`, `quantity`, `total`, `status`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         stmt.setString(1, order.getFullName());
         stmt.setString(2, order.getPhone());
         stmt.setString(3, order.getAddress());
@@ -23,13 +30,17 @@ public class OrderDAO {
         stmt.setInt(5,order.getQuantity());
         stmt.setDouble(6,order.getTotal());
         stmt.setInt(7,order.getStatus());
+<<<<<<< HEAD
         stmt.setString(8,order.getUsername());
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 
         int resultSet = stmt.executeUpdate();
 
         return resultSet;
     }
+<<<<<<< HEAD
 
     public static ArrayList<Order> getOrderByUser(String user) throws SQLException {
         ArrayList<Order> orders = new ArrayList<>();
@@ -46,4 +57,6 @@ public class OrderDAO {
 
         return orders;
     }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 }

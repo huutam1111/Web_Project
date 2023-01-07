@@ -73,6 +73,7 @@ public class CartDAO {
         return rowAffected;
     }
 
+<<<<<<< HEAD
     public static int addToCart(String username, int idPost) throws SQLException {
         String sqlUpdate = "INSERT INTO cart (username, idpost, amount) values(?,?, 1)";
         Connection conn = ConnectDB.getConnect();
@@ -83,5 +84,7 @@ public class CartDAO {
         return rowAffected;
 
     }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 }

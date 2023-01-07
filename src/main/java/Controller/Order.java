@@ -6,7 +6,10 @@ import Model.User;
 import DAO.CartDAO;
 import DAO.OrderDAO;
 import DAO.UserDAO;
+<<<<<<< HEAD
 import com.google.gson.Gson;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +33,7 @@ public class Order extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
         String action = request.getParameter("action");
         if(action != null && action.equals("listorder")){
             try {
@@ -62,6 +66,11 @@ public class Order extends HttpServlet {
 
     }
 
+=======
+        sendBill(request,response, null,false);
+    }
+
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -86,7 +95,11 @@ public class Order extends HttpServlet {
             }
 
             for(Cart tmp : carts){
+<<<<<<< HEAD
                 Model.Order order = new Model.Order(username,user.getFullName(), user.getPhone(), user.getAddress(), tmp.getPost().getTitle(), tmp.getAmount(), (double) (tmp.getAmount() * tmp.getPost().getPrice()), 0);
+=======
+                Model.Order order = new Model.Order(user.getFullName(), user.getPhone(), user.getAddress(), tmp.getPost().getTitle(), tmp.getAmount(), (double) (tmp.getAmount() * tmp.getPost().getPrice()), 0);
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 try {
                     if(OrderDAO.addOrder(order) == 1){
                         orders.add(order);
@@ -221,7 +234,11 @@ public class Order extends HttpServlet {
                 "                <hr>\n" +
                 "                <div class=\"row\">\n" +
                 "                    <button style=\"background-color: rgb(43, 169, 43); border: none;  padding: 10px 15px; margin: 0 auto;\">\n" +
+<<<<<<< HEAD
                 "                        <a href=\"/profile\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
+=======
+                "                        <a href=\"/\" style=\"color: white; text-decoration: none;\">TIẾP TỤC MUA HÀNG</a>\n" +
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 "                      </button>\n" +
                 "                </div>\n" +
                 "                \n" +

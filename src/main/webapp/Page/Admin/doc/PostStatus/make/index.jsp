@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -42,8 +46,15 @@
             </div>
             <div class="control"><label class="lbl-form sm-lh">Xuất xứ</label>
                 <ul class="status-group">
+<<<<<<< HEAD
                     <li><input class="hide" id="old1" name="radio3" type="radio"><label class="free-label" for="old1">Trong nước</label></li>
                     <li><input class="hide" id="new1" name="radio3" type="radio"><label class="free-label" for="new1">Nhập khẩu</label></li>
+=======
+                    <li><input class="hide" id="old1" name="radio3" type="radio"><label class="free-label" for="old1">Trong
+                        nước</label></li>
+                    <li><input class="hide" id="new1" name="radio3" type="radio"><label class="free-label" for="new1">Nhập
+                        khẩu</label></li>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 </ul><!----></div>
             <div class="control"><label class="lbl-form sm-lh">Hộp số</label>
                 <ul class="status-group status-group-small">
@@ -74,7 +85,12 @@
                 </ul><!----></div><!---->
             <div class="control"><label class="lbl-form sm-lh">Tình trạng</label>
                 <ul class="status-group">
+<<<<<<< HEAD
                     <li><input class="hide" id="old" name="radio2" type="radio"><label class="free-label" for="old">Đã qua sử dụng</label></li>
+=======
+                    <li><input class="hide" id="old" name="radio2" type="radio"><label class="free-label" for="old">Đã
+                        qua sử dụng</label></li>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                     <li><input class="hide" id="new" name="radio2" type="radio"><label class="free-label"
                                                                                        for="new">Mới</label></li>
                 </ul><!----></div><!---->
@@ -102,6 +118,7 @@
         </div>
     </form>
 </body>
+<<<<<<< HEAD
 <script type="application/javascript">
     var html = "";
     var temp = 5;
@@ -126,4 +143,7 @@
     }
     renderListYear(temp);
 </script>
+=======
+<script src="/Page/Admin/doc/PostStatus/make/index.js"></script>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 </html>

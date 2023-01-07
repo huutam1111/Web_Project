@@ -62,7 +62,10 @@
                     </li>
 
                     </li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                     <li><a href="/checkAdmin?redirect=index"><h2>Admin</h2></a>
 
                     </li>
@@ -99,7 +102,13 @@
             console.log(123)
             Login_Res.classList.add("hidden")
             profile.classList.add("show")
+<<<<<<< HEAD
 
+=======
+            account.classList.add("show")
+            account.querySelector("img").src=findCookieByname("imgUser")
+            account.querySelector("span").textContent=findCookieByname("user")
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         }
     }
     checkAccountExist()

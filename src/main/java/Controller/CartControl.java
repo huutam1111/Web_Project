@@ -120,6 +120,7 @@ public class CartControl extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }
+<<<<<<< HEAD
             if(action.equals("addtocart")){
                 try {
                     addToCart(request,response);
@@ -127,6 +128,8 @@ public class CartControl extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
             if(action.equals("remove")){
                 try {
                     removeCart(request,response);
@@ -138,6 +141,7 @@ public class CartControl extends HttpServlet {
         }
 
     }
+<<<<<<< HEAD
 
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         String user = null;
@@ -163,4 +167,6 @@ public class CartControl extends HttpServlet {
 
         }
     }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 }

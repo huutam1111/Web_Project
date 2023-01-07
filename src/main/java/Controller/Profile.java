@@ -4,10 +4,13 @@ import Model.RespJsonServlet;
 import Model.User;
 import DAO.UserDAO;
 import com.google.gson.Gson;
+<<<<<<< HEAD
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,14 +18,20 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import java.io.File;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.Arrays;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 import java.util.Map;
 
 @WebServlet("/profile")
@@ -58,8 +67,13 @@ public class Profile extends HttpServlet {
         }
         if(pass != null){
             if(!UserDAO.checkLogin(user,pass)){
+<<<<<<< HEAD
                 res.getWriter().write(new Gson().toJson("Wrong Password"));
                 return;
+=======
+              res.getWriter().write(new Gson().toJson("Wrong Password"));
+              return;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
             }
             if(UserDAO.updateUser(user,params.get("passnew")[0],decodeURIComponent(params.get("fullName")[0], "UTF-8"),params.get("email")[0],params.get("phone")[0],decodeURIComponent(params.get("address")[0], "UTF-8")) == 1){
                 res.getWriter().write(new Gson().toJson(1));
@@ -77,6 +91,7 @@ public class Profile extends HttpServlet {
         }
 
     }
+<<<<<<< HEAD
     protected void changeAvatar(HttpServletRequest req, HttpServletResponse res, String user) throws ServletException, IOException {
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
@@ -113,6 +128,8 @@ public class Profile extends HttpServlet {
         res.sendRedirect("/profile");
 
     }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
@@ -160,8 +177,11 @@ public class Profile extends HttpServlet {
             }
             return;
         }
+<<<<<<< HEAD
         if(action!= null && action.equals("changeAvatar")){
             changeAvatar(req,res,user);
         }
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     }
 }

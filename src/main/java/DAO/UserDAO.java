@@ -1,6 +1,13 @@
 package DAO;
+<<<<<<< HEAD
 import Connect.ConnectDB;
 import Model.User;
+=======
+
+import Connect.ConnectDB;
+import Model.User;
+
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,8 +1,14 @@
 package Controller;
+<<<<<<< HEAD
 
 import DAO.UserDAO;
 import Upload.UploadImage;
 import com.google.gson.Gson;
+=======
+import Model.RespJsonServlet;
+import DAO.UserDAO;
+import Upload.UploadImage;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -39,6 +45,10 @@ public class Register extends HttpServlet {
         return result;
     }
     @Override
+<<<<<<< HEAD
+=======
+
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathRoot=(this.getServletContext().getRealPath("/"));
 
@@ -63,7 +73,12 @@ public class Register extends HttpServlet {
         try {
             if((UserDAO.insertUser(name, pass, fullName, email, phone, address,pathAvtUser)!=0)){
                 PrintWriter writer=resp.getWriter();
+<<<<<<< HEAD
                 writer.println(new Gson().toJson("register success"));
+=======
+                RespJsonServlet ex=new RespJsonServlet("register success");
+                writer.println(ex.json());
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 resp.setStatus(200);
             }
         } catch (SQLException e) {

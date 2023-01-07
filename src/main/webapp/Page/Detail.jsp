@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <%@ page import="Model.Post" %>
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -18,22 +21,37 @@
 <body>
 <jsp:include page="../Component/header/Header.jsp" />
 <div class="container " style="height: auto" id="detailPage">
+<<<<<<< HEAD
     <%Post product = (Post) request.getAttribute("product"); %>
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     <img src="https://img1.oto.com.vn/Static/Images/otocare/web/477_290622_MuaXeTaiDay_AnTamKiemDinh_1140x140.webp" alt="OTOCheck" width="1140" height="140">
 
     <div class="content-detail" style="margin-top: 10px">
         <div class="left-detail">
             <div class="group-title-detail">
+<<<<<<< HEAD
                 <h1 class="title-detail"><%=product.getTitle()%></h1>
                 <div class="date-code">
                     <span class="code">Mã tin: <%=product.getIdPost()%> </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
+=======
+                <h1 class="title-detail"> Mazda CX-5 2.0 Luxury 2022 - 879 triệu</h1>
+                <div class="date-code">
+                    <span class="code">Mã tin: 22661475 </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 </div>
             </div>
             <div class="price-detail">
                 <div class="box-price">
+<<<<<<< HEAD
                     <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C"> <%=product.getPrice()%> triệu</span> </span>
                     <span>|</span>
                     <span class="price-small" id="chiphilanbanh">Giá lăn bánh: <span style="color: #4DB848"> <%=product.getPrice() + product.getPrice()*0.1 %> triệu</span> </span>
+=======
+                    <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C">879 triệu</span> </span>
+                    <span>|</span>
+                    <span class="price-small" id="chiphilanbanh">Giá lăn bánh: <span style="color: #4DB848">989.2 triệu</span> </span>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
                 </div>
                 <div class="share-fbgg">
@@ -85,6 +103,7 @@
             </section>
             <div class="box-info-detail">
                 <ul class="list-info">
+<<<<<<< HEAD
                     <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> <%=product.getYearOfManuFacture()%></li>
                     <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label><%=product.getBody()%></li>
                     <li><label class="label"><i class="fa-solid fa-person-breastfeeding"></i>Tình trạng</label>
@@ -101,14 +120,40 @@
             <div>
                 <button  class="btn btn-primary" onclick="addToCart(<%=product.getIdPost()%>)" type="button">Thêm giỏ hàng</button>
             </div>
+=======
+                    <li><label class="label"><i class="fa-solid fa-calendar-days"></i>Năm sản xuất</label> 2021</li>
+                    <li><label class="label"><i class="fa-solid fa-taxi"></i>Kiểu dáng</label> SUV</li>
+                    <li><label class="label"><i class="fa-solid fa-person-breastfeeding"></i>Tình trạng</label>
+                        Đã qua sử dụng
+                    </li>
+                    <li><label class="label"><i class="fa-solid fa-flag-checkered"></i></i>Xuất xứ</label> Trong nước</li>
+                    <li><label class="label"><i class="fa-sharp fa-solid fa-gauge-high"></i>Số km đã đi</label> 31.000 km</li>
+                    <li> <label class="label"><i class="fa-solid fa-location-dot"></i>Tỉnh thành</label>
+                        Hà Nội
+                    </li>
+                    <li> <label class="label"><i class="fa-solid fa-map"></i>Quận huyện</label>
+                        Nam Từ Liêm
+                    </li>
+                    <li><label class="label"><i class="fa-solid fa-hashtag"></i>Hộp số</label> Số tự động</li>
+                    <li><label class="label"><i class="fa-solid fa-gas-pump"></i>Nhiên liệu</label> Xăng</li>
+                </ul>
+            </div>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
             <div class="describe">
                 <br>
                 <h5>Mô tả</h5>
                 <hr>
                 <div class="content-describe">
+<<<<<<< HEAD
                     <p><%=product.getTitle()%>́</p>
 
                     <p><%=product.getContent()%></p>
+=======
+                    <p>Kia Seltos 1.4 luxury 2021 biển thành phố</p>
+                    <p>- Odo: 3.1 vạn km.
+                    </p>
+                    <p>- Trang bị: Đề nổ Start/stop, 3 chế độ lái, đèn led, ghế da, màn dvd tích hợp camera lùi, điều hoà auto 2 vùng. Hệ thống an toàn ABS, EBD, kiểm soát lực kéo.</p>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 </div>
                 <hr>
             </div>
@@ -227,8 +272,12 @@
 <jsp:include page="../Component/footer/footer.jsp" />
 
 </body>
+<<<<<<< HEAD
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script  >
+=======
+<script>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     var slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) {
@@ -252,6 +301,7 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
+<<<<<<< HEAD
     const addToCart = (id)=>{
         $.ajax({
             url: "/cart?action=addtocart&idpost="+id,
@@ -264,5 +314,8 @@
 
 
     }
+=======
+
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 </script>
 </html>

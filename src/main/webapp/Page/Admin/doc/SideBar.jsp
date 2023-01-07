@@ -14,7 +14,10 @@
   </div>
   <hr>
   <ul class="app-menu">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     <li><a class="app-menu__item haha" href="/Page/Admin/doc/index.jsp"><i class='app-menu__icon bx bx-cart-alt'></i>
       <span class="app-menu__label">POS Bán Hàng</span></a></li>
     <li><a class="app-menu__item " href="index.jsp"><i class='app-menu__icon bx bx-tachometer'></i><span

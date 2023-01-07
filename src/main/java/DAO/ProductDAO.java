@@ -6,7 +6,10 @@ import Model.Post;
 
 import java.sql.*;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Random;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 
 public class ProductDAO {
     Statement statement = null;
@@ -27,12 +30,21 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
+<<<<<<< HEAD
                         resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
                         resultSet.getInt(10),
                         resultSet.getString(11),
                         resultSet.getFloat(12)
+=======
+                        resultSet.getBoolean(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9),
+                        resultSet.getBoolean(10),
+                        resultSet.getString(11),
+                        resultSet.getDouble(12)
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 ));
             }
         } catch (SQLException e) {
@@ -40,6 +52,7 @@ public class ProductDAO {
         }
         return posts;
     }
+<<<<<<< HEAD
 
 
 
@@ -65,6 +78,39 @@ public class ProductDAO {
 
     }
 
+=======
+//        public static ArrayList<Post> randomProduct () throws SQLException {
+//        ArrayList<Post> rs = new ArrayList<>();
+//        ArrayList<Company> company = CompanyDAO.getCompany();
+//        String[] arrFuel = {"Xăng", "Dầu"};
+//        for(int i = 0 ; i < 200 ; i++){
+//            insertProduct(new Post(i,"Product "+i,"Content "+i, new Random().nextBoolean(),"Image "+ i, new Random().nextBoolean(),  company.get(new Random().nextInt(11)).getId(), new Random().nextInt(10) + 2010 , new Random().nextBoolean(),new Random().nextBoolean(),arrFuel[new Random().nextInt(2)], new Random().nextInt(300) * 1.00));
+//
+//        }
+//        return rs;
+//    }
+//    public static int insertProduct(Post product) throws SQLException {
+//
+//        Statement statement = ConnectDB.getConnect().createStatement();
+//        PreparedStatement preparedStatement = statement.getConnection().prepareStatement("INSERT INTO product (title, content,supporttest, images, covernumber,idcompany,yearofmanufacture,status,gear,fuel,price) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+//        preparedStatement.setString(1,product.getTitle());
+//        preparedStatement.setString(2,product.getContent());
+//        preparedStatement.setString(3,product.getBody());
+//
+//        preparedStatement.setString(4,product.getMade());
+//        preparedStatement.setString(5,product.getImages());
+//        preparedStatement.setBoolean(6,product.isCoverNumber());
+//        preparedStatement.setInt(7,product.getIdCompany());
+//        preparedStatement.setInt(8,product.getYearOfManuFacture());
+//        preparedStatement.setBoolean(9,product.isStatus());
+//        preparedStatement.setString(10,product.getFuel());
+//        preparedStatement.setDouble(11,product.getPrice());
+//
+//        int rs = preparedStatement.executeUpdate();
+//        return rs;
+//
+//    }
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     public static Post getPostById(int id){
         Post post =null;
         try {
@@ -72,7 +118,10 @@ public class ProductDAO {
             PreparedStatement preparedStatement = statement.getConnection().prepareStatement("SELECT * FROM product where idpost = ?");
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
             while (resultSet.next()) {
                 post = new Post(resultSet.getInt(1),
                         resultSet.getString(2),
@@ -80,12 +129,21 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
+<<<<<<< HEAD
                         resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
                         resultSet.getInt(10),
                         resultSet.getString(11),
                         resultSet.getFloat(12)
+=======
+                        resultSet.getBoolean(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9),
+                        resultSet.getBoolean(10),
+                        resultSet.getString(11),
+                        resultSet.getDouble(12)
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 );
             }
         } catch (SQLException e) {
@@ -108,12 +166,21 @@ public class ProductDAO {
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
+<<<<<<< HEAD
                         resultSet.getInt(7),
                         resultSet.getInt(8),
                         resultSet.getInt(9),
                         resultSet.getInt(10),
                         resultSet.getString(11),
                         resultSet.getFloat(12)
+=======
+                        resultSet.getBoolean(7),
+                        resultSet.getInt(8),
+                        resultSet.getInt(9),
+                        resultSet.getBoolean(10),
+                        resultSet.getString(11),
+                        resultSet.getDouble(12)
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                 ));
             }
         } catch (SQLException e) {

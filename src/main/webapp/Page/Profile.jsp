@@ -38,7 +38,11 @@
                   <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+<<<<<<< HEAD
                         <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
+=======
+                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="imgAvatar" alt="" width="140px" height="140px" srcset=""></span>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                       </div>
                     </div>
                   </div>
@@ -47,6 +51,7 @@
                       <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%=user.getFullName()%></h4>
                       <p class="mb-0">@<%=user.getUserName()%></p>
                       <div class="mt-2">
+<<<<<<< HEAD
 
                         <button class="btn btn-primary" type="button" style="width: 100%; position: relative;">
                           <i class="fa fa-fw fa-camera"></i>
@@ -71,6 +76,13 @@
                               </div>
                             </form>
 
+=======
+                        <button class="btn btn-primary" type="button" style="width: 100%; position: relative;">
+                          <i class="fa fa-fw fa-camera"></i>
+                          <div >
+                            <input type="file" id="uploadFile" oninput="handleAvatar(this)" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; opacity: 0;">
+                            <span>Change Photo</span>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                           </div>
                         </button>
                       </div>
@@ -155,6 +167,7 @@
 
                   </div>
                   <div class="tab-pane active" id="order">
+<<<<<<< HEAD
                     <div class="tile">
                       <h3 class="tile-title">Đơn hàng của bạn</h3>
                       <div>
@@ -177,6 +190,9 @@
                       </div>
 
                     </div>
+=======
+                    Đơn hàng xử lý
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                   </div>
                 </div>
               </div>
@@ -188,14 +204,28 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="px-xl-3">
+<<<<<<< HEAD
                 <button class="btn btn-block btn-secondary" onclick="logout()">
+=======
+                <button class="btn btn-block btn-secondary">
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
                   <i class="fa fa-sign-out"></i>
                   <span>Logout</span>
                 </button>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
+=======
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title font-weight-bold">Support</h6>
+              <p class="card-text">Get fast, free help from our friendly assistants.</p>
+              <button type="button" class="btn btn-primary">Contact Us</button>
+            </div>
+          </div>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         </div>
       </div>
 
@@ -203,6 +233,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 </body>
 
 <script >
@@ -361,3 +392,14 @@
 </script>
 
 </html>
+=======
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+
+</script>
+<script src="../javascrip/profileEdit.js"></script>
+</body></html>
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116

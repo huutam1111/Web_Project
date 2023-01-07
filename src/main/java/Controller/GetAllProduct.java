@@ -17,11 +17,19 @@ import java.io.PrintWriter;
 import java.sql.Array;
 import java.sql.SQLException;
 
+<<<<<<< HEAD
 @WebServlet("")
+=======
+@WebServlet("/")
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 public class GetAllProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         req.setAttribute("listProduct", ProductDAO.getAllProduct());
+<<<<<<< HEAD
         req.getRequestDispatcher("/index.jsp").forward(req, res);
+=======
+            req.getRequestDispatcher("/index.jsp").forward(req, res);
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     }
 }

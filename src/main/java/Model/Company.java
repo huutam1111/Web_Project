@@ -1,6 +1,9 @@
 package Model;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 import java.io.Serializable;
 
 public class Company implements Serializable {
@@ -30,7 +33,10 @@ public class Company implements Serializable {
         this.name = name;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     public String getLogo() {
         return logo;
     }
@@ -47,5 +53,8 @@ public class Company implements Serializable {
                 ", logo='" + logo + '\'' +
                 '}';
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
 }

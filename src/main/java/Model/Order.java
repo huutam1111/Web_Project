@@ -3,7 +3,10 @@ package Model;
 public class Order {
     private int id;
     private String fullName;
+<<<<<<< HEAD
     private String username;
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     private String phone;
     private String address;
     private String productName;
@@ -11,9 +14,14 @@ public class Order {
     private  double total;
     private int status;
 
+<<<<<<< HEAD
     public Order(int id, String username, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
         this.id = id;
         this.username = username;
+=======
+    public Order(int id, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
+        this.id = id;
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         this.fullName = fullName;
         this.phone = phone;
         this.address = address;
@@ -22,8 +30,12 @@ public class Order {
         this.total = total;
         this.status = status;
     }
+<<<<<<< HEAD
     public Order( String username, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
         this.username = username;
+=======
+    public Order( String fullName, String phone, String address, String productName, int quantity, double total, int status) {
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
         this.fullName = fullName;
         this.phone = phone;
         this.address = address;
@@ -36,6 +48,7 @@ public class Order {
         return id;
     }
 
+<<<<<<< HEAD
     public String getUsername() {
         return username;
     }
@@ -44,6 +57,8 @@ public class Order {
         this.username = username;
     }
 
+=======
+>>>>>>> 99dc4b74c317afab44efdc60fe20e6155e0da116
     public void setId(int id) {
         this.id = id;
     }
