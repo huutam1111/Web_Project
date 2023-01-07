@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 public class Post implements Serializable {
     private int idPost;
@@ -9,51 +10,32 @@ public class Post implements Serializable {
     private String body ;
     private String made;
     private String images;
-    private int coverNumber;
+    private int gear;
     private int idCompany;
     private int yearOfManuFacture;
     private int status;
-    private String gear;
     private String fuel;
     private float price;
 
-    public Post(int idPost, String title, String content, String body, String made, String images, int coverNumber, int idCompany, int yearOfManuFacture, int status,  String fuel, float price,String gear) {
+
+
+
+    public Post(int idPost, String title, String content, String body, String made, String images, int gear, int idCompany, int yearOfManuFacture, int status,  String fuel, float price) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
         this.body = body;
         this.made = made;
         this.images = images;
-        this.coverNumber = coverNumber;
+        this.gear = gear;
         this.idCompany = idCompany;
         this.yearOfManuFacture = yearOfManuFacture;
         this.status = status;
-        this.gear = gear;
         this.fuel = fuel;
         this.price = price;
     }
 
-    public Post(int anInt, String string, String string1, String string2, String string3, String string4, boolean aBoolean, int anInt1, int anInt2, boolean aBoolean1, String string5, double aDouble) {
-    }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "idPost=" + idPost +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", body='" + body + '\'' +
-                ", made='" + made + '\'' +
-                ", images='" + images + '\'' +
-                ", coverNumber=" + coverNumber +
-                ", idCompany=" + idCompany +
-                ", yearOfManuFacture=" + yearOfManuFacture +
-                ", status=" + status +
-                ", gear='" + gear + '\'' +
-                ", fuel='" + fuel + '\'' +
-                ", price=" + price +
-                '}';
-    }
 
     public int getIdPost() {
         return idPost;
@@ -103,12 +85,12 @@ public class Post implements Serializable {
         this.images = images;
     }
 
-    public int getCoverNumber() {
-        return coverNumber;
+    public int getGear() {
+        return gear;
     }
 
-    public void setCoverNumber(int coverNumber) {
-        this.coverNumber = coverNumber;
+    public void setGear(int gear) {
+        this.gear = gear;
     }
 
     public int getIdCompany() {
@@ -135,12 +117,10 @@ public class Post implements Serializable {
         this.status = status;
     }
 
-    public String getGear() {
-        return gear;
-    }
-
-    public void setGear(String gear) {
-        this.gear = gear;
+    public String[] arrayImg(){
+        System.out.println(this.getImages());
+        String[] rs = this.getImages().split(Pattern.quote("||"));
+        return rs;
     }
 
     public String getFuel() {
@@ -158,8 +138,26 @@ public class Post implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
-    public String getSrcFirst(){
+    public String getSrcFirst() {
         return images.split("||")[0];
 
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "idPost=" + idPost +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", body='" + body + '\'' +
+                ", made='" + made + '\'' +
+                ", images='" + images + '\'' +
+                ", gear=" + gear +
+                ", idCompany=" + idCompany +
+                ", yearOfManuFacture=" + yearOfManuFacture +
+                ", status=" + status +
+                ", fuel='" + fuel + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

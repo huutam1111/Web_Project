@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.sql.Array;
 import java.sql.SQLException;
 
-@WebServlet("/")
+@WebServlet("")
 public class GetAllProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

@@ -1,8 +1,6 @@
 package DAO;
-
 import Connect.ConnectDB;
 import Model.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,6 +66,16 @@ public class UserDAO {
         int rs= stmt.executeUpdate();
         return rs;
     }
+    public static int uploadAvatar(String user , String linkAvatar) throws SQLException, ClassNotFoundException {
+        Connection c=ConnectDB.getConnect();
+        PreparedStatement stmt = c.prepareStatement("UPDATE `user`" +
+                "SET avatar = ? WHERE username = ?");
+        stmt.setString(1,linkAvatar);
+        stmt.setString(2,user);
+
+        int rs= stmt.executeUpdate();
+        return rs;
+    }
 
     public static int updateUser(String username, String pass, String fullname, String email, String phone, String address) throws SQLException, ClassNotFoundException {
         Connection c=ConnectDB.getConnect();
@@ -88,7 +96,7 @@ public class UserDAO {
         PreparedStatement stmt = c.prepareStatement("select * from user where username=?");
         stmt.setString(1,name);
         ResultSet rs= stmt.executeQuery();
-        if(rs.next()&&rs.getInt("iAdmin")!=0){
+        if(rs.next()&&rs.getInt("iAdmin")!=1){
             return true;
         }
         return false;

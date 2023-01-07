@@ -120,6 +120,13 @@ public class CartControl extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }
+            if(action.equals("addtocart")){
+                try {
+                    addToCart(request,response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             if(action.equals("remove")){
                 try {
                     removeCart(request,response);
@@ -130,5 +137,31 @@ public class CartControl extends HttpServlet {
 
         }
 
+    }
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String user = null;
+        for (int i = 0; i < request.getCookies().length; i++) {
+            if (request.getCookies()[i].getName().equals("user")) {
+                user = request.getCookies()[i].getValue();
+                break;
+            }
+        }
+
+        String id = request.getParameter("idpost");
+        if(id != null && user != null){
+            Cart cart = CartDAO.getCart(user,Integer.valueOf(id));
+            if(cart != null){
+                setQuantity(request,response, "increase");
+                response.getWriter().write(new Gson().toJson(1));
+            }else{
+                CartDAO.addToCart(user, Integer.valueOf(id));
+                response.getWriter().write(new Gson().toJson(1));
+
+            }
+        }else{
+            response.getWriter().write(new Gson().toJson(0));
+
+        }
     }
 }

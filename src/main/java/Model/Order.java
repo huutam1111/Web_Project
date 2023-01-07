@@ -3,6 +3,7 @@ package Model;
 public class Order {
     private int id;
     private String fullName;
+    private String username;
     private String phone;
     private String address;
     private String productName;
@@ -10,8 +11,9 @@ public class Order {
     private  double total;
     private int status;
 
-    public Order(int id, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
+    public Order(int id, String username, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
         this.id = id;
+        this.username = username;
         this.fullName = fullName;
         this.phone = phone;
         this.address = address;
@@ -20,7 +22,8 @@ public class Order {
         this.total = total;
         this.status = status;
     }
-    public Order( String fullName, String phone, String address, String productName, int quantity, double total, int status) {
+    public Order( String username, String fullName, String phone, String address, String productName, int quantity, double total, int status) {
+        this.username = username;
         this.fullName = fullName;
         this.phone = phone;
         this.address = address;
@@ -31,6 +34,14 @@ public class Order {
     }
     public int getId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setId(int id) {

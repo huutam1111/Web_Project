@@ -1,5 +1,6 @@
 package Model;
 
+
 import java.io.Serializable;
 
 public class Company implements Serializable {
@@ -29,6 +30,7 @@ public class Company implements Serializable {
         this.name = name;
     }
 
+
     public String getLogo() {
         return logo;
     }
@@ -45,4 +47,5 @@ public class Company implements Serializable {
                 ", logo='" + logo + '\'' +
                 '}';
     }
+
 }
