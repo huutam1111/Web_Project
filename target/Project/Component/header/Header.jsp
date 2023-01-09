@@ -53,17 +53,19 @@
             </div>
         </div>
         <div class="navi navi-fix menu-v2">
-            <div class="container"><a class="logo" href="/">
+            <div class="container"><a class="logo" href="">
             </a>
                 <ul class="menu-top">
+                    <li><a style="cursor: pointer" onclick="home()" data-key="/"><h2>Trang chủ</h2></a>
+
                     <li><a href="product" data-key="/mua-ban-xe"><h2>Sản phẩm</h2></a>
-                    <li><a href="/Page/PriceCar.jsp" data-key="/bang-gia-xe-o-to"><h2>Giá xe ô tô</h2></a>
+                    <li><a href="pricecar" data-key="/bang-gia-xe-o-to"><h2>Giá xe ô tô</h2></a>
 
                     </li>
 
                     </li>
 
-                    <li><a href="/checkAdmin?redirect=index"><h2>Admin</h2></a>
+                    <li id="checkIsAdmin"><a href="admin?page=index"><h2>Admin</h2></a>
 
                     </li>
                 </ul>
@@ -78,7 +80,9 @@
     var Login_Res= document.querySelector("#login>span")
     var account=document.querySelector("#account")
     var profile=document.querySelector("#profile")
-
+    const home = ()=>{
+        window.location.pathname="/"
+    }
 
 
     const findCookieByname=(name)=>{
@@ -100,6 +104,9 @@
             Login_Res.classList.add("hidden")
             profile.classList.add("show")
 
+        if(findCookieByname("isAdmin") !=1){
+            document.querySelector("#checkIsAdmin").style.display = 'none'
+        }
         }
     }
     checkAccountExist()

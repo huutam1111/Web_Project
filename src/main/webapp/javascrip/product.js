@@ -8,6 +8,10 @@ const changeNumberPage = (n)=>{
     window.scrollTo(0, 300);
     showData(dataFilter)
 }
+const VND = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+});
 const showData = (arr) =>{
     console.log(indexNumber)
     let rs =``
@@ -37,7 +41,7 @@ const showData = (arr) =>{
     ${tmp.title}
       </a>
     </h3>
-    <p class="price redprice">${tmp.price} triệu<br>
+    <p class="price redprice">${VND.format(tmp.price)} triệu<br>
       <span class="old-price">140 triệu</span>
       <span class="b-promotion">Tiền mặt</span></p>
     <ul class="info-car">
@@ -76,7 +80,7 @@ const handleFilter = ()=>{
     let priceMin = document.querySelector(".input-min").value
     let priceMax = document.querySelector(".input-max").value
     dataFilter = dataFilter.filter((tmp)=>{
-        return Number(priceMin) <= tmp.price && Number(priceMax) >= tmp.price
+        return Number(priceMin)*1000000<= tmp.price && Number(priceMax)*1000000 >= tmp.price
     })
     console.log(parseInt(year))
 
@@ -110,6 +114,7 @@ const handleFilter = ()=>{
             return decodeURIComponent(tmp.fuel) === dau.value
         })
     }
+    console.log(year, companySel,)
 
     showData(dataFilter)
 }
@@ -149,7 +154,7 @@ const init = ()=>{
            document.querySelector(".input-min").addEventListener("blur", handleFilter)
             document.querySelector(".input-max").addEventListener("blur", handleFilter)
             let year = `<option value="all">Tất cả</option>`
-            for (let i = 2002; i < 2020; i++) {
+            for (let i = 1990; i < 2024; i++) {
                 year += `<option value="${i}">${i}</option>`
             }
             document.querySelector("#year").innerHTML = year
@@ -165,11 +170,16 @@ const addToCart = (id)=>{
         url: "/cart?action=addtocart&idpost="+id,
         type: 'POST',
         success: function(res) {
+            console.log(res)
+            swal("Đã thêm sản phẩm vào giỏ hàng", {
+                buttons: false,
+                timer: 500,
+            });
             if(JSON.parse(res) === 0){
-
-                console.log(JSON.parse(res))
                 window.location = "/Page/Login_Register.jsp"
             }
+
+
         }
     });
     console.log(id)

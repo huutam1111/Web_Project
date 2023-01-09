@@ -68,7 +68,7 @@
 
             </div>
             <div>
-                <form action="order" method="POST">
+                <form action="oder" method="POST">
                     <a ><input type="submit" value="ĐẶT HÀNG" class="nowpay"  style="margin: 30px; text-align: center; width: 150px; height: 50px; float: right; background-color: #fb383b; border: none; color : white"></a>
                 </form>
             </div>

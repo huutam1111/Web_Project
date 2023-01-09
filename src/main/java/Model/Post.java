@@ -16,11 +16,13 @@ public class Post implements Serializable {
     private int status;
     private String fuel;
     private float price;
+    private int quantity;
 
 
 
 
-    public Post(int idPost, String title, String content, String body, String made, String images, int gear, int idCompany, int yearOfManuFacture, int status,  String fuel, float price) {
+
+    public Post(int idPost, String title, String content, String body, String made, String images, int gear, int idCompany, int yearOfManuFacture, int status,  String fuel, float price, int quantity) {
         this.idPost = idPost;
         this.title = title;
         this.content = content;
@@ -33,9 +35,17 @@ public class Post implements Serializable {
         this.status = status;
         this.fuel = fuel;
         this.price = price;
+        this.quantity = quantity;
     }
 
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getIdPost() {
         return idPost;
@@ -158,6 +168,7 @@ public class Post implements Serializable {
                 ", status=" + status +
                 ", fuel='" + fuel + '\'' +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

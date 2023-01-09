@@ -1,3 +1,7 @@
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="Model.Oder" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,38 +46,22 @@
           <div class="tile">
             <div class="tile-body">
               <div class="row element-button">
-                <div class="col-sm-2">
+
+
   
-                  <a class="btn btn-add btn-sm" href="form-add-don-hang.jsp" title="Thêm"><i class="fas fa-plus"></i>
-                    Tạo mới đơn hàng</a>
-                </div>
-                <div class="col-sm-2">
-                  <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i
-                      class="fas fa-file-upload"></i> Tải từ file</a>
-                </div>
+
+
   
                 <div class="col-sm-2">
-                  <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
-                      class="fas fa-print"></i> In dữ liệu</a>
-                </div>
-                <div class="col-sm-2">
-                  <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i
-                      class="fas fa-copy"></i> Sao chép</a>
-                </div>
-  
-                <div class="col-sm-2">
-                  <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                  <a class="btn btn-excel btn-sm"  title="In"><i class="fas fa-file-excel" onclick="exportExel('OderAdmin')"></i> Xuất Excel</a>
                 </div>
                 <div class="col-sm-2">
                   <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
                       class="fas fa-file-pdf"></i> Xuất PDF</a>
                 </div>
-                <div class="col-sm-2">
-                  <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
-                      class="fas fa-trash-alt"></i> Xóa tất cả </a>
-                </div>
+
               </div>
-              <table class="table table-hover table-bordered" id="sampleTable">
+              <table class="table table-hover table-bordered" id="myTable">
                 <thead>
                   <tr>
                     <th width="10"><input type="checkbox" id="all"></th>
@@ -86,117 +74,329 @@
                     <th>Tính năng</th>
                   </tr>
                 </thead>
+                <%ArrayList<Oder> oders = (ArrayList<Oder>) request.getAttribute("oders");%>
                 <tbody>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>MD0837</td>
-                    <td>Triệu Thanh Phú</td>
-                    <td>Ghế làm việc Zuno, Bàn ăn gỗ Theresa</td>
-                    <td>2</td>
-                    <td>9.400.000 đ</td>
-                    <td><span class="badge bg-success">Hoàn thành</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>MĐ8265</td>
-                    <td>Nguyễn Thị Ngọc Cẩm</td>
-                    <td>Ghế ăn gỗ Lucy màu trắng</td>
-                    <td>1</td>
-                    <td>3.800.000 đ</td>                 
-                    <td><span class="badge bg-success">Hoàn thành</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>MT9835</td>
-                    <td>Đặng Hoàng Phúc</td>
-                    <td>Giường ngủ Jimmy, Bàn ăn mở rộng cao cấp Dolas, Ghế làm việc Zuno</td>
-                    <td>3 </td>
-                    <td>40.650.000 đ</td>
-                    <td><span class="badge bg-success">Hoàn thành</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>ER3835</td>
-                    <td>Nguyễn Thị Mỹ Yến</td>
-                    <td>Bàn ăn mở rộng Gepa</td>
-                    <td>1 </td>
-                    <td>16.770.000 đ</td>
-                    <td><span class="badge bg-info">Chờ thanh toán</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>AL3947</td>
-                    <td>Phạm Thị Ngọc</td>
-                    <td>Bàn ăn Vitali mặt đá, Ghế ăn gỗ Lucy màu trắng</td>
-                    <td>2 </td>
-                    <td>19.770.000 đ</td>
-                    <td><span class="badge bg-warning">Đang giao hàng</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                    <td>QY8723</td>
-                    <td>Ngô Thái An</td>
-                    <td>Giường ngủ Kara 1.6x2m</td>
-                    <td>1 </td>
-                    <td>14.500.000 đ</td>
-                    <td><span class="badge bg-danger">Đã hủy</span></td>
-                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
-                      <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
-                  </tr>
+                <%
+                  System.out.println(oders.size());
+                  Locale localeVN = new Locale("vi", "VN");
+                  NumberFormat vn = NumberFormat.getInstance(localeVN);
+                  for(int i = 0; i < oders.size();i++){
+                    Oder tmp = oders.get(i);
+                %>
+                <tr>
+                  <td width="10"><input type="checkbox" name="check<%=tmp.getId()%>" value="<%=i%>"></td>
+                  <td><%=tmp.getId()%></td>
+                  <td><%=tmp.getFullName()%></td>
+                  <td><%=tmp.getProductName()%></td>
+                  <td><%=tmp.getQuantity()%></td>
+                  <td><%=vn.format(tmp.getTotal())%> đ</td>
+                  <%String status = "";
+                    String badge = "";
+                    if(tmp.getStatus() == 0 ){
+                      status = "Đang xử lý";
+                      badge = "badge bg-info";
+                    }
+                    if(tmp.getStatus() == 1 ){
+                      status = "Đã hoàn thành";
+                      badge = "badge bg-success";
+                    }
+                    if(tmp.getStatus() == 2 ){
+                      status = "Đã hủy";
+                      badge = "badge badge-danger";
+                    }
+                  %>
+                  <td><span class="<%=badge%>"><%=status%></span></td>
+                  <td><button class="btn btn-primary btn-sm trash" type="button" onclick="deleteRow(this, <%=tmp.getId()%>)" title="Xóa">  <i class="fas fa-trash-alt"><input hidden value="<%=tmp.getId()%>"/> </i> </button>
+                    <button class="btn btn-primary btn-sm edit"  type="button" data-toggle="modal"
+                            data-target="#ModalUP<%=tmp.getId()%>" title="Sửa"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-primary btn-sm edit" style="background-color: #1e7e34; color:white;"  type="button" data-toggle="modal"
+                            data-target="#ModalView<%=tmp.getId()%>" title="Sửa"><i class="fa fa-info"></i></button>
+                  </td>
+
+                </tr>
+                <div class="modal fade" id="ModalUP<%=tmp.getId()%>" tabindex="-1" role="dialog" aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="form-group  col-md-12">
+          <span class="thong-tin-thanh-toan">
+            <h5>Chỉnh sửa thông tin đơn hàng</h5>
+          </span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                            <label class="control-label" name="idpost"  >Mã đơn hàng </label>
+                            <input class="form-control" disabled value="<%=tmp.getId()%>" type="number">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Tên khách hàng</label>
+                            <input class="form-control" value="<%=tmp.getFullName()%>"  name="fullname" type="text" />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Tên sản phẩm</label>
+                            <input class="form-control" disabled value="<%=tmp.getProductName()%>" name="title" type="text" />
+                          </div>
+                          <div class="form-group  col-md-6">
+                            <label class="control-label">Số lượng</label>
+                            <input class="form-control" name="quantity" value="<%=tmp.getQuantity()%>" type="number" required >
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Địa chỉ</label>
+                            <input class="form-control" name="address" value="<%=tmp.getAddress()%>" type="text" >
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Phone</label>
+                            <input class="form-control" name="phone" value="<%=tmp.getPhone()%>" type="text" >
+                          </div>
+                          <div class="form-group col-md-12">
+                            <label class="control-label">Trạng thái</label>
+                              <select class="form-control" name="status">
+                                  <option value="0" <%=tmp.getStatus() == 0 ? "selected" : ""%>>Đang xử lý</option>
+                                <option value="1" <%=tmp.getStatus() == 1 ? "selected" : ""%>>Đã hoàn thành</option>
+                                <option value="2" <%=tmp.getStatus() == 2 ? "selected" : ""%>>Đã hủy</option>
+
+                              </select>
+                          </div>
+
+
+                        </div>
+                        <BR>
+                        <BR>
+                        <button class="btn btn-save" type="button" onclick="updateOder(this)">Lưu lại</button>
+                        <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                        <BR>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="ModalView<%=tmp.getId()%>" tabindex="-1" role="dialog" aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="form-group  col-md-12">
+          <span class="thong-tin-thanh-toan">
+            <h5>Thông tin chi tiết đơn hàng</h5>
+          </span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                            <label class="control-label" name="idpost"  >Mã đơn hàng </label>
+                            <input class="form-control" disabled value="<%=tmp.getId()%>" type="number">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Tên khách hàng</label>
+                            <input class="form-control" value="<%=tmp.getFullName()%>" disabled  name="fullname" type="text" />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Địa chỉ</label>
+                            <input class="form-control" name="address" disabled value="<%=tmp.getAddress()%>" type="text" >
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Phone</label>
+                            <input class="form-control" name="phone" disabled value="<%=tmp.getPhone()%>" type="text" >
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Username</label>
+                            <input class="form-control" name="Username" disabled value="<%=tmp.getUsername()%>" type="text" >
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Tên sản phẩm</label>
+                            <input class="form-control" disabled value="<%=tmp.getProductName()%>" name="title" type="text" />
+                          </div>
+
+                          <div class="form-group  col-md-6">
+                            <label class="control-label">Số lượng</label>
+                            <input class="form-control" name="quantity" disabled value="<%=tmp.getQuantity()%>" type="number" required >
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label class="control-label">Tổng tiền</label>
+                            <input class="form-control" disabled value="<%=tmp.getTotal()%>" name="total" type="text" />
+                          </div>
+
+                          <div class="form-group col-md-12">
+                            <label class="control-label">Trạng thái</label>
+                            <input class="form-control" name="status" disabled value="<%=status%>" type="text" >
+
+                          </div>
+
+
+                        </div>
+                        <BR>
+                        <BR>
+                        <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                        <BR>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <%}%>
+
                 </tbody>
+
               </table>
             </div>
           </div>
         </div>
       </div>
     </main>
+<%--  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true"--%>
+<%--  >--%>
+<%--    <div class="modal-dialog modal-dialog-centered" role="document">--%>
+<%--      <div class="modal-content">--%>
+
+<%--        <div class="modal-body">--%>
+<%--          <div class="row">--%>
+<%--            <div class="form-group  col-md-12">--%>
+<%--          <span class="thong-tin-thanh-toan">--%>
+<%--            <h5>Chỉnh sửa thông tin đơn hàng</h5>--%>
+<%--          </span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="row">--%>
+<%--            <div class="form-group col-md-6">--%>
+<%--              <label class="control-label" name="idpost"  >Mã đơn hàng </label>--%>
+<%--              <input class="form-control" disabled type="number">--%>
+<%--            </div>--%>
+<%--            <div class="form-group col-md-6">--%>
+<%--              <label class="control-label">Tên khách hàng</label>--%>
+<%--              <input class="form-control"   name="fullname" type="text" />--%>
+<%--            </div>--%>
+<%--            <div class="form-group col-md-6">--%>
+<%--              <label class="control-label">Tên sản phẩm</label>--%>
+<%--              <input class="form-control" disabled  name="title" type="text" />--%>
+<%--            </div>--%>
+<%--            <div class="form-group  col-md-6">--%>
+<%--              <label class="control-label">Số lượng</label>--%>
+<%--              <input class="form-control" name="quantity" type="number" required >--%>
+<%--            </div>--%>
+
+<%--            <div class="form-group col-md-6">--%>
+<%--              <label class="control-label">Địa chỉ</label>--%>
+<%--              <input class="form-control" name="address" type="text" >--%>
+<%--            </div>--%>
+<%--            <div class="form-group col-md-6">--%>
+<%--              <label class="control-label">Phone</label>--%>
+<%--              <input class="form-control" name="phone" type="text" >--%>
+<%--            </div>--%>
+
+
+<%--          </div>--%>
+<%--          <BR>--%>
+<%--          <BR>--%>
+<%--          <button class="btn btn-save" type="button" onclick="updateBasic()">Lưu lại</button>--%>
+<%--          <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>--%>
+<%--          <BR>--%>
+<%--        </div>--%>
+<%--        <div class="modal-footer">--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
   <!-- Essential javascripts for application to work-->
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="jsadmin/popper.min.js"></script>
+  <script src="jsadmin/bootstrap.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="src/jquery.table2excel.js"></script>
-  <script src="js/main.js"></script>
+  <script src="jsadmin/jquery.table2excel.js"></script>
+  <script src="jsadmin/main.js"></script>
   <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
+  <script src="jsadmin/plugins/pace.min.js"></script>
   <!-- Page specific javascripts-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <!-- Data table plugin-->
-  <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="jsadmin/plugins/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="jsadmin/plugins/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript">$('#sampleTable').DataTable();</script>
   <script>
-    function deleteRow(r) {
-      var i = r.parentNode.parentNode.rowIndex;
-      document.getElementById("myTable").deleteRow(i);
+    const exportExel = (name)=>{
+      console.log(name)
+      $("#myTable").table2excel({
+        name: name,
+        filename: "FileExcel",
+        fileext: ".xls"
+      })
+
     }
-    jQuery(function () {
-      jQuery(".trash").click(function () {
-        swal({
-          title: "Cảnh báo",
-         
-          text: "Bạn có chắc chắn là muốn xóa đơn hàng này?",
-          buttons: ["Hủy bỏ", "Đồng ý"],
-        })
-          .then((willDelete) => {
-            if (willDelete) {
-              swal("Đã xóa thành công.!", {
-                
-              });
-            }
-          });
+    const updateOder = (e)=>{
+      let inputs = e.parentElement.querySelectorAll("input")
+      let id = inputs[0].value
+      let fullName = encodeURI(inputs[1].value)
+      let quantity = inputs[3].value
+      let address = encodeURI(inputs[4].value)
+      let phone = inputs[5].value
+      let status = e.parentElement.querySelector("select").value
+      let obj = {
+        fullName,quantity,address,phone,status
+      }
+      $.ajax({
+        url: "/oder?update="+id,
+        type: "POST",
+        contentType: 'application/x-www-form-urlencoded',
+        data:obj,
+        success: function (data) {
+          console.log(data)
+          if( JSON.parse(data) === 1)
+            swal("Cập nhập thành công.!", {
+              timer: 1000
+            }).then(()=>{
+              window.location = "admin?page=oderManagement"
+            });
+
+
+
+        }
       });
-    });
+
+      console.log(tr)
+      // let arrtd = tr.querySelectorAll("td");
+      // console.log(arrtd)
+      // let inputs = document.querySelectorAll("#ModalUP input")
+      // inputs[0].setAttribute("value", arrtd[1].textContent)
+      // inputs[1].setAttribute("value", arrtd[2].textContent)
+      // inputs[2].setAttribute("value", arrtd[3].textContent)
+      // inputs[3].setAttribute("value", arrtd[4].textContent)
+      let timerInterval
+
+
+    }
+    function deleteRow(r, id) {
+      var i = r.parentNode.parentNode.rowIndex;
+      swal({
+        title: "Cảnh báo",
+        text: "Bạn có chắc chắn là muốn xóa đơn hàng này?",
+        buttons: ["Hủy bỏ", "Đồng ý"],
+      }).then((willDelete) => {
+                if (willDelete) {
+                  $.ajax({
+                    url: "/oder?delete="+id,
+                    type: "POST",
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function (data) {
+                      console.log(data)
+                      if( JSON.parse(data) === 1)
+                        document.getElementById("myTable").deleteRow(i);
+                        swal("Đã xóa thành công.!", {
+
+                        });
+                    }
+                  });
+
+                }
+              });
+    }
+
     oTable = $('#sampleTable').dataTable();
     $('#all').click(function (e) {
       $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));

@@ -1,15 +1,17 @@
 <%@ page import="Model.Post" %>
-<%@ page import="org.w3c.dom.ranges.Range" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=1519px, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     <style>
         <%@include file="detail.css" %>
@@ -30,7 +32,6 @@
                     <span class="code">Mã tin: <%=product.getIdPost()%> </span>|<span class="date">02/11/2022</span>|<span class="viewed "><i class="icon-eye-1"></i><span class="totalView">107 lượt xem</span> </span>
                 </div>
             </div>
-
             <div class="price-detail">
                 <div class="box-price">
                     <span class="price-big blueprice"><span style="font-weight: 600">Giá bán:</span> <span style="font-size: 18px; font-weight: 700; color: #024E9C"> <%=product.getPrice()%> triệu</span> </span>
@@ -61,25 +62,26 @@
                 <div class="slideshow-container">
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 3</div>
-                        <img src="<%=product.arrayImg()[0]%>" style="width:100%">
+                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
-                        <img src="<%=product.arrayImg()[1]%>" style="width:100%">
+                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
-                        <img src="<%=product.arrayImg()[2]%>" style="width:100%">
+                        <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
                     </div>
                     <!-- Nút điều khiển mũi tên-->
                 </div>
                 <div style="text-align:center" class="listdot">
                     <a class="prev" onclick="plusSlides(-1)"><i class="fa-sharp fa-solid fa-angle-up"></i></a>
                     <a class="next" onclick="plusSlides(1)"><i class="fa-sharp fa-solid fa-angle-down"></i></a>
-                    <div class="dot" onclick="currentSlide(1)"><img src="<%=product.arrayImg()[0]%>" style="width:100%"></div>
-                    <div class="dot" onclick="currentSlide(2)"><img src="<%=product.arrayImg()[1]%>" style="width:100%">
+
+                    <div class="dot" onclick="currentSlide(1)"><img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%"></div>
+                    <div class="dot" onclick="currentSlide(2)">           <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
                     </div>
-                    <div class="dot" onclick="currentSlide(3)"><img src="<%=product.arrayImg()[2]%>" style="width:100%">
+                    <div class="dot" onclick="currentSlide(3)">           <img src="https://img1.oto.com.vn/crop/575x430/2022/10/30/20221030182457-cb9a_wm.jpg" style="width:100%">
 
                     </div>
                 </div>
@@ -135,91 +137,43 @@
             <div class="comment"    >
                 <h5>ĐÁNH GIÁ NGƯỜI BÁN
                 </h5>
-                <h5>5.0 <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span style="font-size: 16px; font-weight: normal" >(2 lượt đánh giá)</span></h5>
+                <h5>5.0 <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <span style="font-size: 16px; font-weight: normal" >(<span id="countCmt"></span> lượt đánh giá)</span></h5>
                 <br/>
                 <div class="box-input" >
-                   <form action="">
-                       <h5 style="text-align: center; font-weight: bold">Nội dung đánh giá</h5>
-                       <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                    <form action="">
+                        <h5 style="text-align: center; font-weight: bold">Nội dung đánh giá</h5>
+                        <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
 
-                       <div style="display: flex">
-                           <p style="margin-top: 8px"><b>Đánh giá:</b></p>
-                           <div class="stars">
-                               <form action="">
-                                   <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                   <label class="star star-5" for="star-5"></label>
-                                   <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                   <label class="star star-4" for="star-4"></label>
-                                   <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                   <label class="star star-3" for="star-3"></label>
-                                   <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                   <label class="star star-2" for="star-2"></label>
-                                   <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                   <label class="star star-1" for="star-1"></label>
-                               </form>
-                           </div>
-                       </div>
-                       <div class="box-bt"><button type="submit" class="bt-comment">Gửi đánh giá</button></div>
-                   </form>
+                        <div style="display: flex">
+                            <p style="margin-top: 8px"><b>Đánh giá:</b></p>
+                            <div class="stars">
+                                <form action="">
+                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div  class="box-bt"><button style="cursor: pointer" id="${id}"class="bt-comment"><input hidden value="<%=product.getIdPost()%>">Gửi đánh giá</button></div>
+                    </form>
                 </div>
 
                 <div class="list-comment">
-                    <div class="cmt">
-                        <div class="start-cmt">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
 
-                        </div>
-                        <p>từ <b>Giá Trí</b>, <span class="cl-lg">30/11/2022</span></p>
-                        <p>Chuyên nghiệp</p>
-                    </div>
-                    <div class="cmt">
-                        <div class="start-cmt">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-                        <p>từ <b>Giá Trí</b>, <span class="cl-lg">30/11/2022</span></p>
-                        <p>Chuyên nghiệp</p>
-                    </div>
-                    <div class="cmt">
-                        <div class="start-cmt">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-                        <p>từ <b>Giá Trí</b>, <span class="cl-lg">30/11/2022</span></p>
-                        <p>Chuyên nghiệp</p>
-                    </div>
-                    <div class="cmt">
-                        <div class="start-cmt">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-                        <p>từ <b>Giá Trí</b>, <span class="cl-lg">30/11/2022</span></p>
-                        <p>Chuyên nghiệp</p>
-                    </div>
-                    <div class="cmt">
-                        <div class="start-cmt">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-                        </div>
-                        <p>từ <b>Giá Trí</b>, <span class="cl-lg">30/11/2022</span></p>
-                        <p>Chuyên nghiệp</p>
-                    </div>
                 </div>
 
             </div>
         </div>
         <div class="right-detail">
-           <jsp:include page="../Component/keyword/keyword.jsp"></jsp:include>
+            <jsp:include page="../Component/keyword/keyword.jsp"></jsp:include>
         </div>
     </div>
 
@@ -229,7 +183,7 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script  >
+<script>
     var slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) {
@@ -253,6 +207,7 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
+
     const addToCart = (id)=>{
         $.ajax({
             url: "/cart?action=addtocart&idpost="+id,
@@ -265,5 +220,13 @@
 
 
     }
+    // post comment
+
+
+
+</script>
+<script src="../javascrip/comment.js"></script>
+<script type="application/javascript">
+
 </script>
 </html>

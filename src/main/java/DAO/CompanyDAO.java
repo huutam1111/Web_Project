@@ -1,10 +1,7 @@
 package DAO;
 
 import Connect.ConnectDB;
-import Model.Cart;
 import Model.Company;
-import Model.Order;
-import Model.Post;
 
 import java.sql.*;
 import java.util.ArrayList;

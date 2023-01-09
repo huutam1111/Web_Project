@@ -10,7 +10,7 @@ public class User implements Serializable {
     private String phone;
     private String avatar;
     private String address;
-
+    private int isAdmin;
     public User(String userName, String passWord, String fullName, String email, String phone, String avatar, String address) {
         this.userName = userName;
         this.passWord = passWord;
@@ -21,6 +21,13 @@ public class User implements Serializable {
         this.address = address;
     }
 
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     public String getUserName() {
         return userName;
