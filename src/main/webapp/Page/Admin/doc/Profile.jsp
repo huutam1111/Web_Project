@@ -63,7 +63,7 @@
                   </div>
                 </div>
                 <ul class="nav nav-tabs">
-                  <li class="nav-item"><a href="#order" class="active nav-link" data-toggle="tab">Order</a></li>
+                  <li class="nav-item"><a href="#oder" class="active nav-link" data-toggle="tab">Order</a></li>
                   <li class="nav-item"><a href="#edit" class=" nav-link" data-toggle="tab">Settings</a></li>
 
 
@@ -135,7 +135,7 @@
                     </form>
 
                   </div>
-                  <div class="tab-pane active" id="order">
+                  <div class="tab-pane active" id="oder">
                     Đơn hàng xử lý
                   </div>
                 </div>

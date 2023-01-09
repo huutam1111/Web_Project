@@ -72,6 +72,15 @@ public class CartDAO {
         int rowAffected = pstmt.executeUpdate();
         return rowAffected;
     }
+    public static int removeCart( int idPost) throws SQLException {
+        String sqlUpdate = "DELETE FROM cart "
+                + "WHERE username = ?";
+        Connection conn = ConnectDB.getConnect();
+        PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);
+        pstmt.setInt(1, idPost);
+        int rowAffected = pstmt.executeUpdate();
+        return rowAffected;
+    }
 
     public static int addToCart(String username, int idPost) throws SQLException {
         String sqlUpdate = "INSERT INTO cart (username, idpost, amount) values(?,?, 1)";

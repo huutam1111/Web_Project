@@ -38,7 +38,7 @@
                   <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); border: 1px solid black; font: bold 8pt Arial;"><img src="Img/User/<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
+                        <span style="color: rgb(166, 168, 170); border: 1px solid black; font: bold 8pt Arial;"><img src="<%=user.getAvatar()%>" id="" alt="" width="140px" height="140px" srcset=""></span>
                       </div>
                     </div>
                   </div>
@@ -81,7 +81,7 @@
                   </div>
                 </div>
                 <ul class="nav nav-tabs">
-                  <li class="nav-item"><a href="#order" class="active nav-link" data-toggle="tab">Order</a></li>
+                  <li class="nav-item"><a href="#oder" class="active nav-link" data-toggle="tab">Order</a></li>
                   <li class="nav-item"><a href="#edit" class=" nav-link" data-toggle="tab">Settings</a></li>
 
 
@@ -153,7 +153,7 @@
                     </form>
 
                   </div>
-                  <div class="tab-pane active" id="order">
+                  <div class="tab-pane active" id="oder">
                     <div class="tile">
                       <h3 class="tile-title">Đơn hàng của bạn</h3>
                       <div>
@@ -166,7 +166,7 @@
                             <th>Trạng thái</th>
                           </tr>
                           </thead>
-                          <tbody id="table-order">
+                          <tbody id="table-oder">
 
 
 
@@ -203,9 +203,8 @@
 </div>
 
 </body>
-
+<script src="../javascrip/profileEdit.js"></script>
 <script >
-  <%@include file="../javascrip/profileEdit.js" %>
 
   var changePass = false
   const openFormChanglePass = (ele)=>{
@@ -316,6 +315,7 @@
   const logout = ()=>{
     console.log("Logout")
     del_cookie("user")
+    del_cookie("isAdmin")
     window.location.pathname="/"
   }
   function del_cookie(name) {
@@ -326,13 +326,29 @@
   const getOrder = ()=>{
     let rs = ``
     $.ajax({
-      url: "/order?action=listorder",
+      url: "/oder?action=listorder",
       type: 'GET',
 
       contentType: 'application/x-www-form-urlencoded',
       success: function(res) {
         let arrOrder  = JSON.parse(res).reverse()
         arrOrder.map((tmp)=>{
+          let badge= ""
+          if (tmp.status === 0){
+            badge ="badge bg-info"
+            tmp.status = "Đang xử lý"
+          }
+
+          if (tmp.status === 1){
+            tmp.status ="Đã hoàn thành"
+            badge ="badge badge-success"
+          }
+
+          if (tmp.status === 2){
+            badge ="badge badge-danger"
+            tmp.status ="Đã hủy"
+          }
+
           rs+= `
     <tr>
                             <td>${tmp.id}</td>
@@ -340,12 +356,13 @@
                             <td>
                               ${tmp.total}
                             </td>
-                           <td><span class="${tmp.status == 0 ? "badge bg-info" :  "badge badge bg-success"}">${tmp.status == 0? "Đang xử lý" :  "Đã hoàn thành"}</span></td>
+
+                           <td><span class="${badge}">${tmp.status }</span></td>
 
                           </tr>
     `
         })
-    document.querySelector("#table-order").innerHTML = rs
+    document.querySelector("#table-oder").innerHTML = rs
       }
     });
 

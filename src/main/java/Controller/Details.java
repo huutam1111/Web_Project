@@ -1,6 +1,8 @@
 package Controller;
 
+import DAO.CommentDAO;
 import DAO.ProductDAO;
+import Model.Comment;
 import Model.Post;
 import Model.RespJsonServlet;
 import Model.User;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/details")
 public class Details extends HttpServlet {
@@ -26,6 +29,8 @@ public class Details extends HttpServlet {
             req.getRequestDispatcher("Page/404.jsp").forward(req, res);
             return;
         }
+
+
         Post product = ProductDAO.getPostById(Integer.valueOf(id));
         req.setAttribute("product", product);
         req.getRequestDispatcher("Page/Detail.jsp").forward(req, res);

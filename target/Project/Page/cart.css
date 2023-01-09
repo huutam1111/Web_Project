@@ -42,7 +42,9 @@
     font-size: 14px;
     color: #212121;
 }
-
+#cartPage .img-responsive{
+    width: 200px;
+}
 #cartPage .timetable_sub td {
     border: 1px solid #CDCDCD;
 }

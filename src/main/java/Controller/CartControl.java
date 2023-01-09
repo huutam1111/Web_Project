@@ -154,14 +154,17 @@ public class CartControl extends HttpServlet {
             if(cart != null){
                 setQuantity(request,response, "increase");
                 response.getWriter().write(new Gson().toJson(1));
+                return;
+
             }else{
                 CartDAO.addToCart(user, Integer.valueOf(id));
                 response.getWriter().write(new Gson().toJson(1));
+                return;
 
             }
         }else{
             response.getWriter().write(new Gson().toJson(0));
-
+            return;
         }
     }
 }

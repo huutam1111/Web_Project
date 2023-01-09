@@ -40,10 +40,10 @@ public class PostProduct extends HttpServlet {
             String fuel= URLDecoder.decode(req.getParameter("fuel"), "UTF-8");
             Float price=Float.parseFloat(req.getParameter("price"));
             String body=req.getParameter("body");
-            String made=req.getParameter("made");
-            System.out.println("-------------------------------------------");
-            int rs=ProductDAO.insertProduct(title,content,body,made,rsImg,gear,idCompany,year,statusMain,fuel,price);
-            System.out.println("-------------------------------------------"+rs);
+            String made=URLDecoder.decode(req.getParameter("made"),"UTF-8");
+            System.out.println(made);
+            int quantity=Integer.valueOf(req.getParameter("quantity"));
+            int rs=ProductDAO.insertProduct(title,content,body,made,rsImg,gear,idCompany,year,statusMain,fuel,price, quantity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

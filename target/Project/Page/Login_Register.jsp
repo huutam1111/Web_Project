@@ -170,6 +170,8 @@
 
 </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript"
         src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/mdb5/standard/core.min.js"></script>
@@ -193,10 +195,21 @@
             success: (data) => {
                 console.log(data)
                 if (data['message'] == "ok") {
-                    alert("đăng nhập thành công")
-                    window.location.pathname = "/index.jsp"
+                    swal({
+                        title: "Thành công",
+                        text: "Đăng nhập thành công",
+
+                    }).then(()=>{
+                        window.location.pathname = "/"
+                    })
+
                 } else {
-                    alert("đăng nhập thất bại")
+                    swal({
+                        title: "Thất bại",
+                        text: "Vui lòng đăng nhập lại",
+
+                    })
+
                 }
 
 
@@ -277,16 +290,30 @@
                         console.log(data['message'])
                         console.log(data['message'] == "register success")
                         if (data['message'] == "register success") {
-                            alert("đăng kí thành công")
-                            $(".uploadImg").attr("src", "/Img/ImgNormal.jpg")
+                            swal({
+                                title: "Thành công",
+                                text: "Chúc mừng bạn đã đăng ký thành công",
+
+                            })
+                            $(".uploadImg").attr("src", "/Img/User/${name}.jpg")
                             handleRegisRevert()
+                            window.location.pathname = "Page/Login_Register.jsp"
                             resetForm()
                         } else {
                             if (data['message'] == "code sai") {
-                                alert("Code không đúng")
-                                $(".uploadImg").attr("src", "/Img/ImgNormal.jpg")
+                                swal({
+                                    title: "Thất bại",
+                                    text: "Vui lòng nhập lại code",
+
+                                })
+                                $(".uploadImg").attr("src", "/Img/User/${name}.jpg")
                             } else {
-                                alert("đăng kí thành công")
+                                swal({
+                                    title: "Thành công",
+                                    text: "Chúc mừng bạn đã đăng ký thành công",
+
+                                })
+                                window.location.pathname = "Page/Login_Register.jsp"
                                 handleRegisRevert()
                                 resetForm()
                             }
@@ -296,13 +323,27 @@
                     }
                 });
             } else {
-                alert("Form sai định dạng")
+                swal({
+                    title: "Thất bại",
+                    text: "Vui lòng nhập lại thông tin",
+
+                })
             }
 
 
     })
     $(".btn-code").click(function (e) {
         e.preventDefault()
+        swal({
+            title:"",
+            text:"Loading...",
+            icon: "https://www.boasnotas.com/img/loading2.gif",
+            customClass: 'loading',
+            buttons: false,
+            closeOnClickOutside: false,
+            timer: 16000,
+            //icon: "success"
+        });
         name = $("#registerUsername").val()
         fullName = $("#registerFullname").val()
         email = $("#registerEmail ").val()
@@ -313,8 +354,10 @@
         fetch("/sendMail?email=" + email)
             .then((resp) => {
                 return resp.json()
+                console.log(1)
             })
             .then((resp)=>{
+                console.log(2)
                 handleRegisNext()
             })
             .catch(()=>{

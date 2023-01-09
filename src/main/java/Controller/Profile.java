@@ -10,6 +10,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,7 +79,9 @@ public class Profile extends HttpServlet {
                             fileItem.write(file);
                             System.out.println("UPLOAD THÀNH CÔNG...!");
                             System.out.println("ĐƯỜNG DẪN KIỂM TRA UPLOAD HÌNH ẢNH : \n"+dirUrl);
-                            UserDAO.uploadAvatar(user,user + ".jpg");
+                            UserDAO.uploadAvatar(user,"Img/User/"+user + ".jpg");
+                            Cookie img=new Cookie("imgUser","Img/User/"+user + ".jpg");
+                            res.addCookie(img);
                         } catch (Exception e) {
                             System.out.println("CÓ LỖ TRONG QUÁ TRÌNH UPLOAD!");
                             e.printStackTrace();

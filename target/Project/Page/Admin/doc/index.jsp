@@ -23,7 +23,41 @@
     <link rel="stylesheet" href="https://oto.com.vn/node_modules/@angular/material/prebuilt-themes/indigo-pink.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <style>
-        <%@include file="./PostStatus/Img/index.css"%>
+        .fileupload {
+            display: none;
+        }
+
+        .inp:focus {
+            border: 1px solid #56A1EE;
+        }
+        .group-bt.two-bt .btn-send {
+            float: right;
+            background: #4DB848;
+        }
+        .control-last{
+            display: flex;
+            align-items: center;
+        }
+        .imgContainer {
+            width: 180px;
+            height: 134px;
+            margin-right: 10px;
+        }
+        .imgContainer > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            border: none;
+            overflow: hidden;
+        }
+        .list-thumb-gallery{
+            display: flex !important;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+
+
     </style>
 
 </head>
@@ -92,25 +126,25 @@
         <%--      tiltle--%>
         <%@include file="/Page/Admin/doc/PostStatus/titlencontent/index.jsp" %>
         <div class="group-bt two-bt" id="btn-postListing">
-            <a href="/Page/" class="btn-send">Hoàn tất</a><!----></div>
+            <a href="" class="btn-send" id="btn-send">Hoàn tất</a><!----></div>
     </div>
 
 
     </div>
 
 </main>
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="jsadmin/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="js/popper.min.js"></script>
+<script src="jsadmin/popper.min.js"></script>
 <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 <!--===============================================================================================-->
-<script src="js/bootstrap.min.js"></script>
+<script src="jsadmin/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+<script src="jsadmin/main.js"></script>
 <!--===============================================================================================-->
-<script src="js/plugins/pace.min.js"></script>
+<script src="jsadmin/plugins/pace.min.js"></script>
 <!--===============================================================================================-->
-<script type="text/javascript" src="js/plugins/chart.js"></script>
+<script type="text/javascript" src="jsadmin/plugins/chart.js"></script>
 <!--===============================================================================================-->
 <script type="text/javascript">
     var data = {
@@ -189,7 +223,9 @@
     document.querySelector(".upload-item").addEventListener("click", (e) => {
         document.querySelector(".fileupload").click()
     })
-</script>
+</script
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     document.querySelector(".btn-send").addEventListener("click", (e) => {
         e.preventDefault();
@@ -240,7 +276,7 @@
         $(".status-group li").each(function () {
             $(this).each(function (index) {
                 if ($(this)[0].querySelector("input").checked) {
-                    arr.push($(this)[0].querySelector("input").value)
+                    arr.push($(this)[0].querySelector("input").getAttribute("value"))
                 }
             })
 
@@ -248,56 +284,78 @@
         return arr
     }
 
-        $(".btn-send").click(function (e){
-            e.preventDefault()
-            const arr = getStatus()
-            const nameCompany = $('.form-select option:selected').text();
-            const title = encodeURI($("#tilte123").val())
-            const content = encodeURI($("#content").val())
-            const images = listImg
-            const xmas = new Date("December 25, 2000 23:15:00");
-            const year = xmas.getYear();
-            const yearofmanufacture = getYear() ||year
-            const made = arr[0]
-            const gear = arr[1]
-            const fuel = encodeURI(arr[2])
-            const status = arr[3]
-            const price = $("#Price").val()
-            const body = $("#body").val()
-            if(nameCompany&&title&&content&&images&&yearofmanufacture&&made&&gear&&fuel&&status&&price&&body){
-                // if(typeof price==="number"){
-                    var dataBody={
-                        nameCompany,
-                        images,
-                        title,
-                        content,
-                        yearofmanufacture,
-                        gear,
-                        fuel,
-                        price,
-                        status,
-                        body,
-                        made
-                    }
+    $("#btn-send").click(function (e){
+        e.preventDefault()
+        const arr = getStatus()
+        const nameCompany = $('.form-select option:selected').text();
+        const title = encodeURI($("#tilte123").val())
+        const content = encodeURI($("#content").val())
+        const images = listImg
+        const xmas = new Date("December 25, 2000 23:15:00");
+        const year = xmas.getYear();
+        const yearofmanufacture = getYear() ||year
+        const made = encodeURI(arr[0])
+        const gear = arr[1]
+        const fuel = encodeURI(arr[2])
+        const status = arr[3]
+        const price = $("#Price").val()
+        const body = $("#body").val()
+        const quantity = $("#quantity").val()
+        console.log(status)
 
-                    $.ajax({
-                        url: "/postProduct",
-                        type: "POST",
-                        data: dataBody,
-                        contentType: 'application/x-www-form-urlencoded',
-                        success: function (data) {
-                        }
-                    });
-                // }else {
-                //     alert("Giá xe phải là giá trị số")
-                // }
-
-            }else {
-                alert("Form sai định dạng")
+        if(nameCompany&&title&&content&&images&&yearofmanufacture&&made&&gear&&fuel&&status&&price&&body&&quantity){
+            // if(typeof price==="number"){
+            var dataBody={
+                nameCompany,
+                images,
+                title,
+                content,
+                yearofmanufacture,
+                gear,
+                fuel,
+                price,
+                status,
+                body,
+                made,
+                quantity
             }
 
+            $.ajax({
+                url: "/postProduct",
+                type: "POST",
+                data: dataBody,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (data) {
+                    swal({
+                        title: 'Thành công',
+                        text: 'Thêm sản phẩm thành công',
+                        content: "form",
+                        buttons: {
+                            cancel: "Ok",
+                        }
+                    }).then((value) => {
+                        console.log(value);
+                    });
 
-        })
+                }
+            });
+
+        }else {
+            swal({
+                title: 'Lỗi ',
+                text: 'Thông tin không chính xác',
+                content: "form",
+                buttons: {
+                    cancel: "Cancel",
+                }
+            }).then((value) => {
+                console.log(value);
+            });
+        }
+
+
+    })
+
 
 
 </script>

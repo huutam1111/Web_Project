@@ -30,9 +30,11 @@ public class Login extends HttpServlet {
                 String userResp=gson.toJson(user);
                 System.out.println(userResp);
                 Cookie cookie=new Cookie("user", name);
+                Cookie isAdmin=new Cookie("isAdmin",user.getIsAdmin() + "");
                 Cookie img=new Cookie("imgUser",user.getAvatar());
                 resp.addCookie(cookie);
                 resp.addCookie(img);
+                resp.addCookie(isAdmin);
                 pw=resp.getWriter();
                 pw.println(new RespJsonServlet("ok").json());
                 pw.close();
