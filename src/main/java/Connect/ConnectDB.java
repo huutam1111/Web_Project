@@ -11,7 +11,7 @@ package Connect;
         private String user = "root";
         private String pass = "";
         private static Connection connection;
-
+        ///Huy
         private ConnectDB() {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
